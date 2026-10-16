@@ -37,6 +37,7 @@ const CONFIG = {
       { title: "Director of Strategy & Partnerships", name: "Sam John Doe", bio: "Leads strategic planning, partnership development and business expansion.", photo: "images/logo.jfif" }
     ],
     chairman: { title: "Board Chairman", name: "Sam John Doe", bio: "Provides board leadership, governance oversight and strategic direction for the group.", photo: "images/logo.jfif" },
+    formerChairman: { title: "Former Chairman", name: "Lt. Musa Bah, TiT, Tle, Hons, WILL, BE, ADDED", bio: "Previously served as Chairman of the board, providing leadership and strategic direction.", photo: "images/logo.jfif" },
     advisers: [
       { title: "Financial Adviser", name: "Sam John Doe", bio: "Advises on financial management, investment strategy and risk assessment.", photo: "images/logo.jfif" },
       { title: "Agricultural Adviser", name: "Sam John Doe", bio: "Provides technical guidance on agronomy, value chain development and sustainable farming.", photo: "images/logo.jfif" },
@@ -220,5 +221,6 @@ const q = id => document.getElementById(id);
 if (q("team-ceo")) q("team-ceo").innerHTML = person(T.ceo, true);
 if (q("team-dir")) q("team-dir").innerHTML = T.directors.map(p => person(p)).join("");
 if (q("team-chairman")) q("team-chairman").innerHTML = T.chairman ? person(T.chairman) : "";
+if (q("team-former-chairman")) q("team-former-chairman").innerHTML = T.formerChairman ? person(T.formerChairman) : "";
 if (q("team-adv")) q("team-adv").innerHTML = T.advisers.map(p => person(p)).join("");
 document.querySelectorAll(".person.reveal").forEach(el => io.observe(el));
