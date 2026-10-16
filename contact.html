@@ -3,48 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Contact | Misalta Global</title>
-<meta name="description" content="Contact Misalta Global customer care, the info desk, or our social media pages.">
+<title>Contact Misalta Global Concepts Ltd.</title>
+<meta name="description" content="Contact Misalta Global Concepts Ltd. for general, professional services, agro-processing, Misalta Trade X, investment and media enquiries.">
+<meta property="og:title" content="Contact Misalta Global Concepts Ltd."><meta property="og:description" content="Contact Misalta Global Concepts Ltd. for general, professional services, agro-processing, Misalta Trade X, investment and media enquiries."><meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<section class="page-hero"><div class="container"><span class="eyebrow" style="color:var(--gold)">Contact</span><h1>Let us hear from you</h1><p>Reach customer care, the info desk or our social pages. We are happy to help.</p></div></section>
+<section class="page-hero "><div class="container"><span class="eyebrow" style="color:var(--gold)">Contact</span><h1>Let us hear from you</h1><p>Reach the right team for general enquiries, professional services, agro-processing, Misalta Trade X, investment and media.</p></div></section>
 
 <section><div class="container contact-grid">
   <div class="reveal l">
-    <a class="channel" id="c-care"><div class="ico">🎧</div><div><small>Customer Care</small><b id="care-t"></b></div></a>
-    <a class="channel" id="c-info"><div class="ico">✉️</div><div><small>Info &amp; General Enquiries</small><b id="info-t"></b></div></a>
-    <a class="channel" id="c-phone"><div class="ico">📞</div><div><small>Call us</small><b id="phone-t"></b></div></a>
-    <a class="channel" id="c-wa" target="_blank" rel="noopener"><div class="ico">💬</div><div><small>WhatsApp</small><b>Chat with us now</b></div></a>
-    <h3 style="margin-top:28px">Follow us</h3>
-    <div class="socials" id="soc"></div>
-    <div style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-gold" data-open="invest">Invest</button><button class="btn btn-green" data-open="buy">Buy Produce</button></div>
+    <a class="channel" id="c-info"><div class="ico">✉️</div><div><small>Email</small><b>info@misaltaglobal.com</b></div></a>
+    <a class="channel" id="c-phone"><div class="ico">📞</div><div><small>Call us</small><b>Phone to be confirmed</b></div></a>
+    <a class="channel" id="c-wa" target="_blank" rel="noopener"><div class="ico">💬</div><div><small>WhatsApp</small><b>Chat with us</b></div></a>
+    <div class="channel" id="c-addr"><div class="ico">📍</div><div><small>Address</small><b>Address to be confirmed</b></div></div>
+    <h3 style="margin-top:28px">Follow us</h3><div class="socials" id="soc"></div>
   </div>
   <form class="f reveal r" id="contactForm">
     <h3 style="font-size:1.7rem;margin-bottom:20px">Send a message</h3>
-    <div class="row"><div class="field"><label>Your name</label><input name="Name" required></div><div class="field"><label>Email</label><input type="email" name="Email" required></div></div>
+    <div class="row"><div class="field"><label>Your name *</label><input name="Name" required></div><div class="field"><label>Email *</label><input type="email" name="Email" required></div></div>
     <div class="row"><div class="field"><label>Phone</label><input name="Phone"></div>
-    <div class="field"><label>Send to</label><select name="Department"><option>Customer Care</option><option>Info / General</option></select></div></div>
-    <div class="field"><label>Subject</label><input name="Subject" required></div>
-    <div class="field"><label>Message</label><textarea name="Message" rows="5" required></textarea></div>
+    <div class="field"><label>Enquiry type</label><select name="Category"><option data-route="info">General enquiries</option><option data-route="services">Professional services</option><option data-route="supply">Agro-processing and supply</option><option data-route="tradex">Misalta Trade X early access</option><option data-route="invest">Investment and partnerships</option><option data-route="media">Media or other enquiries</option></select></div></div>
+    <div class="field"><label>Message *</label><textarea name="Message" rows="5" required></textarea></div>
+    <label class="consent"><input type="checkbox" name="Consent" value="Yes" required> I agree to be contacted about this enquiry. See the <a href="privacy.html">privacy notice</a>.</label>
     <button class="btn btn-green" style="width:100%;justify-content:center">Send Message</button>
-    <p class="note">Submitting opens your email app with the message ready to send to the right team.</p>
+    <p class="note">Submitting opens your email app with the message prepared for the right team.</p>
   </form>
 </div></section>
 
 <script src="script.js"></script>
-<script>
-document.getElementById("care-t").textContent=CONFIG.careEmail;
-document.getElementById("c-care").href="mailto:"+CONFIG.careEmail;
-document.getElementById("info-t").textContent=CONFIG.infoEmail;
-document.getElementById("c-info").href="mailto:"+CONFIG.infoEmail;
-document.getElementById("phone-t").textContent=CONFIG.phone;
-document.getElementById("c-phone").href="tel:"+CONFIG.phone.replace(/\s/g,"");
-document.getElementById("c-wa").href="https://wa.me/"+CONFIG.whatsapp;
-document.getElementById("soc").innerHTML=Object.entries(CONFIG.social).map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener" title="${n}">${n.slice(0,2)}</a>`).join("");
-</script>
 </body>
 </html>
