@@ -30,17 +30,17 @@ const CONFIG = {
       linkedin: "https://www.linkedin.com/in/samaila-bah/"
     },
     directors: [
-      { title: "Director of Finance", name: "Sam John Doe", bio: "Oversees financial strategy, investment planning and corporate governance across the group.", photo: "images/director1.svg" },
-      { title: "Director of Operations", name: "Sam John Doe", bio: "Leads operational execution, facility management and process optimisation.", photo: "images/director2.svg" },
-      { title: "Director of Agro-Processing", name: "Sam John Doe", bio: "Drives agro-processing initiatives, value addition and product development.", photo: "images/director3.svg" },
-      { title: "Director of Trade & Markets", name: "Sam John Doe", bio: "Manages commodity trading relationships, market access and export development.", photo: "images/director4.svg" },
-      { title: "Director of Strategy & Partnerships", name: "Sam John Doe", bio: "Leads strategic planning, partnership development and business expansion.", photo: "images/director5.svg" }
+      { title: "Director of Finance", name: "Sam John Doe", bio: "Oversees financial strategy, investment planning and corporate governance across the group.", photo: "images/logo.jfif" },
+      { title: "Director of Operations", name: "Sam John Doe", bio: "Leads operational execution, facility management and process optimisation.", photo: "images/logo.jfif" },
+      { title: "Director of Agro-Processing", name: "Sam John Doe", bio: "Drives agro-processing initiatives, value addition and product development.", photo: "images/logo.jfif" },
+      { title: "Director of Trade & Markets", name: "Sam John Doe", bio: "Manages commodity trading relationships, market access and export development.", photo: "images/logo.jfif" },
+      { title: "Director of Strategy & Partnerships", name: "Sam John Doe", bio: "Leads strategic planning, partnership development and business expansion.", photo: "images/logo.jfif" }
     ],
-    chairman: { title: "Board Chairman", name: "Sam John Doe", bio: "Provides board leadership, governance oversight and strategic direction for the group.", photo: "images/chairman.svg" },
+    chairman: { title: "Board Chairman", name: "Sam John Doe", bio: "Provides board leadership, governance oversight and strategic direction for the group.", photo: "images/logo.jfif" },
     advisers: [
-      { title: "Financial Adviser", name: "Sam John Doe", bio: "Advises on financial management, investment strategy and risk assessment.", photo: "images/adviser1.svg" },
-      { title: "Agricultural Adviser", name: "Sam John Doe", bio: "Provides technical guidance on agronomy, value chain development and sustainable farming.", photo: "images/adviser2.svg" },
-      { title: "Legal Adviser", name: "Sam John Doe", bio: "Advises on legal compliance, contracts, regulatory matters and corporate governance.", photo: "images/adviser3.svg" }
+      { title: "Financial Adviser", name: "Sam John Doe", bio: "Advises on financial management, investment strategy and risk assessment.", photo: "images/logo.jfif" },
+      { title: "Agricultural Adviser", name: "Sam John Doe", bio: "Provides technical guidance on agronomy, value chain development and sustainable farming.", photo: "images/logo.jfif" },
+      { title: "Legal Adviser", name: "Sam John Doe", bio: "Advises on legal compliance, contracts, regulatory matters and corporate governance.", photo: "images/logo.jfif" }
     ]
   }
 };
