@@ -26,7 +26,7 @@ const CONFIG = {
       title: "Founder & Chief Executive Officer",
       name: "Samaila Bah, FMVA®, BIDA®, FIMC, CMC, fNSIG, FCAI Hons.",
       bio: "CEO / Business Consultant at Misalta Global Ltd. A Financial Analyst using Data & Analytics to Generate Revenue for 5 Years. Renewable Energy, Finance and Investment Enthusiast. Drone Hobbyist. RFP and Grants Fellow.",
-      photo: "images/ceo.jpg",
+      photo: "images/ceo.jfif",
       linkedin: "https://www.linkedin.com/in/samaila-bah/"
     },
     directors: [
