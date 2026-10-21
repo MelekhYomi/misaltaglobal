@@ -65,7 +65,7 @@ document.body.insertAdjacentHTML("afterbegin", `
   <a class="logo" href="index.html">${mark}</a>
   <nav id="menu" aria-label="Main"><ul>
     ${navItem("index.html", "Home")}${navItem("about.html", "About Us")}${navItem("businesses.html", "Businesses")}${navItem("consulting.html", "Consulting")}${navItem("agro-processing.html", "Agro-Processing")}
-    ${navItem("trade-x.html", "Misalta Trade X", '<em class="soon">Coming Soon</em>')}${navItem("agro-hubs.html", "Agro Hubs")}${navItem("investment.html", "Invest &amp; Partner")}${navItem("team.html", "Team")}${navItem("contact.html", "Contact")}
+    ${navItem("trade-x.html", "Misalta Trade X", '<em class="soon">Coming Soon</em>')}${navItem("agro-hubs.html", "Agro Hubs")}${navItem("investment.html", "Invest &amp; Partner")}${navItem("contact.html", "Contact")}
   </ul></nav>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></header>`);
@@ -76,7 +76,7 @@ document.body.insertAdjacentHTML("beforeend", `
   <div class="f-brand"><a class="logo" href="index.html">${mark}</a>
   <p style="margin-top:16px;max-width:320px">Transforming Agriculture. Building Industry. Creating Value.</p>
   <div class="socials">${socialLinks}</div></div>
-  <div><h4>Company</h4><a href="about.html">About Us</a><a href="team.html">Leadership &amp; Team</a><a href="businesses.html">Our Businesses</a><a href="consulting.html">Misalta Consulting</a><a href="contact.html">Contact</a></div>
+  <div><h4>Company</h4><a href="about.html">About Us</a><a href="businesses.html">Our Businesses</a><a href="consulting.html">Misalta Consulting</a><a href="contact.html">Contact</a></div>
   <div><h4>Ventures</h4><a href="agro-processing.html">Agro-Processing</a><a href="trade-x.html">Misalta Trade X</a><a href="agro-hubs.html">Agro Hubs</a><a href="investment.html">Investment &amp; Partnerships</a></div>
   <div><h4>Reach Us</h4><a href="mailto:${E.info}">${E.info}</a><a href="tel:${CONFIG.phone.replace(/\s/g, "")}">${CONFIG.phone}</a><span>${CONFIG.address}</span><a href="privacy.html">Privacy Notice</a></div>
 </div><div class="copy"><span>© ${new Date().getFullYear()} ${CONFIG.company} All rights reserved.</span><span>Planned ventures and platform features are shown with their current status.</span></div></div></footer>
