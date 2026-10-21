@@ -36,6 +36,7 @@ header.nav.scrolled{background:#fff;padding:10px 0;box-shadow:0 10px 30px rgba(1
 .logo-chip{display:grid;place-items:center;background:#fff;aspect-ratio:1}
 .logo-text{display:inline-flex;flex-direction:column;justify-content:center;line-height:1.15;padding-top:2px}
 .logo small{display:block;font-family:'Poppins';font-size:.62rem;letter-spacing:.26em;font-weight:500;color:var(--green);margin-top:2px}
+.logo small.motto{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:.67rem;letter-spacing:.02em;color:var(--leaf);margin-top:3px;text-transform:none}
 nav ul{display:flex;gap:2px;list-style:none;align-items:center}
 nav a.link{color:var(--cocoa2);padding:8px 9px;border-radius:999px;font-size:.8rem;white-space:nowrap;font-weight:500;transition:.3s}
 nav a.link:hover,nav a.link.active{background:rgba(31,122,63,.12);color:var(--green)}
@@ -48,7 +49,7 @@ nav a.link:hover,nav a.link.active{background:rgba(31,122,63,.12);color:var(--gr
 
 /* hero slider */
 .hero{height:100vh;height:100svh;min-height:680px;padding:0;overflow:hidden;color:#fff;background:var(--cocoa)}
-.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1.2s ease,visibility 1.2s;display:flex;align-items:center;padding:112px 0 120px}
+.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1.2s ease,visibility 1.2s;display:flex;align-items:flex-start;padding:120px 0 60px}
 .slide.active{opacity:1;visibility:visible;z-index:2}
 .slide .bg{position:absolute;inset:0;transform:scale(1.15);transition:transform 9s ease-out}
 .slide.active .bg{transform:scale(1)}
@@ -70,16 +71,16 @@ nav a.link:hover,nav a.link.active{background:rgba(31,122,63,.12);color:var(--gr
 .art svg{width:min(380px,80%);filter:drop-shadow(0 30px 40px rgba(0,0,0,.45));animation:float 5s ease-in-out infinite}
 .big-stat{font-family:'Playfair Display';font-size:clamp(5rem,13vw,9rem);color:var(--leaf);line-height:1;text-align:center}
 .big-stat small{display:block;font-family:'Poppins';font-size:1rem;letter-spacing:.3em;color:#fff;text-transform:uppercase}
-.slider-ui{position:absolute;bottom:34px;left:0;right:0;z-index:10}
-.slider-ui .container{display:flex;align-items:center;justify-content:space-between}
-.dots{display:flex;gap:10px}
-.dot{width:44px;height:5px;border-radius:5px;background:rgba(255,255,255,.3);border:0;cursor:pointer;position:relative;overflow:hidden}
+.slider-ui{position:absolute;top:512px;left:0;right:0;z-index:10}
+.slider-ui .container{display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.dots{display:flex;gap:8px;grid-column:2;justify-self:center}
+.dot{width:26px;height:4px;border-radius:4px;background:rgba(255,255,255,.3);border:0;cursor:pointer;position:relative;overflow:hidden}
 .dot.active::after{content:"";position:absolute;inset:0;background:var(--leaf);transform-origin:left;animation:fill 6.5s linear forwards}
-.arrows{display:flex;gap:10px}
+.arrows{display:flex;gap:10px;grid-column:3;justify-self:end}
 .arrows button{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:transparent;color:#fff;font-size:1.2rem;cursor:pointer;transition:.3s}
 .arrows button:hover{background:var(--leaf);color:var(--cocoa);border-color:var(--leaf)}
 #particles{position:absolute;inset:0;z-index:1;pointer-events:none}
-.scroll-hint{position:absolute;right:4%;bottom:100px;z-index:10;writing-mode:vertical-rl;font-size:.7rem;letter-spacing:.3em;color:#fff9;text-transform:uppercase}
+.scroll-hint{position:absolute;right:4%;top:566px;z-index:10;writing-mode:vertical-rl;font-size:.7rem;letter-spacing:.3em;color:#fff9;text-transform:uppercase}
 
 /* page hero (inner pages) */
 .page-hero{padding:170px 0 90px;background:linear-gradient(135deg,var(--cocoa),var(--forest));color:#fff;overflow:hidden}
