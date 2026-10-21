@@ -30,7 +30,7 @@ section{padding:clamp(72px,9vw,110px) 0;position:relative}
 header.nav{position:fixed;inset:0 0 auto 0;z-index:100;padding:16px 0;transition:.4s;background:#fff;box-shadow:0 1px 0 rgba(15,46,28,.08)}
 header.nav.scrolled{background:#fff;padding:10px 0;box-shadow:0 10px 30px rgba(15,46,28,.16)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{display:flex;align-items:center;gap:11px;color:var(--cocoa);font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;white-space:nowrap}
+.logo{display:flex;align-items:center;gap:7px;color:var(--cocoa);font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;white-space:nowrap}
 .logo-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--green),var(--leaf));display:grid;place-items:center;color:var(--cocoa);font-size:1.3rem;animation:float 4s ease-in-out infinite}
 .logo-img{flex:none;height:60px;width:60px;object-fit:contain}
 .logo-chip{display:grid;place-items:center;background:#fff;aspect-ratio:1}
@@ -237,9 +237,10 @@ footer a{display:block;padding:4px 0;transition:.3s}footer a:hover{color:var(--l
 
 @media(max-width:1280px){
   .burger{display:block;z-index:120}
-  nav{position:fixed;inset:0;background:#fff;display:grid;align-content:center;justify-items:start;transform:translateX(100%);transition:.5s;z-index:110;overflow:auto;padding:80px 6vw 80px 8vw}
-  nav.open{transform:none}
-  nav ul{flex-direction:column;gap:10px;width:min(400px,88vw)}
+  header.nav{z-index:130}
+  nav{position:fixed;inset:0;background:#fff;display:block;overflow:auto;padding:112px 7vw 60px;opacity:0;visibility:hidden;transition:opacity .35s;z-index:110}
+  nav.open{opacity:1;visibility:visible}
+  nav ul{flex-direction:column;gap:14px;width:min(420px,100%);margin:0}
   nav a.link{font-size:1.25rem;color:var(--cocoa2)}
   nav a.link:hover,nav a.link.active{background:rgba(31,122,63,.12);color:var(--green)}
   nav .hasdd > a{display:none}
@@ -249,8 +250,9 @@ footer a{display:block;padding:4px 0;transition:.3s}footer a:hover{color:var(--l
 @media(max-width:960px){
   section{padding:70px 0}
   .burger{display:block;z-index:120}
-  nav{position:fixed;inset:0;background:#fff;display:grid;align-content:center;justify-items:start;transform:translateX(100%);transition:.5s;z-index:110;padding:80px 6vw 80px 8vw}
-  nav.open{transform:none}
+  header.nav{z-index:130}
+  nav{position:fixed;inset:0;background:#fff;display:block;overflow:auto;padding:112px 7vw 60px;opacity:0;visibility:hidden;transition:opacity .35s;z-index:110}
+  nav.open{opacity:1;visibility:visible}
   nav ul{flex-direction:column;gap:14px}nav a.link{font-size:1.4rem}
   .slide-in,.split,.panels,.contact-grid{grid-template-columns:1fr}
   .slide .art{display:none}.scroll-hint{display:none}

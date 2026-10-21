@@ -156,7 +156,7 @@ const onScroll = () => hdr.classList.toggle("scrolled", scrollY > 40);
 addEventListener("scroll", onScroll); onScroll();
 const burger = document.getElementById("burger"), menu = document.getElementById("menu");
 const setMenu = o => { burger.classList.toggle("open", o); menu.classList.toggle("open", o); burger.setAttribute("aria-expanded", o); };
-burger.onclick = () => setMenu(!menu.classList.contains("open"));
+burger.onclick = () => { modal && modal.classList.remove("open"); setMenu(!menu.classList.contains("open")); };
 menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
 
 /* mega menu dropdowns */
