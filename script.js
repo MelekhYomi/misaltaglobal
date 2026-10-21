@@ -64,7 +64,7 @@ document.body.insertAdjacentHTML("afterbegin", `
 <header class="nav" id="hdr"><div class="container nav-in">
   <a class="logo" href="index.html">${mark}</a>
   <nav id="menu" aria-label="Main"><ul>
-    ${navItem("index.html", "Home")}${navItem("about.html", "About Us")}${navItem("businesses.html", "Businesses")}${navItem("services.html", "Services")}${navItem("agro-processing.html", "Agro-Processing")}
+    ${navItem("index.html", "Home")}${navItem("about.html", "About Us")}${navItem("businesses.html", "Businesses")}${navItem("consulting.html", "Consulting")}${navItem("agro-processing.html", "Agro-Processing")}
     ${navItem("trade-x.html", "Misalta Trade X", '<em class="soon">Coming Soon</em>')}${navItem("agro-hubs.html", "Agro Hubs")}${navItem("investment.html", "Invest &amp; Partner")}${navItem("team.html", "Team")}${navItem("contact.html", "Contact")}
   </ul></nav>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -76,7 +76,7 @@ document.body.insertAdjacentHTML("beforeend", `
   <div class="f-brand"><a class="logo" href="index.html">${mark}</a>
   <p style="margin-top:16px;max-width:320px">Transforming Agriculture. Building Industry. Creating Value.</p>
   <div class="socials">${socialLinks}</div></div>
-  <div><h4>Company</h4><a href="about.html">About Us</a><a href="team.html">Leadership &amp; Team</a><a href="businesses.html">Our Businesses</a><a href="services.html">Professional Services</a><a href="contact.html">Contact</a></div>
+  <div><h4>Company</h4><a href="about.html">About Us</a><a href="team.html">Leadership &amp; Team</a><a href="businesses.html">Our Businesses</a><a href="consulting.html">Misalta Consulting</a><a href="contact.html">Contact</a></div>
   <div><h4>Ventures</h4><a href="agro-processing.html">Agro-Processing</a><a href="trade-x.html">Misalta Trade X</a><a href="agro-hubs.html">Agro Hubs</a><a href="investment.html">Investment &amp; Partnerships</a></div>
   <div><h4>Reach Us</h4><a href="mailto:${E.info}">${E.info}</a><a href="tel:${CONFIG.phone.replace(/\s/g, "")}">${CONFIG.phone}</a><span>${CONFIG.address}</span><a href="privacy.html">Privacy Notice</a></div>
 </div><div class="copy"><span>© ${new Date().getFullYear()} ${CONFIG.company} All rights reserved.</span><span>Planned ventures and platform features are shown with their current status.</span></div></div></footer>
@@ -85,7 +85,7 @@ document.body.insertAdjacentHTML("beforeend", `
 
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Make an enquiry"><div class="box"><button class="close" id="mclose" aria-label="Close">×</button>
   <h3 style="font-size:1.8rem">Make an Enquiry</h3><p style="color:#5a6a60">Tell us what you are interested in and the right team will follow up.</p>
-  <div class="tabs"><button class="on" data-tab="invest">Investment &amp; Partnership</button><button data-tab="supply">Agro-Processing &amp; Supply</button><button data-tab="services">Professional Services</button></div>
+  <div class="tabs"><button class="on" data-tab="invest">Investment &amp; Partnership</button><button data-tab="supply">Agro-Processing &amp; Supply</button><button data-tab="services">Misalta Consulting</button></div>
   <form class="mf" id="f-invest" data-kind="Investment / Partnership Enquiry" data-to="${E.invest}">
     <div class="row"><div class="field"><label>Full name</label><input name="Name" required></div><div class="field"><label>Email</label><input type="email" name="Email" required></div></div>
     <div class="row"><div class="field"><label>Organisation</label><input name="Organisation"></div><div class="field"><label>Country</label><input name="Country" required></div></div>
@@ -100,13 +100,13 @@ document.body.insertAdjacentHTML("beforeend", `
     <div class="field"><label>Message</label><textarea name="Message" rows="3"></textarea></div>
     <label class="consent"><input type="checkbox" name="Consent" value="Yes" required> I agree to be contacted about this enquiry. See the <a href="privacy.html">privacy notice</a>.</label>
     <button class="btn btn-green" style="width:100%;justify-content:center">Send Supply Enquiry</button></form>
-  <form class="mf hidden" id="f-services" data-kind="Professional Services Enquiry" data-to="${E.services}">
+  <form class="mf hidden" id="f-services" data-kind="Misalta Consulting Enquiry" data-to="${E.services}">
     <div class="row"><div class="field"><label>Full name</label><input name="Name" required></div><div class="field"><label>Email</label><input type="email" name="Email" required></div></div>
     <div class="row"><div class="field"><label>Organisation</label><input name="Organisation"></div><div class="field"><label>Phone</label><input name="Phone"></div></div>
     <div class="field"><label>Service needed</label><select name="Service"><option>Training services</option><option>Facility management</option><option>Procurement support</option><option>Financial advisory</option><option>Other</option></select></div>
     <div class="field"><label>Message</label><textarea name="Message" rows="3"></textarea></div>
     <label class="consent"><input type="checkbox" name="Consent" value="Yes" required> I agree to be contacted about this enquiry. See the <a href="privacy.html">privacy notice</a>.</label>
-    <button class="btn btn-gold" style="width:100%;justify-content:center">Send Services Enquiry</button></form>
+    <button class="btn btn-gold" style="width:100%;justify-content:center">Send Consulting Enquiry</button></form>
   <p class="note">Submitting opens your email app with the message prepared for the right team.</p>
 </div></div><div class="toast" id="toast" role="status"></div>`);
 
