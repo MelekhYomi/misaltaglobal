@@ -42,6 +42,11 @@ const CONFIG = {
       { title: "Financial Adviser", name: "Sam John Doe", bio: "Advises on financial management, investment strategy and risk assessment.", photo: "images/logo.jfif" },
       { title: "Agricultural Adviser", name: "Sam John Doe", bio: "Provides technical guidance on agronomy, value chain development and sustainable farming.", photo: "images/logo.jfif" },
       { title: "Legal Adviser", name: "Sam John Doe", bio: "Advises on legal compliance, contracts, regulatory matters and corporate governance.", photo: "images/logo.jfif" }
+    ],
+    /* Confirmed board addition. Associated with Whatsmed; fuller title,
+       bio and photo to be supplied by management (photo: images/gobir.jfif). */
+    board: [
+      { title: "Board Member", name: "Mohammed Gobir", bio: "Board member of Misalta Global Ltd. Full profile to be confirmed.", photo: "images/gobir.jfif" }
     ]
   }
 };
@@ -64,7 +69,7 @@ document.body.insertAdjacentHTML("afterbegin", `
 <header class="nav" id="hdr"><div class="container nav-in">
   <a class="logo" href="index.html">${mark}</a>
   <nav id="menu" aria-label="Main"><ul>
-    ${navItem("index.html", "Home")}${navItem("about.html", "About Us")}
+    ${navItem("index.html", "Home")}${navItem("about.html", "About Us")}${navItem("news.html", "News")}
     <li class="hasdd ${page === "consulting.html" ? "active" : ""}"><a class="link" href="consulting.html" aria-haspopup="true" aria-expanded="false">What We Offer<em class="caret" aria-hidden="true">▾</em></a>
       <div class="dd">
         <div class="dd-col">
@@ -96,12 +101,6 @@ document.body.insertAdjacentHTML("afterbegin", `
           <a href="agro-hubs.html">Learn more</a>
           <a class="more" href="businesses.html">All businesses →</a>
         </div>
-        <div class="dd-col sand">
-          <div class="ghead"><span class="gic">📲</span>Coming soon</div><h4>Misalta Trade X<em class="ddtag">Soon</em></h4>
-          <p>A digital agricultural commodity trading platform connecting farmers, suppliers, brokers and buyers.</p>
-          <a href="trade-x.html">Learn more</a>
-          <a href="trade-x.html#early-access">Join early access →</a>
-        </div>
         <div class="dd-col">
           <div class="ghead"><span class="gic">🌍</span>The road ahead</div>
           <h4>Misalta Logistics<em class="ddtag">Planned</em></h4>
@@ -115,6 +114,12 @@ document.body.insertAdjacentHTML("afterbegin", `
           <a href="businesses.html#block">Learn more</a>
           <a class="more" href="businesses.html#roadmap">Full vision map →</a>
         </div>
+        <div class="dd-col sand">
+          <div class="ghead"><span class="gic">📲</span>Coming soon</div><h4>Misalta Trade X<em class="ddtag">Soon</em></h4>
+          <p>A digital agricultural commodity trading platform connecting farmers, suppliers, brokers and buyers.</p>
+          <a href="trade-x.html">Learn more</a>
+          <a href="trade-x.html#early-access">Join early access →</a>
+        </div>
       </div>
     </li>
     ${navItem("investment.html", "Invest &amp; Partner")}
@@ -124,15 +129,16 @@ document.body.insertAdjacentHTML("afterbegin", `
 </div></header>`);
 document.querySelector("section")?.setAttribute("id", "main");
 
+/* Footer credit: "Built with Mechtag" is subtle; set the real URL here when provided (currently "#"). */
 document.body.insertAdjacentHTML("beforeend", `
 <footer><div class="container"><div class="f-grid">
   <div class="f-brand"><a class="logo" href="index.html">${mark}</a>
   <p style="margin-top:16px;max-width:320px">Transforming Agriculture. Building Industry. Creating Value.</p>
   <div class="socials">${socialLinks}</div></div>
-  <div><h4>Company</h4><a href="about.html">About Us</a><a href="businesses.html">Our Businesses</a><a href="consulting.html">Misalta Consulting</a><a href="contact.html">Contact</a></div>
+  <div><h4>Company</h4><a href="about.html">About Us</a><a href="news.html">News</a><a href="businesses.html">Our Businesses</a><a href="consulting.html">Misalta Consulting</a><a href="contact.html">Contact</a></div>
   <div><h4>Ventures</h4><a href="agro-processing.html">Agro-Processing</a><a href="trade-x.html">Misalta Trade X</a><a href="agro-hubs.html">Agro Hubs</a><a href="investment.html">Investment &amp; Partnerships</a></div>
   <div><h4>Reach Us</h4><a href="mailto:${E.info}">${E.info}</a><a href="tel:${CONFIG.phone.replace(/\s/g, "")}">${CONFIG.phone}</a><span>${CONFIG.address}</span><a href="privacy.html">Privacy Notice</a></div>
-</div><div class="copy"><span>© ${new Date().getFullYear()} ${CONFIG.company} All rights reserved.</span><span>Planned ventures and platform features are shown with their current status.</span></div></div></footer>
+</div><div class="copy"><span>© ${new Date().getFullYear()} ${CONFIG.company} All rights reserved.</span><span class="built">Built with <a href="#" title="Mechtag" style="color:inherit;opacity:.75;text-decoration:underline;text-underline-offset:3px" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.75">Mechtag</a></span><span>Planned ventures and platform features are shown with their current status.</span></div></div></footer>
 
 <div class="fab"><button class="iv" data-open="invest" title="Make an enquiry" aria-label="Make an enquiry">✉</button><a class="wa" href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">💬</a></div>
 
@@ -178,11 +184,7 @@ ddItems.forEach(li => {
   const trg = li.querySelector(":scope > a");
   trg.addEventListener("click", e => {
     if (!matchMedia("(min-width:1281px)").matches) { setMenu(false); return; }
-    e.preventDefault();
-    const on = !li.classList.contains("open");
-    ddItems.forEach(x => { x.classList.remove("open"); x.querySelector(":scope > a").setAttribute("aria-expanded", false); });
-    li.classList.toggle("open", on);
-    trg.setAttribute("aria-expanded", on);
+    // Desktop: the trigger itself navigates to its section page; its panel opens on hover.
   });
 });
 document.addEventListener("click", e => { if (!e.target.closest("#menu")) ddItems.forEach(x => x.classList.remove("open")); });
@@ -304,4 +306,5 @@ if (q("team-dir")) q("team-dir").innerHTML = T.directors.map(p => person(p)).joi
 if (q("team-chairman")) q("team-chairman").innerHTML = T.chairman ? person(T.chairman) : "";
 if (q("team-former-chairman")) q("team-former-chairman").innerHTML = T.formerChairman ? person(T.formerChairman) : "";
 if (q("team-adv")) q("team-adv").innerHTML = T.advisers.map(p => person(p)).join("");
+if (q("team-board")) q("team-board").innerHTML = (T.board || []).map(p => person(p)).join("");
 document.querySelectorAll(".person.reveal").forEach(el => io.observe(el));
