@@ -57,7 +57,7 @@ const page = location.pathname.split("/").pop() || "index.html";
 const navItem = (f, t, extra = "") => `<li><a class="link ${page === f ? "active" : ""}" href="${f}">${t}${extra}</a></li>`;
 const linkedinIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>`;
 const socialLinks = Object.entries(CONFIG.social).filter(([, u]) => u).map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener" aria-label="${n}" title="${n}">${n === "LinkedIn" ? linkedinIcon : n.slice(0, 2)}</a>`).join("");
-const mark = `<img src="images/logo.jfif" alt="Misalta Global Ltd. logo" style="width:42px;height:42px;border-radius:12px;object-fit:cover"><span>Misalta<small>GLOBAL LTD.</small></span>`;
+const mark = `<span class="logo-chip"><img src="images/logo.jfif" alt="Misalta Global Ltd. logo"></span><span class="logo-text">Misalta<small>GLOBAL LTD.</small></span>`;
 
 document.body.insertAdjacentHTML("afterbegin", `
 <a class="skip" href="#main">Skip to content</a>
@@ -209,11 +209,13 @@ if (soc) soc.innerHTML = socialLinks || '<span class="note">Social links to be a
 /* team */
 const initials = n => n.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase();
 function person(p, big) {
-  const pending = !p.name;
-  const photo = p.photo ? `<img src="${p.photo}" alt="${p.name || p.title}" loading="lazy" onerror="this.remove()">` : "";
+  const logoPh = p.photo && p.photo.indexOf("logo.jfif") > -1;
+  const pending = !p.name || logoPh;
+  const photo = p.photo && !logoPh ? `<img src="${p.photo}" alt="${p.name || p.title}" loading="lazy" onerror="this.remove()">` : "";
+  const chip = logoPh ? `<span class="logo-chip ph-chip"><img src="${p.photo}" alt=""></span>` : "";
   const linkedin = p.linkedin ? `<a href="${p.linkedin}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.82rem;font-weight:600;color:var(--green)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>LinkedIn</a>` : "";
   return `<article class="person ${big ? "big" : ""} reveal">
-    <div class="ph ${pending ? "pending" : ""}">${photo}<span class="mono">${pending ? "" : initials(p.name)}</span></div>
+    <div class="ph ${pending ? "pending" : ""}">${chip}${photo}<span class="mono">${pending ? "" : initials(p.name)}</span></div>
     <div class="pi"><h3>${p.name || "To be announced"}</h3><span class="role">${p.title}</span>
     <p>${p.bio || (pending ? "Profile to be published after management approval." : "")}</p>${linkedin}</div></article>`;
 }
