@@ -64,9 +64,49 @@ document.body.insertAdjacentHTML("afterbegin", `
 <header class="nav" id="hdr"><div class="container nav-in">
   <a class="logo" href="index.html">${mark}</a>
   <nav id="menu" aria-label="Main"><ul>
-    ${navItem("index.html", "Home")}${navItem("about.html", "About Us")}${navItem("businesses.html", "Businesses")}${navItem("consulting.html", "Consulting")}${navItem("agro-processing.html", "Agro-Processing")}
-    ${navItem("trade-x.html", "Misalta Trade X", '<em class="soon">Coming Soon</em>')}${navItem("agro-hubs.html", "Agro Hubs")}${navItem("investment.html", "Invest &amp; Partner")}${navItem("contact.html", "Contact")}
+    ${navItem("index.html", "Home")}${navItem("about.html", "About Us")}
+    <li class="hasdd ${page === "consulting.html" ? "active" : ""}"><a class="link" href="consulting.html" aria-haspopup="true" aria-expanded="false">What We Offer<em class="caret" aria-hidden="true">▾</em></a>
+      <div class="dd">
+        <div class="dd-col">
+          <div class="ghead"><span class="gic">🎓</span>Services</div><h4>Misalta Consulting</h4>
+          <p>All Misalta services live here, delivered by our in-house team.</p>
+          <a href="consulting.html">Training Services</a>
+          <a href="consulting.html">Facility Management</a>
+          <a href="consulting.html">Procurement Support</a>
+          <a href="consulting.html">Financial Advisory</a>
+          <a class="more" href="consulting.html">Explore Misalta Consulting →</a>
+        </div>
+        <div class="dd-col sand">
+          <div class="ghead"><span class="gic">✉️</span>Work with us</div>
+          <p>Ready to start with a service, or need advice that doesn't fit a category?</p>
+          <a href="#" data-open="services">Join this service</a>
+          <a href="contact.html">General enquiry</a>
+          <a href="contact.html">Request a bespoke quote</a>
+        </div>
+      </div>
+    </li>
+    <li class="hasdd ${["businesses.html", "agro-processing.html", "trade-x.html", "agro-hubs.html"].includes(page) ? "active" : ""}"><a class="link" href="businesses.html" aria-haspopup="true" aria-expanded="false">Our Businesses<em class="caret" aria-hidden="true">▾</em></a>
+      <div class="dd">
+        <div class="dd-col">
+          <div class="ghead"><span class="gic">🏭</span>In development</div><h4>Agro-Processing<em class="ddtag">In dev</em></h4>
+          <p>Cocoa and agricultural value addition in Taraba State.</p>
+          <a href="agro-processing.html">Learn more</a>
+          <div class="ghead" style="margin-top:14px"><span class="gic">🏗️</span>Planned</div><h4>Agro Hubs<em class="ddtag">Planned</em></h4>
+          <p>Commodity aggregation, storage and post-harvest handling.</p>
+          <a href="agro-hubs.html">Learn more</a>
+          <a class="more" href="businesses.html">All businesses →</a>
+        </div>
+        <div class="dd-col sand">
+          <div class="ghead"><span class="gic">📲</span>Coming soon</div><h4>Misalta Trade X<em class="ddtag">Soon</em></h4>
+          <p>A digital agricultural commodity trading platform connecting farmers, suppliers, brokers and buyers.</p>
+          <a href="trade-x.html">Learn more</a>
+          <a href="trade-x.html#early-access">Join early access →</a>
+        </div>
+      </div>
+    </li>
+    ${navItem("investment.html", "Invest &amp; Partner")}
   </ul></nav>
+  <a class="btn btn-gold nav-cta" href="contact.html">Contact</a>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></header>`);
 document.querySelector("section")?.setAttribute("id", "main");
@@ -119,6 +159,22 @@ const setMenu = o => { burger.classList.toggle("open", o); menu.classList.toggle
 burger.onclick = () => setMenu(!menu.classList.contains("open"));
 menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
 
+/* mega menu dropdowns */
+const ddItems = menu.querySelectorAll(".hasdd");
+ddItems.forEach(li => {
+  const trg = li.querySelector(":scope > a");
+  trg.addEventListener("click", e => {
+    if (!matchMedia("(min-width:1281px)").matches) { setMenu(false); return; }
+    e.preventDefault();
+    const on = !li.classList.contains("open");
+    ddItems.forEach(x => { x.classList.remove("open"); x.querySelector(":scope > a").setAttribute("aria-expanded", false); });
+    li.classList.toggle("open", on);
+    trg.setAttribute("aria-expanded", on);
+  });
+});
+document.addEventListener("click", e => { if (!e.target.closest("#menu")) ddItems.forEach(x => x.classList.remove("open")); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") ddItems.forEach(x => x.classList.remove("open")); });
+
 /* modal */
 const modal = document.getElementById("modal");
 const toast = m => { const t = document.getElementById("toast"); t.textContent = m; t.classList.add("show"); setTimeout(() => t.classList.remove("show"), 4500); };
@@ -128,11 +184,12 @@ function tab(k) {
   document.getElementById("f-supply").classList.toggle("hidden", k !== "supply");
   document.getElementById("f-services").classList.toggle("hidden", k !== "services");
 }
-document.addEventListener("click", e => {
+const dataOpenHandler = e => {
   const o = e.target.closest("[data-open]");
-  if (o) { e.preventDefault(); tab(o.dataset.open); modal.classList.add("open"); setMenu(false); }
+  if (o) { e.preventDefault(); tab(o.dataset.open); modal.classList.add("open"); setMenu(false); ddItems.forEach(x => x.classList.remove("open")); }
   const t = e.target.closest("[data-tab]"); if (t) tab(t.dataset.tab);
-});
+};
+document.addEventListener("click", dataOpenHandler);
 document.getElementById("mclose").onclick = () => modal.classList.remove("open");
 modal.onclick = e => { if (e.target === modal) modal.classList.remove("open"); };
 addEventListener("keydown", e => e.key === "Escape" && modal.classList.remove("open"));
