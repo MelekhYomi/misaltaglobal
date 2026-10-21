@@ -102,6 +102,19 @@ document.body.insertAdjacentHTML("afterbegin", `
           <a href="trade-x.html">Learn more</a>
           <a href="trade-x.html#early-access">Join early access →</a>
         </div>
+        <div class="dd-col">
+          <div class="ghead"><span class="gic">🌍</span>The road ahead</div>
+          <h4>Misalta Logistics<em class="ddtag">Planned</em></h4>
+          <p>Export corridors in-country and across Africa.</p>
+          <a href="businesses.html#logistics">Learn more</a>
+          <h4 style="margin-top:12px">Misalta Energy<em class="ddtag">Planned</em></h4>
+          <p>Renewable energy powering agro-industry.</p>
+          <a href="businesses.html#energy">Learn more</a>
+          <h4 style="margin-top:12px">Misalta Block<em class="ddtag">Planned</em></h4>
+          <p>Construction materials for industry and housing.</p>
+          <a href="businesses.html#block">Learn more</a>
+          <a class="more" href="businesses.html#roadmap">Full vision map →</a>
+        </div>
       </div>
     </li>
     ${navItem("investment.html", "Invest &amp; Partner")}

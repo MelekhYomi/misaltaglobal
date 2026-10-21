@@ -5,7 +5,7 @@
   --radius:20px; --shadow:0 20px 50px -20px rgba(15,46,28,.45);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
 body{font-family:'Poppins',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;overflow-x:hidden}
 h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;line-height:1.15}
 img,svg{max-width:100%;display:block}
