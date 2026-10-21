@@ -131,7 +131,6 @@ document.body.insertAdjacentHTML("afterbegin", `
 </div></header>`);
 document.querySelector("section")?.setAttribute("id", "main");
 
-/* Footer credit: "Built with Mechtag" is subtle; set the real URL here when provided (currently "#"). */
 document.body.insertAdjacentHTML("beforeend", `
 <footer><div class="container"><div class="f-grid">
   <div class="f-brand"><a class="logo" href="index.html">${mark}</a>
@@ -140,7 +139,7 @@ document.body.insertAdjacentHTML("beforeend", `
   <div><h4>Company</h4><a href="about.html">About Us</a><a href="news.html">News</a><a href="businesses.html">Our Businesses</a><a href="consulting.html">Misalta Consulting</a><a href="contact.html">Contact</a></div>
   <div><h4>Ventures</h4><a href="agro-processing.html">Agro-Processing</a><a href="trade-x.html">Misalta Trade X</a><a href="agro-hubs.html">Agro Hubs</a><a href="investment.html">Investment &amp; Partnerships</a></div>
   <div><h4>Reach Us</h4><a href="mailto:${E.info}">${E.info}</a><a href="tel:${CONFIG.phone.replace(/\s/g, "")}">${CONFIG.phone}</a><span>${CONFIG.address}</span><a href="privacy.html">Privacy Notice</a></div>
-</div><div class="copy"><span>© ${new Date().getFullYear()} ${CONFIG.company} All rights reserved.</span><span class="built">Built with <a href="#" title="Mechtag" style="color:inherit;opacity:.75;text-decoration:underline;text-underline-offset:3px" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.75">Mechtag</a></span><span>Planned ventures and platform features are shown with their current status.</span></div></div></footer>
+</div><div class="copy"><span>© ${new Date().getFullYear()} ${CONFIG.company} All rights reserved.</span><span>Planned ventures and platform features are shown with their current status.</span></div></div></footer>
 
 <div class="fab"><button class="iv" data-open="invest" title="Make an enquiry" aria-label="Make an enquiry">✉</button><a class="wa" href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">💬</a></div>
 
