@@ -43,11 +43,13 @@ const CONFIG = {
       { title: "Agricultural Adviser", name: "Sam John Doe", bio: "Provides technical guidance on agronomy, value chain development and sustainable farming.", photo: "images/logo.jfif" },
       { title: "Legal Adviser", name: "Sam John Doe", bio: "Advises on legal compliance, contracts, regulatory matters and corporate governance.", photo: "images/logo.jfif" }
     ],
-    /* Confirmed board addition. Associated with Whatsmed; fuller title,
-       bio and photo to be supplied by management (photo: images/gobir.jfif). */
+    /* PLANNED, NOT VERIFIED YET — Mohammed Gobir is only planned to join
+       the board. Commented out of the rendered site until management
+       verifies details (photo: images/gobir.jfif).
     board: [
       { title: "Board Member", name: "Mohammed Gobir", bio: "Board member of Misalta Global Ltd. Full profile to be confirmed.", photo: "images/gobir.jfif" }
     ]
+    */
   }
 };
 /* ======================================================================= */
