@@ -50,14 +50,14 @@ const CONFIG = {
 const E = CONFIG.emails;
 const pod = `<svg viewBox="0 0 200 200"><defs><linearGradient id="pg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f3dc9a"/><stop offset="1" stop-color="#c9a24a"/></linearGradient></defs><path d="M100 14c52 22 72 82 36 140-14 22-52 30-72 0C28 100 46 36 100 14z" fill="url(#pg)"/><path d="M100 20c-14 50-14 110 0 160M70 40c-10 44-6 92 10 124M130 40c10 44 6 92-10 124" stroke="#2a6a3f" stroke-width="4" fill="none" opacity=".55"/><path d="M100 14c10-10 30-12 40-4-8 10-26 14-40 4z" fill="#6fb23f"/></svg>`;
 const leaf = `<svg viewBox="0 0 200 200"><path d="M30 170C20 80 80 20 176 24c4 96-50 154-146 146z" fill="#6fb23f"/><path d="M30 170C80 120 120 80 170 30" stroke="#0b2a18" stroke-width="6" fill="none"/><path d="M70 130l30 4M90 108l36 2M112 84l32 0" stroke="#0b2a18" stroke-width="4"/></svg>`;
-const network = `<svg viewBox="0 0 200 200" fill="none" stroke="#d9b25a" stroke-width="3"><circle cx="100" cy="100" r="26" fill="#1f7a3f"/><g fill="#0f2e1c"><circle cx="38" cy="50" r="15"/><circle cx="162" cy="50" r="15"/><circle cx="38" cy="150" r="15"/><circle cx="162" cy="150" r="15"/></g><path d="M52 60l30 28M148 60l-30 28M52 140l30-28M148 140l-30-28" stroke-dasharray="5 6"/></svg>`;
-const factory = `<svg viewBox="0 0 200 200"><path d="M24 160V92l44 24V92l44 24V70h24v90z" fill="#1b4a2c" stroke="#d9b25a" stroke-width="4"/><path d="M128 70V44h22v26" fill="#2a6a3f" stroke="#d9b25a" stroke-width="4"/><g fill="#d9b25a"><rect x="40" y="132" width="16" height="14"/><rect x="76" y="132" width="16" height="14"/><rect x="112" y="132" width="16" height="14"/></g></svg>`;
+const network = `<svg viewBox="0 0 200 200" fill="none" stroke="#6fb23f" stroke-width="3"><circle cx="100" cy="100" r="26" fill="#1f7a3f"/><g fill="#0f2e1c"><circle cx="38" cy="50" r="15"/><circle cx="162" cy="50" r="15"/><circle cx="38" cy="150" r="15"/><circle cx="162" cy="150" r="15"/></g><path d="M52 60l30 28M148 60l-30 28M52 140l30-28M148 140l-30-28" stroke-dasharray="5 6"/></svg>`;
+const factory = `<svg viewBox="0 0 200 200"><path d="M24 160V92l44 24V92l44 24V70h24v90z" fill="#1b4a2c" stroke="#6fb23f" stroke-width="4"/><path d="M128 70V44h22v26" fill="#2a6a3f" stroke="#6fb23f" stroke-width="4"/><g fill="#6fb23f"><rect x="40" y="132" width="16" height="14"/><rect x="76" y="132" width="16" height="14"/><rect x="112" y="132" width="16" height="14"/></g></svg>`;
 
 const page = location.pathname.split("/").pop() || "index.html";
 const navItem = (f, t, extra = "") => `<li><a class="link ${page === f ? "active" : ""}" href="${f}">${t}${extra}</a></li>`;
 const linkedinIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>`;
 const socialLinks = Object.entries(CONFIG.social).filter(([, u]) => u).map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener" aria-label="${n}" title="${n}">${n === "LinkedIn" ? linkedinIcon : n.slice(0, 2)}</a>`).join("");
-const mark = `<span class="logo-chip"><img src="images/logo.jfif" alt="Misalta Global Ltd. logo"></span><span class="logo-text">Misalta<small>GLOBAL LTD.</small></span>`;
+const mark = `<img class="logo-img" src="images/logo.jfif" alt="Misalta Global Ltd. logo"><span class="logo-text">Misalta<small>GLOBAL LTD.</small></span>`;
 
 document.body.insertAdjacentHTML("afterbegin", `
 <a class="skip" href="#main">Skip to content</a>
@@ -73,7 +73,7 @@ document.querySelector("section")?.setAttribute("id", "main");
 
 document.body.insertAdjacentHTML("beforeend", `
 <footer><div class="container"><div class="f-grid">
-  <div><a class="logo" href="index.html">${mark}</a>
+  <div class="f-brand"><a class="logo" href="index.html">${mark}</a>
   <p style="margin-top:16px;max-width:320px">Transforming Agriculture. Building Industry. Creating Value.</p>
   <div class="socials">${socialLinks}</div></div>
   <div><h4>Company</h4><a href="about.html">About Us</a><a href="team.html">Leadership &amp; Team</a><a href="businesses.html">Our Businesses</a><a href="contact.html">Contact</a></div>
