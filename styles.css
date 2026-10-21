@@ -219,16 +219,16 @@ footer a{display:block;padding:4px 0;transition:.3s}footer a:hover{color:var(--l
 
 @media(max-width:1280px){
   .burger{display:block;z-index:120}
-  nav{position:fixed;inset:0;background:var(--cocoa);display:grid;place-items:center;transform:translateX(100%);transition:.5s;z-index:110;overflow:auto;padding:80px 0}
+  nav{position:fixed;inset:0;background:#fff;display:grid;place-items:center;transform:translateX(100%);transition:.5s;z-index:110;overflow:auto;padding:80px 0}
   nav.open{transform:none}
   nav ul{flex-direction:column;gap:10px}
-  nav a.link{font-size:1.25rem;color:#fff}
-  nav a.link:hover,nav a.link.active{background:rgba(255,255,255,.14);color:var(--leaf)}
+  nav a.link{font-size:1.25rem;color:var(--cocoa2)}
+  nav a.link:hover,nav a.link.active{background:rgba(31,122,63,.12);color:var(--green)}
 }
 @media(max-width:960px){
   section{padding:70px 0}
   .burger{display:block;z-index:120}
-  nav{position:fixed;inset:0;background:var(--cocoa);display:grid;place-items:center;transform:translateX(100%);transition:.5s;z-index:110}
+  nav{position:fixed;inset:0;background:#fff;display:grid;place-items:center;transform:translateX(100%);transition:.5s;z-index:110}
   nav.open{transform:none}
   nav ul{flex-direction:column;gap:14px}nav a.link{font-size:1.4rem}
   .slide-in,.split,.panels,.contact-grid{grid-template-columns:1fr}
