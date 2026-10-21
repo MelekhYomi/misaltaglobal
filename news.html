@@ -4,43 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>News &amp; Updates | Misalta Global Ltd.</title>
-<meta name="description" content="News and updates from Misalta Global Ltd.: meetings, milestones and new developments across the group.">
+<meta name="description" content="News and updates from Misalta Global Ltd.: meetings, milestones and new developments across the group, told in full — and refreshed as new stories land.">
 <meta property="og:site_name" content="Misalta Global Ltd."><meta property="og:title" content="News &amp; Updates | Misalta Global Ltd."><meta property="og:description" content="News and updates from Misalta Global Ltd.: meetings, milestones and new developments across the group."><meta property="og:type" content="article"><meta property="og:image" content="images/logo.jfif"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0f2e1c"><link rel="icon" type="image/jfif" href="images/logo.jfif">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=12">
+<link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body>
-<section class="page-hero"><div class="container"><span class="eyebrow" style="color:var(--leaf)">Newsroom</span><h1>News &amp; updates</h1><p>Developments across the group — meetings, milestones and new ventures as they unfold.</p></div></section>
+<!-- One news page for all stories. script.js renders the selected story
+     (location.hash) into the hero + article, then lists the rest below. -->
+<section class="page-hero"><div class="container" id="n-hero-in"></div></section>
 
-<section><div class="container">
-  <!-- News items: add photo files to /images and a new <article> card per story. -->
-  <div class="grid g2">
-    <!-- Stand-in illustration wired in at the user's request; replace with the real
-         meeting photo (drop it in as images/news-csn.avif or .jfif and update src). -->
-    <article class="card reveal" style="padding:0;overflow:hidden">
-      <img src="images/news-csn.avif" alt="Placeholder for the meeting with the National Chairman of the Computer Society of Nigeria — real photo to follow" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block" onerror="this.remove()">
-      <div style="padding:22px 24px 26px">
-        <span class="eyebrow" style="color:var(--leaf)">Meeting · October 2026</span>
-        <h3 style="margin:8px 0">Misalta meets the leadership of the Computer Society of Nigeria</h3>
-        <p>A working meeting between our Founder &amp; CEO, Samaila Bah, and the National Chairman of the Computer Society of Nigeria, Mr Abu — covering technology, innovation and avenues for collaboration.</p>
-      </div>
-    </article>
-    <!-- Whatsmed website URL pending: point the link below at it when provided.
-         Photo: images/news-whatsmed.webp (user-supplied). -->
-    <article class="card reveal d1" style="padding:0;overflow:hidden">
-      <img src="images/news-whatsmed.webp" alt="Misalta CEO with the Whatsmed team as they celebrate their win" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block" onerror="this.remove()">
-      <div style="padding:22px 24px 26px">
-        <span class="eyebrow" style="color:var(--leaf)">Milestone · October 2026</span>
-        <h3 style="margin:8px 0">CEO celebrates with Whatsmed on their win</h3>
-        <p>Our Founder &amp; CEO, Samaila Bah, joined the Whatsmed team to celebrate their recent win — a nod to the technology talent growing across the country.</p>
-        <a class="more" href="#" title="Whatsmed website link coming soon">Visit Whatsmed →</a>
-      </div>
-    </article>
-  </div>
-  <p class="center" style="color:#5c6b60;margin-top:44px">More updates from across the group are on the way.</p>
+<section id="n-art"><div class="container" id="n-art-in"></div></section>
+
+<section style="background:var(--sand)"><div class="container">
+  <div class="center reveal"><span class="eyebrow" style="color:var(--green)">More from the newsroom</span><h2 class="title">All news &amp; updates</h2><p class="lead" style="margin-top:8px">Newest first — keeps loading as you scroll.</p></div>
+  <div class="grid g3" id="n-grid" style="margin-top:40px"></div>
+  <div id="n-sentinel" style="height:2px"></div>
+  <p class="center" id="n-end" style="color:#5c6b60;margin:36px auto 0;display:none">You're all caught up — more updates are on the way.</p>
 </div></section>
 
-<script src="script.js?v=14"></script>
+<script src="script.js?v=15"></script>
 </body>
 </html>

@@ -52,6 +52,48 @@ const CONFIG = {
     */
   }
 };
+
+/* ======================================================================= */
+/* NEWSROOM data. One object per story:
+   - first 5 stories feed the ticker on the home page
+   - news.html renders any story in full detail via news.html#<slug>
+   - grid cards below the article load in batches as the page scrolls
+   body items: ["p", paragraph] | ["img", src, caption]
+   Photos go in /images. Attachment notes in comments are private. */
+const NEWS = [
+  {
+    slug: "csn-leadership-meeting",
+    tag: "Meeting",
+    date: "October 2026",
+    title: "Misalta meets the leadership of the Computer Society of Nigeria",
+    lede: "Our Founder & CEO, Samaila Bah, held a working meeting with the National Chairman of the Computer Society of Nigeria, Mr Abu — centred on technology, innovation and collaboration.",
+    cover: "images/news-csn.avif",
+    coverCap: "Illustration stand-in; the official photo from the meeting will replace it.",
+    body: [
+      ["p", "Our Founder & CEO, Samaila Bah, held a working meeting with the National Chairman of the Computer Society of Nigeria, Mr Abu. The conversation centred on technology, innovation and the role practical platforms can play in connecting people to opportunity."],
+      ["img", "images/news-csn.avif", "Meeting with the leadership of the Computer Society of Nigeria."],
+      ["p", "The discussion explored avenues for collaboration between the technology community and the private sector — from digital skills to systems that make everyday commerce easier to run."],
+      ["p", "Misalta Consulting delivers technology-enabled services across Nigeria today. Engagements like this keep the group close to the country's wider innovation agenda and to the people shaping it."],
+      ["p", "Further updates from this meeting will follow as they are agreed."]
+    ]
+  },
+  {
+    slug: "whatsmed-celebration",
+    tag: "Milestone",
+    date: "October 2026",
+    title: "CEO celebrates with Whatsmed on their win",
+    lede: "Our Founder & CEO, Samaila Bah, joined the Whatsmed team to celebrate their recent win.",
+    cover: "images/news-whatsmed.webp",
+    coverCap: "Celebrating the win with the Whatsmed team.",
+    body: [
+      ["p", "Samaila Bah joined the Whatsmed team to celebrate their recent win — a milestone for a home-grown technology company making its mark."],
+      ["img", "images/news-whatsmed.webp", "Celebrating the win with the Whatsmed team."],
+      ["p", "Wins like this reflect the growing confidence of Nigerian technology companies and the people building them."],
+      ["p", "Misalta Global works across services, agro-industry, trade and energy. Keeping close to the wider start-up community is part of how the group stays sharp on innovation and execution."],
+      ["p", "Congratulations to the whole Whatsmed team."]
+    ]
+  }
+];
 /* ======================================================================= */
 
 const E = CONFIG.emails;
@@ -309,3 +351,48 @@ if (q("team-former-chairman")) q("team-former-chairman").innerHTML = T.formerCha
 if (q("team-adv")) q("team-adv").innerHTML = T.advisers.map(p => person(p)).join("");
 if (q("team-board")) q("team-board").innerHTML = (T.board || []).map(p => person(p)).join("");
 document.querySelectorAll(".person.reveal").forEach(el => io.observe(el));
+
+/* ================= news: home ticker + dynamic news.html ================= */
+/* Ticker on the home page (top 5, slow marquee, pauses on hover). */
+const nt = q("news-tick");
+if (nt) {
+  const items = NEWS.slice(0, 5).map(n => `<a class="tick-item" href="news.html#${n.slug}"><span class="tmeta">${n.tag} · ${n.date}</span><span class="tt">${n.title}</span><span class="tmore">Read story →</span></a>`).join("");
+  nt.innerHTML = `<div class="tick-track">${items}${items}</div>`;
+}
+
+/* news.html: one page for every story. location.hash picks the story;
+   grid cards just change the hash, hashchange re-renders in place. */
+const nHero = q("n-hero-in"), nArt = q("n-art-in"), nGrid = q("n-grid");
+if (nHero && nArt && nGrid) {
+  const BATCH = 3;
+  let nGridIO = null, sent = q("n-sentinel");
+  const fig = (src, cap, alt) => `<figure class="news-fig"><img src="${src}" alt="${alt || cap || ""}" loading="lazy" onerror="this.closest('figure').remove()">${cap ? `<figcaption>${cap}</figcaption>` : ""}</figure>`;
+  function buildGrid(excl) {
+    const others = NEWS.filter(x => x.slug !== excl);
+    nGrid.innerHTML = "";
+    let i = 0;
+    const end = q("n-end"); end.style.display = "none";
+    const loadMore = () => {
+      const slice = others.slice(i, i + BATCH);
+      if (!slice.length) { if (nGridIO) nGridIO.disconnect(); end.style.display = "block"; return; }
+      slice.forEach(n => nGrid.insertAdjacentHTML("beforeend",
+        `<a class="card n-grid-card reveal" href="#${n.slug}"><img src="${n.cover}" alt="${n.title}" loading="lazy" onerror="this.remove()"><div class="n-card-in"><span class="eyebrow" style="color:var(--leaf)">${n.tag} · ${n.date}</span><h3>${n.title}</h3></div></a>`));
+      i += BATCH;
+      nGrid.querySelectorAll(".reveal").forEach(el => io.observe(el));
+    };
+    loadMore();
+    if (nGridIO) nGridIO.disconnect();
+    nGridIO = new IntersectionObserver(es => { if (es[0].isIntersecting) loadMore(); }, { rootMargin: "420px" });
+    nGridIO.observe(sent);
+  }
+  function routeNews() {
+    const slug = decodeURIComponent((location.hash || "").replace(/^#/, "").trim());
+    const n = NEWS.find(x => x.slug === slug) || NEWS[0];
+    nHero.innerHTML = `<span class="eyebrow" style="color:var(--leaf)">${n.tag} · ${n.date} · News &amp; updates</span><h1 style="max-width:860px;margin:10px auto 0">${n.title}</h1>${n.cover ? `<img class="news-cover" src="${n.cover}" alt="${n.title}" onerror="this.remove()">${n.coverCap ? `<div class="cover-cap">${n.coverCap}</div>` : ""}` : ""}`;
+    nArt.innerHTML = `<p class="news-lede">${n.lede}</p>` + n.body.map(it => it[0] === "p" ? `<p>${it[1]}</p>` : fig(it[1], it[2], n.title)).join("");
+    buildGrid(n.slug);
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }
+  routeNews();
+  addEventListener("hashchange", routeNews);
+}
