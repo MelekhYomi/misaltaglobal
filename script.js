@@ -123,21 +123,26 @@ document.body.insertAdjacentHTML("afterbegin", `
           <a href="consulting.html">Facility Management</a>
           <a href="consulting.html">Procurement Support</a>
           <a href="consulting.html">Financial Advisory</a>
+          <a href="consulting.html">Agentic AI</a>
           <a class="more" href="consulting.html">Explore Misalta Consulting →</a>
         </div>
         <div class="dd-col sand">
           <div class="ghead"><span class="gic">✉️</span>Work with us</div>
           <p>Ready to start with a service, or need advice that doesn't fit a category?</p>
           <a href="#" data-open="services">Join this service</a>
+          <a href="#" data-open="services">Ask for agro services</a>
           <a href="contact.html">General enquiry</a>
           <a href="contact.html">Request a bespoke quote</a>
         </div>
       </div>
     </li>
-    <li class="hasdd ${["businesses.html", "agro-processing.html", "trade-x.html", "agro-hubs.html"].includes(page) ? "active" : ""}"><a class="link" href="businesses.html" aria-haspopup="true" aria-expanded="false">Our Businesses<em class="caret" aria-hidden="true">▾</em></a>
+    <li class="hasdd ${["businesses.html", "agro-processing.html", "trade-x.html", "agro-hubs.html", "farms.html", "logistics.html", "energy.html", "blocks.html"].includes(page) ? "active" : ""}"><a class="link" href="businesses.html" aria-haspopup="true" aria-expanded="false">Our Businesses<em class="caret" aria-hidden="true">▾</em></a>
       <div class="dd">
         <div class="dd-col">
-          <div class="ghead"><span class="gic">🏭</span>In development</div><h4>Agro-Processing<em class="ddtag">In dev</em></h4>
+          <div class="ghead"><span class="gic">🌾</span>In the field</div><h4>Misalta Farms<em class="ddtag">In dev</em></h4>
+          <p>Cultivation, farming practice and inter-Africa trade.</p>
+          <a href="farms.html">Learn more</a>
+          <div class="ghead" style="margin-top:14px"><span class="gic">🏭</span>In development</div><h4>Agro-Processing<em class="ddtag">In dev</em></h4>
           <p>Cocoa and agricultural value addition in Taraba State.</p>
           <a href="agro-processing.html">Learn more</a>
           <div class="ghead" style="margin-top:14px"><span class="gic">🏗️</span>Planned</div><h4>Agro Hubs<em class="ddtag">Planned</em></h4>
@@ -148,14 +153,14 @@ document.body.insertAdjacentHTML("afterbegin", `
         <div class="dd-col">
           <div class="ghead"><span class="gic">🌍</span>The road ahead</div>
           <h4>Misalta Logistics<em class="ddtag">Planned</em></h4>
-          <p>Export corridors in-country and across Africa.</p>
-          <a href="businesses.html#logistics">Learn more</a>
+          <p>Cold room, specialised transport, mining, oil &amp; gas, livestock.</p>
+          <a href="logistics.html">Learn more</a>
           <h4 style="margin-top:12px">Misalta Energy<em class="ddtag">Planned</em></h4>
           <p>Renewable energy powering agro-industry.</p>
-          <a href="businesses.html#energy">Learn more</a>
+          <a href="energy.html">Learn more</a>
           <h4 style="margin-top:12px">Misalta Block<em class="ddtag">Planned</em></h4>
           <p>Construction materials for industry and housing.</p>
-          <a href="businesses.html#block">Learn more</a>
+          <a href="blocks.html">Learn more</a>
           <a class="more" href="businesses.html#roadmap">Full vision map →</a>
         </div>
         <div class="dd-col sand">
@@ -179,7 +184,7 @@ document.body.insertAdjacentHTML("beforeend", `
   <p style="margin-top:16px;max-width:320px">Transforming Agriculture. Building Industry. Creating Value.</p>
   <div class="socials">${socialLinks}</div></div>
   <div><h4>Company</h4><a href="about.html">About Us</a><a href="news.html">News</a><a href="businesses.html">Our Businesses</a><a href="consulting.html">Misalta Consulting</a><a href="contact.html">Contact</a></div>
-  <div><h4>Ventures</h4><a href="agro-processing.html">Agro-Processing</a><a href="trade-x.html">Misalta Trade X</a><a href="agro-hubs.html">Agro Hubs</a><a href="investment.html">Investment &amp; Partnerships</a></div>
+  <div><h4>Ventures</h4><a href="farms.html">Misalta Farms</a><a href="agro-processing.html">Agro-Processing</a><a href="trade-x.html">Misalta Trade X</a><a href="agro-hubs.html">Agro Hubs</a><a href="logistics.html">Misalta Logistics</a><a href="energy.html">Misalta Energy</a><a href="blocks.html">Misalta Blocks</a><a href="investment.html">Investment &amp; Partnerships</a></div>
   <div><h4>Reach Us</h4><a href="mailto:${E.info}">${E.info}</a><a href="tel:${CONFIG.phone.replace(/\s/g, "")}">${CONFIG.phone}</a><span>${CONFIG.address}</span><a href="privacy.html">Privacy Notice</a></div>
 </div><div class="copy"><span>© ${new Date().getFullYear()} ${CONFIG.company} All rights reserved.</span><span>Planned ventures and platform features are shown with their current status.</span></div></div></footer>
 
@@ -198,14 +203,15 @@ document.body.insertAdjacentHTML("beforeend", `
   <form class="mf hidden" id="f-supply" data-kind="Agro-Processing & Supply Enquiry" data-to="${E.supply}">
     <div class="row"><div class="field"><label>Full name / Company</label><input name="Name" required></div><div class="field"><label>Email</label><input type="email" name="Email" required></div></div>
     <div class="row"><div class="field"><label>Phone</label><input name="Phone"></div><div class="field"><label>Country</label><input name="Country" required></div></div>
-    <div class="row"><div class="field"><label>Product of interest</label><select name="Product"><option>Cocoa butter</option><option>Cocoa powder</option><option>Other agricultural product</option></select></div><div class="field"><label>Estimated quantity</label><input name="Quantity"></div></div>
+    <div class="row"><div class="field"><label>Product of interest</label><select name="Product"><option>Cocoa butter</option><option>Cocoa powder</option><option>Cocoa beans</option><option>Other agricultural product</option></select></div><div class="field"><label>Estimated quantity</label><input name="Quantity" placeholder="e.g. 50 tonnes"></div></div>
+    <div class="field"><label>Quality / grade required</label><input name="Quality" placeholder="e.g. Grade A, food-grade, 99.5% purity"></div>
     <div class="field"><label>Message</label><textarea name="Message" rows="3"></textarea></div>
     <label class="consent"><input type="checkbox" name="Consent" value="Yes" required> I agree to be contacted about this enquiry. See the <a href="privacy.html">privacy notice</a>.</label>
     <button class="btn btn-green" style="width:100%;justify-content:center">Send Supply Enquiry</button></form>
   <form class="mf hidden" id="f-services" data-kind="Misalta Consulting Enquiry" data-to="${E.services}">
     <div class="row"><div class="field"><label>Full name</label><input name="Name" required></div><div class="field"><label>Email</label><input type="email" name="Email" required></div></div>
     <div class="row"><div class="field"><label>Organisation</label><input name="Organisation"></div><div class="field"><label>Phone</label><input name="Phone"></div></div>
-    <div class="field"><label>Service needed</label><select name="Service"><option>Training services</option><option>Facility management</option><option>Procurement support</option><option>Financial advisory</option><option>Other</option></select></div>
+    <div class="field"><label>Service needed</label><select name="Service"><option>Training services</option><option>Facility management</option><option>Procurement support</option><option>Financial advisory</option><option>Agentic AI</option><option>Agro services</option><option>Other</option></select></div>
     <div class="field"><label>Message</label><textarea name="Message" rows="3"></textarea></div>
     <label class="consent"><input type="checkbox" name="Consent" value="Yes" required> I agree to be contacted about this enquiry. See the <a href="privacy.html">privacy notice</a>.</label>
     <button class="btn btn-gold" style="width:100%;justify-content:center">Send Consulting Enquiry</button></form>
