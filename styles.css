@@ -30,11 +30,11 @@ section{padding:clamp(72px,9vw,110px) 0;position:relative}
 header.nav{position:fixed;inset:0 0 auto 0;z-index:100;padding:16px 0;transition:.4s;background:#fff;box-shadow:0 1px 0 rgba(15,46,28,.08)}
 header.nav.scrolled{background:#fff;padding:10px 0;box-shadow:0 10px 30px rgba(15,46,28,.16)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
-.logo{display:flex;align-items:center;gap:7px;color:var(--cocoa);font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;white-space:nowrap}
+.logo{display:flex;align-items:center;gap:3px;color:var(--cocoa);font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;white-space:nowrap}
 .logo-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--green),var(--leaf));display:grid;place-items:center;color:var(--cocoa);font-size:1.3rem;animation:float 4s ease-in-out infinite}
 .logo-img{flex:none;height:60px;width:60px;object-fit:contain}
 .logo-chip{display:grid;place-items:center;background:#fff;aspect-ratio:1}
-.logo-text{display:inline-flex;flex-direction:column;justify-content:center;line-height:1.15;padding-top:2px}
+.logo-text{display:inline-flex;flex-direction:column;justify-content:center;line-height:1.15;padding-top:0}
 .logo small{display:block;font-family:'Poppins';font-size:.62rem;letter-spacing:.26em;font-weight:500;color:var(--green);margin-top:2px}
 .logo small.motto{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:.67rem;letter-spacing:.02em;color:var(--leaf);margin-top:3px;text-transform:none}
 nav ul{display:flex;gap:2px;list-style:none;align-items:center}
