@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What to Expect | Misalta Trade X</title>
+<meta name="description" content="What to expect from Misalta Trade X: market access, crop finance, traceability and logistics — the planned direction of the platform, end to end.">
+<meta property="og:site_name" content="Misalta Global Ltd."><meta property="og:title" content="What to Expect | Misalta Trade X"><meta property="og:description" content="Market access, crop finance, traceability and logistics — the planned direction of the Misalta Trade X platform."><meta property="og:type" content="website"><meta property="og:image" content="images/logo.jfif"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0f2e1c"><link rel="icon" type="image/jfif" href="images/logo.jfif">
+<!-- Faithful clone of the Trade X "what to expect" prototype
+     (hisbu6mcmt22o.kimi.page). Styles, scripts and photos are served
+     locally from this site: ./assets/index.css, ./assets/index.js and
+     /<name>.jpg|png at the site root. -->
+<link rel="stylesheet" href="assets/index.css">
+</head>
+<body>
+<div id="root"></div>
+
+<script type="module" src="assets/index.js"></script>
+<script>
+/* Wire the prototype's CTAs into the live Misalta flow once the app mounts.
+   Runs a few passes because the SPA renders asynchronously. */
+(function () {
+  var patch = function () {
+    document.querySelectorAll("#root a").forEach(function (a) {
+      var t = (a.textContent || "").trim().toLowerCase();
+      if (t.indexOf("early access") > -1 || t.indexOf("request a demo") > -1 || t.indexOf("request demo") > -1 || t.indexOf("join the pilot") > -1) {
+        a.setAttribute("href", "../trade-x.html#early-access");
+      }
+      if (a.getAttribute("href") === "/") a.setAttribute("href", "../index.html");
+      if (t.indexOf("privacy") > -1) a.setAttribute("href", "../privacy.html");
+      if (t.indexOf("contact") > -1 && (a.getAttribute("href") || "").indexOf("mailto") === -1) {
+        a.setAttribute("href", "../contact.html");
+      }
+    });
+    /* CTAs rendered as buttons: make them navigate to the real form. */
+    document.querySelectorAll("#root button").forEach(function (b) {
+      var t = (b.textContent || "").trim().toLowerCase();
+      if ((t.indexOf("early access") > -1 || t.indexOf("demo") > -1 || t.indexOf("pilot") > -1) && !b.dataset.wired) {
+        b.dataset.wired = "1";
+        b.style.cursor = "pointer";
+        b.addEventListener("click", function () { location.href = "../trade-x.html#early-access"; });
+      }
+    });
+    /* Footer year, patched via text nodes (safe for the SPA's listeners). */
+    var walker = document.createTreeWalker(document.getElementById("root"), NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      if (walker.currentNode.nodeValue.indexOf("© 2025") > -1) {
+        walker.currentNode.nodeValue = walker.currentNode.nodeValue.replace("© 2025", "© 2026");
+      }
+    }
+  };
+  var tries = 0, timer = setInterval(function () {
+    patch();
+    if (document.querySelector("#root section") && document.querySelector("#root h2") && ++tries > 4) patch();
+    if (tries > 25) clearInterval(timer);
+  }, 300);
+})();
+</script>
+</body>
+</html>
