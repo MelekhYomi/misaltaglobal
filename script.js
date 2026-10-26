@@ -117,14 +117,13 @@ document.body.insertAdjacentHTML("afterbegin", `
     <li class="hasdd ${page === "consulting.html" ? "active" : ""}"><a class="link" href="consulting.html" aria-haspopup="true" aria-expanded="false">What We Offer<em class="caret" aria-hidden="true">▾</em></a>
       <div class="dd">
         <div class="dd-col">
-          <div class="ghead"><span class="gic">🎓</span>Services</div><h4>Misalta Consulting</h4>
+          <div class="ghead"><span class="gic">🎓</span>Services</div><h4><a href="consulting.html" class="dd-h4">Misalta Consulting</a></h4>
           <p>All Misalta services live here, delivered by our in-house team.</p>
           <a href="consulting.html">Training Services</a>
           <a href="consulting.html">Facility Management</a>
           <a href="consulting.html">Procurement Support</a>
           <a href="consulting.html">Financial Advisory</a>
           <a href="consulting.html">Agentic AI</a>
-          <a class="more" href="consulting.html">Explore Misalta Consulting →</a>
         </div>
         <div class="dd-col sand">
           <div class="ghead"><span class="gic">✉️</span>Work with us</div>
@@ -139,34 +138,25 @@ document.body.insertAdjacentHTML("afterbegin", `
     <li class="hasdd ${["businesses.html", "agro-processing.html", "trade-x.html", "agro-hubs.html", "farms.html", "logistics.html", "energy.html", "blocks.html"].includes(page) ? "active" : ""}"><a class="link" href="businesses.html" aria-haspopup="true" aria-expanded="false">Our Businesses<em class="caret" aria-hidden="true">▾</em></a>
       <div class="dd">
         <div class="dd-col">
-          <div class="ghead"><span class="gic">🌾</span>In the field</div><h4>Misalta Farms<em class="ddtag">In dev</em></h4>
+          <div class="ghead"><span class="gic">🌾</span>In the field</div><h4><a href="farms.html" class="dd-h4">Misalta Farms</a><em class="ddtag">In dev</em></h4>
           <p>Cultivation, farming practice and inter-Africa trade.</p>
-          <a href="farms.html">Learn more</a>
-          <div class="ghead" style="margin-top:14px"><span class="gic">🏭</span>In development</div><h4>Agro-Processing<em class="ddtag">In dev</em></h4>
+          <div class="ghead" style="margin-top:14px"><span class="gic">🏭</span>In development</div><h4><a href="agro-processing.html" class="dd-h4">Agro-Processing</a><em class="ddtag">In dev</em></h4>
           <p>Cocoa and agricultural value addition in Taraba State.</p>
-          <a href="agro-processing.html">Learn more</a>
-          <div class="ghead" style="margin-top:14px"><span class="gic">🏗️</span>Planned</div><h4>Agro Hubs<em class="ddtag">Planned</em></h4>
+          <div class="ghead" style="margin-top:14px"><span class="gic">🏗️</span>Planned</div><h4><a href="agro-hubs.html" class="dd-h4">Agro Hubs</a><em class="ddtag">Planned</em></h4>
           <p>Commodity aggregation, storage and post-harvest handling.</p>
-          <a href="agro-hubs.html">Learn more</a>
-          <a class="more" href="businesses.html">All businesses →</a>
         </div>
         <div class="dd-col">
           <div class="ghead"><span class="gic">🌍</span>The road ahead</div>
-          <h4>Misalta Logistics<em class="ddtag">Planned</em></h4>
+          <h4><a href="logistics.html" class="dd-h4">Misalta Logistics</a><em class="ddtag">Planned</em></h4>
           <p>Cold room, specialised transport, mining, oil &amp; gas, livestock.</p>
-          <a href="logistics.html">Learn more</a>
-          <h4 style="margin-top:12px">Misalta Energy<em class="ddtag">Planned</em></h4>
+          <h4 style="margin-top:12px"><a href="energy.html" class="dd-h4">Misalta Energy</a><em class="ddtag">Planned</em></h4>
           <p>Renewable energy powering agro-industry.</p>
-          <a href="energy.html">Learn more</a>
-          <h4 style="margin-top:12px">Misalta Block<em class="ddtag">Planned</em></h4>
-          <p>Construction materials for industry and housing.</p>
-          <a href="blocks.html">Learn more</a>
-          <a class="more" href="businesses.html#roadmap">Full vision map →</a>
+          <h4 style="margin-top:12px"><a href="blocks.html" class="dd-h4">Misalta Construction</a><em class="ddtag">Planned</em></h4>
+          <p>Concrete blocks, building materials and real estate.</p>
         </div>
         <div class="dd-col sand">
-          <div class="ghead"><span class="gic">📲</span>Coming soon</div><h4>Misalta Trade X<em class="ddtag">Soon</em></h4>
+          <div class="ghead"><span class="gic">📲</span>Coming soon</div><h4><a href="trade-x.html" class="dd-h4">Misalta Trade X</a><em class="ddtag">Soon</em></h4>
           <p>A digital agricultural commodity trading platform connecting farmers, suppliers, brokers and buyers.</p>
-          <a href="trade-x.html">Learn more</a>
           <a href="trade-x.html#early-access">Join early access →</a>
         </div>
       </div>
@@ -184,7 +174,7 @@ document.body.insertAdjacentHTML("beforeend", `
   <p style="margin-top:16px;max-width:320px">Transforming Agriculture. Building Industry. Creating Value.</p>
   <div class="socials">${socialLinks}</div></div>
   <div><h4>Company</h4><a href="about.html">About Us</a><a href="news.html">News</a><a href="businesses.html">Our Businesses</a><a href="consulting.html">Misalta Consulting</a><a href="contact.html">Contact</a></div>
-  <div><h4>Ventures</h4><a href="farms.html">Misalta Farms</a><a href="agro-processing.html">Agro-Processing</a><a href="trade-x.html">Misalta Trade X</a><a href="agro-hubs.html">Agro Hubs</a><a href="logistics.html">Misalta Logistics</a><a href="energy.html">Misalta Energy</a><a href="blocks.html">Misalta Blocks</a><a href="investment.html">Investment &amp; Partnerships</a></div>
+  <div><h4>Ventures</h4><a href="farms.html">Misalta Farms</a><a href="agro-processing.html">Agro-Processing</a><a href="trade-x.html">Misalta Trade X</a><a href="agro-hubs.html">Agro Hubs</a><a href="logistics.html">Misalta Logistics</a><a href="energy.html">Misalta Energy</a><a href="blocks.html">Misalta Construction</a><a href="investment.html">Investment &amp; Partnerships</a></div>
   <div><h4>Reach Us</h4><a href="mailto:${E.info}">${E.info}</a><a href="tel:${CONFIG.phone.replace(/\s/g, "")}">${CONFIG.phone}</a><span>${CONFIG.address}</span><a href="privacy.html">Privacy Notice</a></div>
 </div><div class="copy"><span>© ${new Date().getFullYear()} ${CONFIG.company} All rights reserved.</span><span>Planned ventures and platform features are shown with their current status.</span></div></div></footer>
 
