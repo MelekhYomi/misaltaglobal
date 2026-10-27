@@ -32,10 +32,11 @@ Home  /                                   index.html          [v2 ✓]
 | Location | Items |
 |---|---|
 | Top bar (v2) | email · phone · address · social links |
-| Main nav | Home · **Company ▾** · **Consulting ▾** · **Our Businesses ▾** · Invest & Partner · [Contact] |
-| Company ▾ | About Us · Leadership · Our journey · News & updates |
-| Consulting ▾ | Misalta Consulting (Training, Facility Management, Procurement, Financial Advisory, Agentic AI, Agro Services) · Work with us (Join a service, Ask for agro services, Bespoke quote) |
-| Our Businesses ▾ | The value chain (1 Grow: Farms · 2 Add value: Agro-Processing · 3 Store: Agro Hubs · 4 Move: Logistics · 5 Sell: Trade X) · Enablers (Energy, Construction, Consulting) · Overview (All ventures, Trade X early access) |
+| Main nav (desktop, 1100px and wider) | Logo · Home · **Company ▾** · **Consulting ▾** · **Our Businesses ▾** · Invest & Partner · Contact · [Get started] |
+| Company ▾ (mega panel) | About Misalta · Our people · Our journey · News & updates · Contact, plus a card for the latest NEWS story |
+| Consulting ▾ (mega panel) | The six services with icons and one-line descriptions · All consulting services · card: Book a service (opens the enquiry modal) |
+| Our Businesses ▾ (mega panel) | The value chain (Stage 1 · Grow … Stage 5 · Sell) and Enablers (Enabler · Know-how / Power / Build), each with photo and status chip · See all eight businesses · card: Get started / Invest |
+| Phone and tablet (below 1100px) | Logo · [Get started] · menu button, which opens a slide-in drawer: Home, the three sections as accordions (current one open), Invest & Partner, Contact, then Get started and Call / WhatsApp / Email |
 | Footer (v2) | Newsletter · Company · The value chain · Enablers · Head Office |
 | Always visible | Enquiry button (opens the modal) · WhatsApp button |
 

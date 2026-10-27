@@ -101,7 +101,7 @@ Page forms name their team with `data-route="supply"` (resolved to the inbox fro
 |---|---|---|
 | Investment / Partnership enquiry | Modal on every page | `invest@` |
 | Agro-Processing & Supply enquiry | Modal on every page | `supply@` |
-| Misalta Consulting enquiry | Modal on every page and the nav dropdown | `services@` |
+| Misalta Consulting enquiry | Modal on every page and the Consulting menu panel | `services@` |
 | Contact form | `contact.html` (category picks the inbox) | category route, else `info@` |
 | Trade X early access | `trade-x.html#get-started` | `tradex@` |
 | Get Started onboarding | `get-started.html` | by business and role (see below) |
@@ -113,6 +113,7 @@ Page forms name their team with `data-route="supply"` (resolved to the inbox fro
 ## 6. Conventions
 
 - **Renaming a page:** rename the file, update every link (nav and footer live in `script.js`), and add a permanent redirect from the old path in `vercel.json`.
+- **Main menu:** built in `script.js` from `BUSINESSES`, `NEWS` and `SERVICES`, so a new business, status change or news story updates the menu by itself. Desktop panels open on hover (short delay), click or ArrowDown; Escape closes and returns focus. The phone drawer traps focus, locks page scroll and closes on Escape or a tap outside. `closeMenus()` closes both (the enquiry modal calls it).
 - **Active nav state:** `script.js` maps clean URLs to file names (`/about` → `about.html`), so nav links compare against `.html` file names.
 - **Cache busting:** bump `?v=N` on `styles.css` and `script.js` in every page you touch
   when the file changes.

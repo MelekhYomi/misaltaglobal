@@ -175,7 +175,6 @@ const NEWS = [
 const E = CONFIG.emails;
 
 const page = (location.pathname.split("/").pop() || "index").replace(/(\.html)?$/, ".html"); // clean URLs: /about → about.html
-const navItem = (f, t, extra = "") => `<li><a class="link ${page === f ? "active" : ""}" href="${f}">${t}${extra}</a></li>`;
 const linkedinIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>`;
 const socialLinks = Object.entries(CONFIG.social).filter(([, u]) => u).map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener" aria-label="${n}" title="${n}">${n === "LinkedIn" ? linkedinIcon : n.slice(0, 2)}</a>`).join("");
 const mark = `<img class="logo-img" src="images/logo.jfif" alt="Misalta Global Concepts Ltd. logo"><span class="logo-text">Misalta<small>GLOBAL LTD.</small><small class="motto">Building Tomorrow, Growing Value</small></span>`;
@@ -186,74 +185,89 @@ const topbar = `<div class="topbar"><div class="container">
   <div class="tb-soc">${Object.entries(CONFIG.social).filter(([, u]) => u).map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("")}</div>
 </div></div>`;
 
+/* ================= header: main menu, mega panels, mobile drawer =================
+   Built from BUSINESSES and NEWS, so the menu always matches the rest of the site. */
+const svgI = (d, w = 1.8) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const NI = {
+  chev: '<path d="M6 9l6 6 6-6"/>', arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>', close: '<path d="M6 6l12 12M18 6L6 18"/>',
+  about: '<circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/>', people: '<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M15 14.5c3 0 6 1.9 6 5.5"/>',
+  journey: '<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>', news: '<path d="M4 19.5A2.5 2.5 0 016.5 17H20V3H6.5A2.5 2.5 0 004 5.5z"/><path d="M4 19.5V21h16"/>',
+  mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/>', phone: '<path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/>',
+  chat: '<path d="M21 11.5a8.4 8.4 0 01-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1121 11.5z"/>', invest: '<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>',
+  grad: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>', building: '<path d="M4 21V5a2 2 0 012-2h8a2 2 0 012 2v16"/><path d="M16 9h2a2 2 0 012 2v10M2 21h20M8 7h4M8 11h4M8 15h4"/>',
+  cart: '<path d="M3 4h2l2.4 11.2a2 2 0 002 1.6h7.7a2 2 0 001.9-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17" cy="20.5" r="1.2"/>',
+  bot: '<rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M9 13h.01M15 13h.01M9 17h6"/>', sprout: '<path d="M12 21v-9"/><path d="M12 12C12 7 8 4 3 4c0 5 4 8 9 8z"/><path d="M12 14c0-4 3-7 9-7 0 4-3 7-9 7z"/>'
+};
+const SERVICES = [["grad", "Training Services", "Capacity building and professional training"], ["building", "Facility Management", "Safe, efficient workplaces"],
+  ["cart", "Procurement Support", "Reliable suppliers, on time and on budget"], ["invest", "Financial Advisory", "Planning, budgeting and decisions"],
+  ["bot", "Agentic AI", "Automation for repetitive work", "New"], ["sprout", "Agro Services", "Farm planning and value-chain guidance"]];
+const onPage = list => list.includes(page);
+const bizItem = b => `<a class="mp-biz" href="${bizUrl(b)}"${b.domain ? ' target="_blank" rel="noopener"' : ""}><img src="${photoUrl(b.img, "sm")}" alt="" loading="lazy" width="56" height="56"><span><small>${b.group === "chain" ? "Stage " + b.stage : "Enabler · " + b.stage}</small><b>${b.name.replace(" Ltd.", "")}</b></span><i class="chip ${b.status}">${STATUS[b.status]}</i></a>`;
+const chainBiz = BUSINESSES.filter(b => b.group === "chain"), enablerBiz = BUSINESSES.filter(b => b.group === "enabler");
+const latest = NEWS[0];
+const PANELS = {
+  company: { label: "Company", pages: ["about.html", "news.html", "credits.html"], html: `
+    <div class="mp-col mp-col-wide"><span class="mp-label">The group</span>
+      <a class="mp-link" href="about.html"><span class="mp-ic">${svgI(NI.about)}</span><span><b>About Misalta</b><small>Our story, mission and values since 2019</small></span></a>
+      <a class="mp-link" href="about.html#leadership"><span class="mp-ic">${svgI(NI.people)}</span><span><b>Our people</b><small>CEO, board, directors and advisers</small></span></a>
+      <a class="mp-link" href="about.html#journey"><span class="mp-ic">${svgI(NI.journey)}</span><span><b>Our journey</b><small>From professional services to a group</small></span></a>
+      <a class="mp-link" href="news.html"><span class="mp-ic">${svgI(NI.news)}</span><span><b>News &amp; updates</b><small>What the group is doing</small></span></a>
+      <a class="mp-link" href="contact.html"><span class="mp-ic">${svgI(NI.mail)}</span><span><b>Contact</b><small>Reach the right team directly</small></span></a>
+    </div>
+    ${latest ? `<a class="mp-feature mp-news" href="news.html#${latest.slug}"><img src="${latest.cover}" alt="" loading="lazy"><span class="mp-ftext"><small>${latest.tag} · ${latest.date}</small><b>${latest.title}</b><em>Read the story ${svgI(NI.arrow)}</em></span></a>` : ""}` },
+  consulting: { label: "Consulting", pages: ["consulting.html"], html: `
+    <div class="mp-col mp-col-wide"><span class="mp-label">Misalta Consulting · Operating today</span>
+      <div class="mp-services">${SERVICES.map(([ic, t, d, tag]) => `<a class="mp-link" href="consulting.html#offer"><span class="mp-ic">${svgI(NI[ic])}</span><span><b>${t}${tag ? ` <i class="chip soon">${tag}</i>` : ""}</b><small>${d}</small></span></a>`).join("")}</div>
+      <a class="mp-all" href="consulting.html">All consulting services ${svgI(NI.arrow)}</a>
+    </div>
+    <div class="mp-feature" style="--fbg:url('${photoUrl("hero_training_session.jpg", "md")}')"><span class="mp-ftext"><small>Trusted by NNPCL and NCDC</small><b>Book a service with our in-house team</b><span class="mp-acts"><a class="btn btn-gold btn-sm" href="#" data-open="services">Book a service</a></span></span></div>` },
+  businesses: { label: "Our Businesses", pages: ["businesses.html", ...BUSINESSES.map(b => b.page), "what_to_expect.html"].filter(p => p !== "consulting.html"), html: `
+    <div class="mp-col"><span class="mp-label">The value chain</span>${chainBiz.map(bizItem).join("")}</div>
+    <div class="mp-col"><span class="mp-label">Enablers</span>${enablerBiz.map(bizItem).join("")}
+      <a class="mp-all" href="businesses.html">See all eight businesses ${svgI(NI.arrow)}</a></div>
+    <div class="mp-feature" style="--fbg:url('${photoUrl("photo_taraba_tea.jpg", "md")}')"><span class="mp-ftext"><small>One group · Eight businesses</small><b>Find the business that fits what you need</b><span class="mp-acts"><a class="btn btn-gold btn-sm" href="get-started.html">Get started</a><a class="btn btn-ghost btn-sm" href="investment.html">Invest</a></span></span></div>` }
+};
+const navLink = (href, label) => `<li><a class="mnav-link${page === href ? " is-current" : ""}" href="${href}"${page === href ? ' aria-current="page"' : ""}>${label}</a></li>`;
+const navTrigger = key => `<li><button class="mnav-link mnav-trigger${onPage(PANELS[key].pages) ? " is-current" : ""}" type="button" aria-expanded="false" aria-controls="mp-${key}" data-panel="${key}">${PANELS[key].label}${svgI(NI.chev, 2.2)}</button></li>`;
+const acc = (key, body) => `<div class="dr-sec"><button class="dr-acc" type="button" aria-expanded="${onPage(PANELS[key].pages)}" aria-controls="dr-${key}">${PANELS[key].label}${svgI(NI.chev, 2.2)}</button><div class="dr-body" id="dr-${key}"${onPage(PANELS[key].pages) ? "" : " hidden"}>${body}</div></div>`;
+const telHref = "tel:" + CONFIG.phone.replace(/\s/g, "");
+
 document.body.insertAdjacentHTML("afterbegin", `
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="hdr">${topbar}<div class="container nav-in">
-  <a class="logo" href="index.html">${mark}</a>
-  <nav id="menu" aria-label="Main"><ul>
-    ${navItem("index.html", "Home")}
-    <li class="hasdd ${["about.html", "news.html"].includes(page) ? "active" : ""}"><a class="link" href="about.html" aria-haspopup="true" aria-expanded="false">Company<em class="caret" aria-hidden="true">▾</em></a>
-      <div class="dd">
-        <div class="dd-col">
-          <div class="ghead"><span class="gic">🏢</span>Who we are</div>
-          <h4><a href="about.html" class="dd-h4">About Us</a></h4>
-          <p>Established in 2019. Our mission, values and journey.</p>
-          <a href="about.html#leadership">Leadership</a>
-          <a href="about.html#journey">Our journey</a>
-          <a href="news.html">News &amp; updates</a>
-        </div>
-      </div>
-    </li>
-    <li class="hasdd ${page === "consulting.html" ? "active" : ""}"><a class="link" href="consulting.html" aria-haspopup="true" aria-expanded="false">Consulting<em class="caret" aria-hidden="true">▾</em></a>
-      <div class="dd">
-        <div class="dd-col">
-          <div class="ghead"><span class="gic">🎓</span>Operating today</div><h4><a href="consulting.html" class="dd-h4">Misalta Consulting</a></h4>
-          <p>All Misalta services, delivered by our in-house team.</p>
-          <a href="consulting.html">Training Services</a>
-          <a href="consulting.html">Facility Management</a>
-          <a href="consulting.html">Procurement Support</a>
-          <a href="consulting.html">Financial Advisory</a>
-          <a href="consulting.html">Agentic AI</a>
-          <a href="consulting.html">Agro Services</a>
-        </div>
-        <div class="dd-col sand">
-          <div class="ghead"><span class="gic">✉️</span>Work with us</div>
-          <p>Ready to start, or need advice that doesn't fit a category?</p>
-          <a href="#" data-open="services">Join a service</a>
-          <a href="#" data-open="services">Ask for agro services</a>
-          <a href="contact.html">Request a bespoke quote</a>
-        </div>
-      </div>
-    </li>
-    <li class="hasdd ${["businesses.html", "farms.html", "agro-processing.html", "agro-hubs.html", "logistics.html", "trade-x.html", "energy.html", "construction.html"].includes(page) ? "active" : ""}"><a class="link" href="businesses.html" aria-haspopup="true" aria-expanded="false">Our Businesses<em class="caret" aria-hidden="true">▾</em></a>
-      <div class="dd">
-        <div class="dd-col">
-          <div class="ghead"><span class="gic">🌾</span>The value chain</div>
-          <a href="farms.html">1 · Grow: Misalta Farms <em class="ddtag">In dev</em></a>
-          <a href="agro-processing.html">2 · Add value: Misalta Agro Processing <em class="ddtag">In dev</em></a>
-          <a href="agro-hubs.html">3 · Store: Misalta Agro Hubs <em class="ddtag">Planned</em></a>
-          <a href="logistics.html">4 · Move: Misalta Logistics <em class="ddtag">Planned</em></a>
-          <a href="trade-x.html">5 · Sell: Misalta Trade X <em class="ddtag">Soon</em></a>
-        </div>
-        <div class="dd-col">
-          <div class="ghead"><span class="gic">⚡</span>Enablers</div>
-          <a href="energy.html">Power: Misalta Energy <em class="ddtag">Planned</em></a>
-          <a href="construction.html">Build: Misalta Construction <em class="ddtag">Planned</em></a>
-          <a href="consulting.html">Know-how: Misalta Consulting <em class="ddtag">Operating</em></a>
-        </div>
-        <div class="dd-col sand">
-          <div class="ghead"><span class="gic">🧭</span>Overview</div>
-          <h4><a href="businesses.html" class="dd-h4">All ventures</a></h4>
-          <p>Eight ventures, one agricultural value chain, each with its current status.</p>
-          <a href="trade-x.html#early-access">Join Trade X early access →</a>
-        </div>
-      </div>
-    </li>
-    ${navItem("investment.html", "Invest &amp; Partner")}
+  <a class="logo" href="index.html" aria-label="Misalta Global Concepts Ltd., home">${mark}</a>
+  <nav class="mnav" id="mnav" aria-label="Main"><ul class="mnav-list">
+    ${navLink("index.html", "Home")}${navTrigger("company")}${navTrigger("consulting")}${navTrigger("businesses")}${navLink("investment.html", "Invest &amp; Partner")}
   </ul></nav>
-  <a class="btn btn-gold nav-cta" href="get-started.html">Get started</a>
-  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-</div></header>`);
+  <div class="nav-actions">
+    <a class="nav-contact${page === "contact.html" ? " is-current" : ""}" href="contact.html">Contact</a>
+    <a class="btn btn-gold nav-cta" href="get-started.html">Get started</a>
+    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
+  </div>
+</div>
+<div class="mpanels">${Object.entries(PANELS).map(([k, p]) => `<div class="mpanel" id="mp-${k}" role="region" aria-label="${p.label}"><div class="container mp-grid mp-${k}">${p.html}</div></div>`).join("")}</div>
+</header>
+<div class="nav-dim" id="navDim"></div>
+<div class="drawer-scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Menu" aria-modal="true" role="dialog">
+  <div class="dr-top"><a class="logo" href="index.html">${mark}</a><button class="dr-close" id="drClose" type="button" aria-label="Close menu">${svgI(NI.close, 2.2)}</button></div>
+  <div class="dr-scroll">
+    <a class="dr-link${page === "index.html" ? " is-current" : ""}" href="index.html">Home</a>
+    ${acc("company", PANELS.company.html.split('<a class="mp-feature')[0].replace('mp-col mp-col-wide', 'mp-col'))}
+    ${acc("consulting", `<div class="mp-col">${SERVICES.map(([ic, t, d, tag]) => `<a class="mp-link" href="consulting.html#offer"><span class="mp-ic">${svgI(NI[ic])}</span><span><b>${t}${tag ? ` <i class="chip soon">${tag}</i>` : ""}</b><small>${d}</small></span></a>`).join("")}<a class="btn btn-green btn-sm dr-btn" href="#" data-open="services">Book a service</a></div>`)}
+    ${acc("businesses", `<div class="mp-col"><span class="mp-label">The value chain</span>${chainBiz.map(bizItem).join("")}<span class="mp-label">Enablers</span>${enablerBiz.map(bizItem).join("")}<a class="mp-all" href="businesses.html">See all eight businesses ${svgI(NI.arrow)}</a></div>`)}
+    <a class="dr-link${page === "investment.html" ? " is-current" : ""}" href="investment.html">Invest &amp; Partner</a>
+    <a class="dr-link${page === "contact.html" ? " is-current" : ""}" href="contact.html">Contact</a>
+  </div>
+  <div class="dr-foot">
+    <a class="btn btn-gold dr-cta" href="get-started.html">Get started</a>
+    <div class="dr-quick">
+      <a href="${telHref}">${svgI(NI.phone)}<span>Call</span></a>
+      <a data-wa href="contact.html" target="_blank" rel="noopener">${svgI(NI.chat)}<span>WhatsApp</span></a>
+      <a href="mailto:${E.info}">${svgI(NI.mail)}<span>Email</span></a>
+    </div>
+  </div>
+</aside>`);
 const firstSec = document.querySelector("section");
 if (firstSec) { firstSec.id ||= "main"; document.querySelector(".skip").href = "#" + firstSec.id; }
 
@@ -336,26 +350,84 @@ document.querySelectorAll(".field").forEach((fl, n) => {
   lab.htmlFor = ctl.id;
 });
 
-/* header + menu */
+/* header: shrink on scroll */
 const hdr = document.getElementById("hdr");
 const onScroll = () => hdr.classList.toggle("scrolled", scrollY > 40);
-addEventListener("scroll", onScroll); onScroll();
-const burger = document.getElementById("burger"), menu = document.getElementById("menu");
-const setMenu = o => { burger.classList.toggle("open", o); menu.classList.toggle("open", o); burger.setAttribute("aria-expanded", o); };
-burger.onclick = () => { modal && modal.classList.remove("open"); setMenu(!menu.classList.contains("open")); };
-menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+addEventListener("scroll", onScroll, { passive: true }); onScroll();
 
-/* mega menu dropdowns */
-const ddItems = menu.querySelectorAll(".hasdd");
-ddItems.forEach(li => {
-  const trg = li.querySelector(":scope > a");
-  trg.addEventListener("click", e => {
-    if (!matchMedia("(min-width:1281px)").matches) { setMenu(false); return; }
-    // Desktop: the trigger itself navigates to its section page; its panel opens on hover.
+/* desktop mega panels: hover intent, click, keyboard; one open at a time */
+const triggers = [...document.querySelectorAll(".mnav-trigger")], navDim = q0("navDim");
+const wide = matchMedia("(min-width:1100px)"), canHover = matchMedia("(hover:hover)");
+let openKey = null, tOpen, tClose;
+const openPanel = key => {
+  clearTimeout(tClose);
+  if (openKey === key) return;
+  openKey = key;
+  triggers.forEach(t => t.setAttribute("aria-expanded", t.dataset.panel === key));
+  document.querySelectorAll(".mpanel").forEach(p => p.classList.toggle("open", p.id === "mp-" + key));
+  hdr.classList.add("panel-open"); navDim.classList.add("show");
+};
+const closePanels = (refocus = false) => {
+  clearTimeout(tOpen); clearTimeout(tClose);
+  if (!openKey) return;
+  const t = triggers.find(x => x.dataset.panel === openKey);
+  openKey = null;
+  triggers.forEach(x => x.setAttribute("aria-expanded", "false"));
+  document.querySelectorAll(".mpanel.open").forEach(p => p.classList.remove("open"));
+  hdr.classList.remove("panel-open"); navDim.classList.remove("show");
+  if (refocus && t) t.focus();
+};
+triggers.forEach(t => {
+  const key = t.dataset.panel;
+  t.addEventListener("click", () => openKey === key ? closePanels() : openPanel(key));
+  t.addEventListener("mouseenter", () => { if (!canHover.matches) return; clearTimeout(tClose); clearTimeout(tOpen); tOpen = setTimeout(() => openPanel(key), openKey ? 0 : 80); });
+  t.addEventListener("mouseleave", () => clearTimeout(tOpen));
+  t.addEventListener("keydown", e => {
+    if (e.key === "ArrowDown") { e.preventDefault(); openPanel(key); q0("mp-" + key).querySelector("a,button")?.focus(); }
   });
 });
-document.addEventListener("click", e => { if (!e.target.closest("#menu")) ddItems.forEach(x => x.classList.remove("open")); });
-document.addEventListener("keydown", e => { if (e.key === "Escape") ddItems.forEach(x => x.classList.remove("open")); });
+hdr.addEventListener("mouseleave", () => { if (canHover.matches && openKey) tClose = setTimeout(() => closePanels(), 180); });
+hdr.addEventListener("mouseenter", () => clearTimeout(tClose));
+document.querySelectorAll(".mnav-link:not(.mnav-trigger), .nav-contact, .nav-cta, .logo").forEach(a => a.addEventListener("mouseenter", () => { if (canHover.matches && openKey) tClose = setTimeout(() => closePanels(), 180); }));
+navDim.addEventListener("click", () => closePanels());
+document.querySelectorAll(".mpanel a").forEach(a => a.addEventListener("click", () => closePanels()));
+document.addEventListener("click", e => { if (openKey && !e.target.closest("#hdr")) closePanels(); });
+/* focus leaving the header (Tab past the last panel link) closes the panel */
+hdr.addEventListener("focusout", e => { if (openKey && !hdr.contains(e.relatedTarget)) closePanels(); });
+wide.addEventListener("change", () => { closePanels(); if (wide.matches) setDrawer(false); });
+
+/* mobile drawer: slide-in, focus trap, scroll lock, accordions */
+const burger = q0("burger"), drawer = q0("drawer"), scrim = q0("scrim");
+const setDrawer = o => {
+  if (o === drawer.classList.contains("open")) return;
+  drawer.classList.toggle("open", o); scrim.classList.toggle("show", o);
+  document.documentElement.classList.toggle("drawer-lock", o);
+  burger.setAttribute("aria-expanded", o);
+  drawer.inert = !o;
+  if (o) { closePanels(); setTimeout(() => q0("drClose").focus(), 60); } else burger.focus({ preventScroll: true });
+};
+drawer.inert = true;
+burger.addEventListener("click", () => { modal && modal.classList.remove("open"); setDrawer(true); });
+q0("drClose").addEventListener("click", () => setDrawer(false));
+scrim.addEventListener("click", () => setDrawer(false));
+drawer.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setDrawer(false)));
+drawer.querySelectorAll(".dr-acc").forEach(b => b.addEventListener("click", () => {
+  const body = q0(b.getAttribute("aria-controls")), o = b.getAttribute("aria-expanded") !== "true";
+  b.setAttribute("aria-expanded", o); body.hidden = !o;
+}));
+drawer.addEventListener("keydown", e => {
+  if (e.key !== "Tab") return;
+  const f = [...drawer.querySelectorAll("a[href],button:not([disabled])")].filter(x => x.offsetParent);
+  const first = f[0], last = f[f.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+document.addEventListener("keydown", e => {
+  if (e.key !== "Escape") return;
+  if (drawer.classList.contains("open")) setDrawer(false);
+  else if (openKey) closePanels(true);
+});
+const closeMenus = () => { closePanels(); setDrawer(false); };
 
 /* modal */
 const modal = document.getElementById("modal");
@@ -368,7 +440,7 @@ function tab(k) {
 }
 const dataOpenHandler = e => {
   const o = e.target.closest("[data-open]");
-  if (o) { e.preventDefault(); track("Enquiry opened", { type: o.dataset.open }); tab(o.dataset.open); modal.classList.add("open"); setMenu(false); ddItems.forEach(x => x.classList.remove("open")); }
+  if (o) { e.preventDefault(); track("Enquiry opened", { type: o.dataset.open }); tab(o.dataset.open); modal.classList.add("open"); closeMenus(); }
   const t = e.target.closest("[data-tab]"); if (t) tab(t.dataset.tab);
 };
 document.addEventListener("click", dataOpenHandler);
