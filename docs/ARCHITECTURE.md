@@ -114,6 +114,7 @@ Page forms name their team with `data-route="supply"` (resolved to the inbox fro
 
 - **Renaming a page:** rename the file, update every link (nav and footer live in `script.js`), and add a permanent redirect from the old path in `vercel.json`.
 - **Main menu:** built in `script.js` from `BUSINESSES`, `NEWS` and `SERVICES`, so a new business, status change or news story updates the menu by itself. Desktop panels open on hover (short delay), click or ArrowDown; Escape closes and returns focus. The phone drawer traps focus, locks page scroll and closes on Escape or a tap outside. `closeMenus()` closes both (the enquiry modal calls it).
+- **Footer:** white, built in `script.js` from `CONFIG`, `BUSINESSES` and the team emails, so status dots and contact details update with the data.
 - **Active nav state:** `script.js` maps clean URLs to file names (`/about` → `about.html`), so nav links compare against `.html` file names.
 - **Cache busting:** bump `?v=N` on `styles.css` and `script.js` in every page you touch
   when the file changes.

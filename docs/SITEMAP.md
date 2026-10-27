@@ -37,7 +37,7 @@ Home  /                                   index.html          [v2 ✓]
 | Consulting ▾ (mega panel) | The six services with icons and one-line descriptions · All consulting services · card: Book a service (opens the enquiry modal) |
 | Our Businesses ▾ (mega panel) | The value chain (Stage 1 · Grow … Stage 5 · Sell) and Enablers (Enabler · Know-how / Power / Build), each with photo and status chip · See all eight businesses · card: Get started / Invest |
 | Phone and tablet (below 1100px) | Logo · [Get started] · menu button, which opens a slide-in drawer: Home, the three sections as accordions (current one open), Invest & Partner, Contact, then Get started and Call / WhatsApp / Email |
-| Footer (v2) | Newsletter · Company · The value chain · Enablers · Head Office |
+| Footer (white) | Brand, intro and social icons · Newsletter card · Company · The value chain and Enablers (status dot per business) · Get in touch (email, phone, WhatsApp, address) · Reach the right team (invest@, supply@, services@, media@) · © line, Privacy notice, Photo credits, Contact, Back to top |
 | Always visible | Enquiry button (opens the modal) · WhatsApp button |
 
 ## 3. Homepage section map (v2)

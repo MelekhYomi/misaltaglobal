@@ -271,18 +271,49 @@ document.body.insertAdjacentHTML("afterbegin", `
 const firstSec = document.querySelector("section");
 if (firstSec) { firstSec.id ||= "main"; document.querySelector(".skip").href = "#" + firstSec.id; }
 
+/* ================= footer: brand + newsletter, link columns, contact routes, legal bar =================
+   White footer built from CONFIG, BUSINESSES and E, so contact details and statuses stay in one place. */
+const SOC_I = {
+  LinkedIn: '<path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z" fill="currentColor" stroke="none"/>',
+  Facebook: '<path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v7h4v-7h3l1-4h-4V8z"/>',
+  Instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
+  X: '<path d="M4 4l16 16M20 4L4 20"/>'
+};
+const fSocial = Object.entries(CONFIG.social).filter(([, u]) => u).map(([n, u]) => `<a class="f-soc" href="${u}" target="_blank" rel="noopener" aria-label="${n}" title="${n}">${svgI(SOC_I[n] || "")}</a>`).join("");
+const fBiz = b => `<a href="${bizUrl(b)}"${b.domain ? ' target="_blank" rel="noopener"' : ""}><span class="f-dot ${b.status}" title="${STATUS[b.status]}" aria-hidden="true"></span>${b.name.replace(" Ltd.", "")}<span class="sr">, ${STATUS[b.status].toLowerCase()}</span></a>`;
+const ROUTES = [["Investment & partnership", E.invest], ["Supply & offtake", E.supply], ["Consulting services", E.services], ["Media & press", E.media]];
 const footerHTML = `
-<footer><div class="container">
-  <div class="f-news"><h3>Sign up for updates on our ventures, news and investment opportunities.</h3>
-  <form id="newsForm"><input type="email" name="Email" placeholder="Email address" required aria-label="Email address"><button class="btn btn-green">Sign up</button></form></div>
-  <div class="f-mid"><a class="logo" href="index.html">${mark}</a><p>Transforming Agriculture. Building Industry. Creating Value.</p></div>
-  <div class="f-cols">
-    <div><h4>Company</h4><a href="about.html">About Us</a><a href="about.html#leadership">Leadership</a><a href="news.html">News</a><a href="investment.html">Invest &amp; Partner</a><a href="contact.html">Contact</a></div>
-    <div><h4>The value chain</h4><a href="farms.html">Misalta Farms</a><a href="agro-processing.html">Misalta Agro Processing</a><a href="agro-hubs.html">Misalta Agro Hubs</a><a href="logistics.html">Misalta Logistics</a><a href="trade-x.html">Misalta Trade X</a></div>
-    <div><h4>Enablers</h4><a href="consulting.html">Misalta Consulting</a><a href="energy.html">Misalta Energy</a><a href="construction.html">Misalta Construction</a><a href="businesses.html">All ventures</a></div>
-    <div><h4>Head Office</h4><span>${CONFIG.address}</span><a href="mailto:${E.info}">${E.info}</a><a href="tel:${CONFIG.phone.replace(/\s/g, "")}">${CONFIG.phone}</a>${Object.entries(CONFIG.social).filter(([, u]) => u).map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("")}</div>
+<footer class="site-foot"><div class="container">
+  <div class="f-top">
+    <div class="f-brand">
+      <a class="logo" href="index.html" aria-label="Misalta Global Concepts Ltd., home">${mark}</a>
+      <p>The parent company of eight businesses that grow, process, store, move and sell Nigerian produce, backed by our own power, construction and consulting teams.</p>
+      <div class="f-socs">${fSocial}</div>
+    </div>
+    <div class="f-news">
+      <span class="f-kicker">Newsletter</span>
+      <h3>Get group news, new ventures and investment openings first.</h3>
+      <form id="newsForm" class="f-form"><input type="email" name="Email" placeholder="Your email address" required aria-label="Email address"><button class="btn btn-green">Subscribe ${svgI(NI.arrow, 2)}</button></form>
+      <small>One short update a month at most. See our <a href="privacy.html">privacy notice</a>.</small>
+    </div>
   </div>
-  <div class="copy"><span>© ${new Date().getFullYear()} ${CONFIG.company} All rights reserved.</span><span><a href="privacy.html" style="display:inline">Privacy Notice</a> · <a href="credits.html" style="display:inline">Photo credits</a></span></div>
+  <div class="f-cols">
+    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="news.html">News &amp; updates</a><a href="investment.html">Invest &amp; Partner</a><a href="get-started.html">Get started</a></div>
+    <div class="f-col"><h4>The value chain</h4>${chainBiz.map(fBiz).join("")}</div>
+    <div class="f-col"><h4>Enablers</h4>${enablerBiz.map(fBiz).join("")}<a class="f-more" href="businesses.html">All eight businesses ${svgI(NI.arrow, 2)}</a></div>
+    <div class="f-col f-contact"><h4>Get in touch</h4>
+      <a href="mailto:${E.info}">${svgI(NI.mail)}<span>${E.info}</span></a>
+      <a href="${telHref}">${svgI(NI.phone)}<span>${CONFIG.phone}</span></a>
+      <a href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener">${svgI(NI.chat)}<span>WhatsApp us</span></a>
+      <span class="f-addr">${svgI('<path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>')}<span>${CONFIG.address}</span></span>
+    </div>
+  </div>
+  <div class="f-routes"><span class="f-kicker">Reach the right team</span>${ROUTES.map(([t, m]) => `<a href="mailto:${m}"><b>${t}</b><span>${m}</span></a>`).join("")}</div>
+  <div class="f-legal">
+    <span>© ${new Date().getFullYear()} ${CONFIG.company} All rights reserved.</span>
+    <nav class="f-lnav" aria-label="Legal"><a href="privacy.html">Privacy notice</a><a href="credits.html">Photo credits</a><a href="contact.html">Contact</a></nav>
+    <a class="f-top-btn" href="#top" id="toTop">Back to top ${svgI('<path d="M12 19V5M6 11l6-6 6 6"/>', 2)}</a>
+  </div>
 </div></footer>
 `;
 document.body.insertAdjacentHTML("beforeend", footerHTML + `
