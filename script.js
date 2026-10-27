@@ -2,6 +2,7 @@
 const CONFIG = {
   company: "Misalta Global Concepts Ltd.",
   short: "Misalta",
+  rc: "RC 1571831",                      // CAC registration number
   emails: {
     info: "info@misaltaglobal.com",
     services: "services@misaltaglobal.com",
@@ -312,7 +313,7 @@ const footerHTML = `
   </div>
   <div class="f-routes"><span class="f-kicker">Reach the right team</span>${ROUTES.map(([t, m]) => `<a href="mailto:${m}"><b>${t}</b><span>${m}</span></a>`).join("")}</div>
   <div class="f-legal">
-    <span>© ${new Date().getFullYear()} ${CONFIG.company} All rights reserved.</span>
+    <span>© ${new Date().getFullYear()} ${CONFIG.company} ${CONFIG.rc}. All rights reserved.</span>
     <nav class="f-lnav" aria-label="Legal"><a href="privacy.html">Privacy notice</a><a href="credits.html">Photo credits</a><a href="contact.html">Contact</a></nav>
     <a class="f-top-btn" href="#top" id="toTop">Back to top ${svgI('<path d="M12 19V5M6 11l6-6 6 6"/>', 2)}</a>
   </div>
@@ -841,12 +842,19 @@ const CRED_REVIEWED = "October 2026";
 const CRED_STATUS = { held: ["Held", "op"], progress: ["In progress", "dev"], req: ["Required", "plan"], target: ["Target standard", "soon"] };
 const CREDENTIALS = [
   { id: "group", name: "Misalta Global Concepts Ltd.", sub: "The group: applies to every business", items: [
-    ["Company incorporation", "Corporate Affairs Commission (CAC)", "Legal registration of the parent company as a limited liability company.", "held", ""],
+    ["Company incorporation", "Corporate Affairs Commission (CAC)", "Legal registration of the parent company as a limited liability company.", "held", CONFIG.rc],
     ["Tax Identification Number and Tax Clearance Certificate", "Nigeria Revenue Service (formerly FIRS)", "Proof the group is registered for tax and up to date with its returns.", "req", ""],
+    ["VAT registration", "Nigeria Revenue Service (formerly FIRS)", "Registered to charge and remit value added tax on our services and products.", "req", ""],
+    ["State tax clearance (PAYE)", "Taraba State Internal Revenue Service", "Staff income tax deducted and remitted in our home state.", "req", ""],
+    ["Annual returns filed", "Corporate Affairs Commission (CAC)", "The company is in good standing, with yearly returns filed on time.", "req", ""],
     ["Pension compliance certificate", "National Pension Commission (PenCom)", "Staff pensions remitted under the Pension Reform Act; needed for public-sector work.", "req", ""],
     ["Employee compensation compliance certificate", "Nigeria Social Insurance Trust Fund (NSITF)", "Cover for staff under the Employee's Compensation Act.", "req", ""],
+    ["Health insurance for staff", "National Health Insurance Authority (NHIA)", "Staff covered under the National Health Insurance Authority Act 2022.", "req", ""],
+    ["Group life insurance", "NAICOM-licensed insurer", "Life cover for every employee, as the Pension Reform Act requires.", "req", ""],
     ["Training contribution compliance certificate", "Industrial Training Fund (ITF)", "Annual training contribution paid; needed for government contracts.", "req", ""],
     ["Federal contractor registration (IRR)", "Bureau of Public Procurement (BPP)", "Listing on the National Database of Federal Contractors, Consultants and Service Providers.", "req", ""],
+    ["Anti-money laundering registration (SCUML)", "Special Control Unit against Money Laundering (EFCC)", "Registration for designated non-financial businesses, including consultancies and traders.", "req", ""],
+    ["MSME registration", "Small and Medium Enterprises Development Agency of Nigeria (SMEDAN)", "Access to government enterprise programmes and support.", "target", ""],
     ["Data protection compliance", "Nigeria Data Protection Commission (NDPC)", "Handling personal data under the Nigeria Data Protection Act 2023, with an annual compliance audit.", "req", ""],
     ["ISO 9001 quality management", "Accredited certification body", "One quality system across the group's businesses.", "target", ""]
   ] },
@@ -855,7 +863,8 @@ const CREDENTIALS = [
     ["FMVA® and BIDA® certifications", "Corporate Finance Institute", "Financial modelling, valuation and business intelligence credentials held by our Founder & CEO.", "held", ""],
     ["Oil and gas supplier registration (NOGICJQS)", "Nigerian Content Development and Monitoring Board (NCDMB)", "Joint qualification system for service providers to the oil and gas industry, including NNPCL.", "req", ""],
     ["Registration as a training provider", "Industrial Training Fund (ITF)", "Recognition of our training programmes for employers' training plans.", "req", ""],
-    ["IT service provider registration", "National Information Technology Development Agency (NITDA)", "For Agentic AI and technology projects, especially with public-sector clients.", "req", ""]
+    ["IT service provider registration", "National Information Technology Development Agency (NITDA)", "For Agentic AI and technology projects, especially with public-sector clients.", "req", ""],
+    ["Professional indemnity insurance", "NAICOM-licensed insurer", "Cover for clients if our advice or services ever fall short.", "target", ""]
   ] },
   { id: "farms", items: [
     ["Land title (Certificate or Right of Occupancy)", "Taraba State Government", "Secure, documented rights to the farmland we cultivate and to land held with communities.", "req", ""],
@@ -870,7 +879,8 @@ const CREDENTIALS = [
     ["Environmental permit", "Federal Ministry of Environment and Taraba State environmental regulator", "Impact assessment and approval for the processing site, its water and waste.", "req", ""],
     ["Exporter registration", "Nigerian Export Promotion Council (NEPC)", "Registration needed to export processed products and access export incentives.", "req", ""],
     ["Phytosanitary and export inspection certificates", "Nigeria Agricultural Quarantine Service (NAQS) and Federal Produce Inspection Service", "Inspection and grading so each export shipment clears at destination.", "req", ""],
-    ["Food safety management (HACCP, ISO 22000 or FSSC 22000)", "Accredited certification body", "International food safety standard expected by large buyers.", "target", ""]
+    ["Food safety management (HACCP, ISO 22000 or FSSC 22000)", "Accredited certification body", "International food safety standard expected by large buyers.", "target", ""],
+    ["Halal certification", "Recognised halal certification body", "Opens markets in Northern Nigeria, the Middle East and North Africa.", "target", ""]
   ] },
   { id: "agro-hubs", items: [
     ["Food storage facility inspection", "National Agency for Food and Drug Administration and Control (NAFDAC)", "Clean, safe storage for food produce held in the hubs.", "req", ""],
@@ -891,7 +901,8 @@ const CREDENTIALS = [
     ["Payments through licensed providers", "Central Bank of Nigeria (CBN)", "Money moves only through CBN-licensed payment service providers; Trade X does not hold funds itself.", "req", ""],
     ["Consumer protection compliance", "Federal Competition and Consumer Protection Commission (FCCPC)", "Fair terms, clear pricing and complaint handling for platform users.", "req", ""],
     ["Securities registration (only if needed)", "Securities and Exchange Commission (SEC)", "Required only if Trade X later offers commodity contracts or investment products.", "target", ""],
-    ["Card data security (PCI DSS)", "Through our payment providers", "Card details are handled by PCI DSS-certified providers, never stored by Trade X.", "target", ""]
+    ["Card data security (PCI DSS)", "Through our payment providers", "Card details are handled by PCI DSS-certified providers, never stored by Trade X.", "target", ""],
+    ["Information security management (ISO 27001)", "Accredited certification body", "Independent assurance that platform data and systems are protected.", "target", ""]
   ] },
   { id: "energy", items: [
     ["Mini-grid registration or permit", "Nigerian Electricity Regulatory Commission (NERC) or the state electricity regulator", "Licence to generate and sell power, as set by the Electricity Act 2023.", "req", ""],
