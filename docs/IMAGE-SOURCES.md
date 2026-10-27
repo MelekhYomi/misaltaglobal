@@ -43,6 +43,17 @@ Credited publicly on the Photo Credits page (`credits.html`, built from `images/
 | photo_dawanau_market | [Dawanau Market.jpg](https://commons.wikimedia.org/wiki/File:Dawanau_Market.jpg) | Gwanki | CC BY-SA 4.0 |
 | photo_corn_grains | [Corn grains on sale at the Monday Market in Kakuri, Kaduna 01.jpg](https://commons.wikimedia.org/wiki/File:Corn_grains_on_sale_at_the_Monday_Market_in_Kakuri,_Kaduna_01.jpg) | Kambai Akau | CC BY-SA 4.0 |
 | photo_grain_market | [GRAIN MARKET.jpg](https://commons.wikimedia.org/wiki/File:GRAIN_MARKET.jpg) | SMMIMAGES | CC BY-SA 4.0 |
+| photo_cocoa_warehouse | [Bagging Cocoa seeds.jpg](https://commons.wikimedia.org/wiki/File:Bagging_Cocoa_seeds.jpg) | Ei'eke | CC BY-SA 4.0 |
+| photo_cocoa_beans_drying | [Cocoa seeds being dried.jpg](https://commons.wikimedia.org/wiki/File:Cocoa_seeds_being_dried.jpg) | Ei'eke | CC BY-SA 4.0 |
+| photo_cocoa_fermentation | [Fermentation of cacao seeds.jpg](https://commons.wikimedia.org/wiki/File:Fermentation_of_cacao_seeds.jpg) | Scot Nelson | CC0 |
+| photo_cocoa_moisture | [Checking moisture.jpg](https://commons.wikimedia.org/wiki/File:Checking_moisture.jpg) | Ei'eke | CC BY-SA 4.0 |
+| photo_grain_store | [Inside a store.jpg](https://commons.wikimedia.org/wiki/File:Inside_a_store.jpg) | Cut angles | CC BY-SA 4.0 |
+| photo_maize_sacks | [Maize angled sacks.jpg](https://commons.wikimedia.org/wiki/File:Maize_angled_sacks.jpg) | Cut angles | CC BY-SA 4.0 |
+| photo_traditional_silo | [LOCAL SILO.jpg](https://commons.wikimedia.org/wiki/File:LOCAL_SILO.jpg) | Valtino44 | CC BY-SA 4.0 |
+| photo_taraba_tea | [Kakara tea farm.jpg](https://commons.wikimedia.org/wiki/File:Kakara_tea_farm.jpg) | Abubakar Oshomah Abdulwahab | CC BY-SA 4.0 |
+| photo_taraba_gembu | [Gembu landscape.jpg](https://commons.wikimedia.org/wiki/File:Gembu_landscape.jpg) | Abubakar Oshomah Abdulwahab | CC BY-SA 4.0 |
+| photo_taraba_mambilla | [The Mambilla Plateau, Nigeria 01.jpg](https://commons.wikimedia.org/wiki/File:The_Mambilla_Plateau,_Nigeria_01.jpg) | Ebere Jude Ekemezie | CC BY-SA 4.0 |
+| photo_jalingo_bridge | [Modern Jalingo Bridge.jpg](https://commons.wikimedia.org/wiki/File:Modern_Jalingo_Bridge.jpg) | Rbutso | CC BY-SA 4.0 |
 
 Galleries using these photos say they are illustrative (solar and building sites in Nigeria today, not Misalta projects). Photos showing another organisation's branding or close-ups of identifiable people were deliberately not used.
 

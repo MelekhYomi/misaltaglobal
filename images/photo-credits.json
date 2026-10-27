@@ -70,5 +70,93 @@
   "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
   "artist": "SMMIMAGES",
   "file": "commons_grain_market.jpg"
+ },
+ "photo_cocoa_warehouse": {
+  "title": "File:Bagging Cocoa seeds.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Bagging_Cocoa_seeds.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Ei'eke",
+  "file": "commons_bagging_cocoa_seeds.jpg"
+ },
+ "photo_cocoa_beans_drying": {
+  "title": "File:Cocoa seeds being dried.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Cocoa_seeds_being_dried.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Ei'eke",
+  "file": "commons_cocoa_seeds_being_dried.jpg"
+ },
+ "photo_cocoa_fermentation": {
+  "title": "File:Fermentation of cacao seeds.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Fermentation_of_cacao_seeds.jpg",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Scot Nelson",
+  "file": "commons_fermentation_of_cacao_seeds.jpg"
+ },
+ "photo_cocoa_moisture": {
+  "title": "File:Checking moisture.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Checking_moisture.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Ei'eke",
+  "file": "commons_checking_moisture.jpg"
+ },
+ "photo_grain_store": {
+  "title": "File:Inside a store.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Inside_a_store.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Cut angles",
+  "file": "commons_inside_a_store.jpg"
+ },
+ "photo_maize_sacks": {
+  "title": "File:Maize angled sacks.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Maize_angled_sacks.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Cut angles",
+  "file": "commons_maize_angled_sacks.jpg"
+ },
+ "photo_traditional_silo": {
+  "title": "File:LOCAL SILO.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:LOCAL_SILO.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Valtino44",
+  "file": "commons_local_silo.jpg"
+ },
+ "photo_taraba_tea": {
+  "title": "File:Kakara tea farm.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Kakara_tea_farm.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Abubakar Oshomah Abdulwahab",
+  "file": "commons_kakara_tea_farm.jpg"
+ },
+ "photo_taraba_gembu": {
+  "title": "File:Gembu landscape.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Gembu_landscape.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Abubakar Oshomah Abdulwahab",
+  "file": "commons_gembu_landscape.jpg"
+ },
+ "photo_taraba_mambilla": {
+  "title": "File:The Mambilla Plateau, Nigeria 01.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Mambilla_Plateau,_Nigeria_01.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Ebere Jude Ekemezie",
+  "file": "commons_the_mambilla_plateau_nigeria_01.jpg"
+ },
+ "photo_jalingo_bridge": {
+  "title": "File:Modern Jalingo Bridge.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Modern_Jalingo_Bridge.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Rbutso",
+  "file": "commons_modern_jalingo_bridge.jpg"
  }
 }

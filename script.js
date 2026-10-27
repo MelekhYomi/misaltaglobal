@@ -86,10 +86,10 @@ const BUSINESSES = [
     img: "stock_crop_rows.jpg", line: "Cultivation across Taraba State, supplying the rest of the group.",
     who: "Landowners, cooperatives and offtakers", cta: { label: "Partner with us", open: "invest" } },
   { id: "agro-processing", group: "chain", stage: "2 · Add value", tab: "Agro-Processing", name: "Misalta Agro Processing Ltd.", status: "dev", page: "agro-processing.html", domain: "",
-    img: "hero_cocoa_drying.jpg", line: "Cocoa butter and cocoa powder, processed in Taraba State.",
+    img: "photo_cocoa_warehouse.jpg", line: "Cocoa butter and cocoa powder, processed in Taraba State.",
     who: "Commodity buyers and exporters", cta: { label: "Request a supply quote", open: "supply" } },
   { id: "agro-hubs", group: "chain", stage: "3 · Store", tab: "Agro Hubs", name: "Misalta Agro Hubs", status: "plan", page: "agro-hubs.html", domain: "",
-    img: "stock_harvest_hands.jpg", line: "Aggregation, storage and post-harvest handling across Taraba.",
+    img: "photo_grain_store.jpg", line: "Aggregation, storage and post-harvest handling across Taraba.",
     who: "Farmers, cooperatives and processors", cta: { label: "Partner on agro hubs", open: "invest" } },
   { id: "logistics", group: "chain", stage: "4 · Move", tab: "Logistics", name: "Misalta Logistics", status: "plan", page: "logistics.html", domain: "",
     img: "stock_truck_road.jpg", line: "Cold rooms and specialised transport, from farm gate to buyer and across borders.",
@@ -114,7 +114,10 @@ const PHOTO_W = { cocoa_pods_hands: [480, 864, 864], cooperative_group: [480, 86
   stock_irrigation_pivot: [480, 960, 1600],
   photo_solar_irrigation: [480, 960, 1600], photo_solar_irawo: [480, 960, 1600], photo_solar_installers: [480, 960, 1600], photo_solar_rooftop: [480, 960, 1600],
   photo_block_factory: [480, 960, 1600], photo_building_site: [480, 960, 1600], photo_dawanau_market: [480, 960, 1600], photo_corn_grains: [480, 960, 1600],
-  photo_grain_market: [480, 960, 1600] };
+  photo_grain_market: [480, 960, 1600],
+  photo_cocoa_warehouse: [480, 960, 1600], photo_cocoa_beans_drying: [480, 960, 1600], photo_cocoa_fermentation: [480, 960, 1600], photo_cocoa_moisture: [480, 960, 1600],
+  photo_grain_store: [480, 960, 1600], photo_maize_sacks: [480, 960, 1600], photo_traditional_silo: [480, 960, 1600], photo_taraba_tea: [480, 960, 1600],
+  photo_taraba_gembu: [480, 960, 1600], photo_taraba_mambilla: [480, 960, 1600], photo_jalingo_bridge: [480, 960, 1600] };
 const photoBase = f => f.replace(/\.(jpg|png)$/, "");
 const photoUrl = (f, size = "lg") => PHOTO_W[photoBase(f)] ? `images/photos/${photoBase(f)}-${size}.webp` : f;
 const photoImg = (f, alt = "") => {
