@@ -12,6 +12,22 @@ Photos used on the Misalta site and their licences. Recorded 27 Oct 2026.
 | hero_market_nigeria.jpg | "A view of a vegetable section of a market in North Central Nigeria", HarunaSylvester, Wikimedia Commons | CC BY-SA 4.0 |
 | Other root photos (cocoa_pods_hands, cooperative_group, farmer_tablet_field, hands_beans_closeup, hero_field_produce, impact_field_panorama, dashboard_ui) | Supplied with the earlier site | Confirm origin with management |
 
+## Stock photos in use (downloaded 27 Oct 2026 from the original sites)
+
+Originals are kept locally in `images/originals/stock/` (not committed; re-download from the source if needed). Pexels and Unsplash licences allow commercial use without credit.
+
+| Site name (`images/photos/`) | Source | Used on |
+|---|---|---|
+| stock_truck_road | Pexels 18446790 | Logistics hero, showcase slide, card, share image |
+| stock_aerial_tractors | Unsplash jAt6cN6zl8M | Farms hero, share image |
+| stock_crop_rows | Unsplash VYKhztyEh44 | Farms showcase slide and card |
+| stock_grain_closeup | Unsplash dIAJhwUnO3w | Farms "In the field" gallery |
+| stock_seedlings | Unsplash ruQHpukrN7c | Farms "In the field" gallery |
+| stock_irrigation_pivot | Pexels 21675714 | Farms "In the field" gallery |
+| stock_harvest_hands | Pexels 775707 | Agro Hubs hero, showcase slide, card, share image |
+| stock_drone_field | Pexels 12032545 (cropped) | Trade X "What to expect" |
+| stock_field_robot | Pexels 3876417 (cropped) | Trade X "What to expect" |
+
 ## Candidates from the Agribusiness theme demo
 
 The demo at agribusiness.cmsmasters.studio credits these originals. **Never copy images from the demo site itself**; download from the original source under its own licence.

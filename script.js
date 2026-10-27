@@ -83,16 +83,16 @@ const BUSINESSES = [
     img: "hero_training_session.jpg", line: "Training, facility management, procurement and financial advisory, trusted by NNPCL and NCDC.",
     who: "Organisations and government agencies", cta: { label: "Book a service", open: "services" } },
   { id: "farms", group: "chain", stage: "1 · Grow", tab: "Farms", name: "Misalta Farms", status: "dev", page: "farms.html", domain: "",
-    img: "farmer_tablet_field.jpg", line: "Cultivation across Taraba State, supplying the rest of the group.",
+    img: "stock_crop_rows.jpg", line: "Cultivation across Taraba State, supplying the rest of the group.",
     who: "Landowners, cooperatives and offtakers", cta: { label: "Partner with us", open: "invest" } },
   { id: "agro-processing", group: "chain", stage: "2 · Add value", tab: "Agro-Processing", name: "Misalta Agro Processing Ltd.", status: "dev", page: "agro-processing.html", domain: "",
     img: "hero_cocoa_drying.jpg", line: "Cocoa butter and cocoa powder, processed in Taraba State.",
     who: "Commodity buyers and exporters", cta: { label: "Request a supply quote", open: "supply" } },
   { id: "agro-hubs", group: "chain", stage: "3 · Store", tab: "Agro Hubs", name: "Misalta Agro Hubs", status: "plan", page: "agro-hubs.html", domain: "",
-    img: "hands_beans_closeup.jpg", line: "Aggregation, storage and post-harvest handling across Taraba.",
+    img: "stock_harvest_hands.jpg", line: "Aggregation, storage and post-harvest handling across Taraba.",
     who: "Farmers, cooperatives and processors", cta: { label: "Partner on agro hubs", open: "invest" } },
   { id: "logistics", group: "chain", stage: "4 · Move", tab: "Logistics", name: "Misalta Logistics", status: "plan", page: "logistics.html", domain: "",
-    img: "hero_field_produce.jpg", line: "Cold rooms and specialised transport, from farm gate to buyer and across borders.",
+    img: "stock_truck_road.jpg", line: "Cold rooms and specialised transport, from farm gate to buyer and across borders.",
     who: "Producers, traders and industry", cta: { label: "Register interest", href: "logistics.html" } },
   { id: "trade-x", group: "chain", stage: "5 · Sell", tab: "Trade X", name: "Misalta Trade X", status: "soon", page: "trade-x.html", domain: "",
     img: "hero_market_nigeria.jpg", line: "A digital marketplace connecting farmers, suppliers, brokers and buyers.",
@@ -108,7 +108,10 @@ const BUSINESSES = [
    Widths per photo, for srcset: [sm, md, lg]. */
 const PHOTO_W = { cocoa_pods_hands: [480, 864, 864], cooperative_group: [480, 864, 864], dashboard_ui: [480, 960, 1440], farmer_tablet_field: [480, 864, 864],
   hands_beans_closeup: [480, 864, 864], hero_cocoa_drying: [480, 960, 1600], hero_farmland_nigeria: [480, 960, 1600], hero_field_produce: [480, 864, 864],
-  hero_market_nigeria: [480, 960, 1600], hero_training_session: [480, 960, 1600], impact_field_panorama: [480, 960, 1344] };
+  hero_market_nigeria: [480, 960, 1600], hero_training_session: [480, 960, 1600], impact_field_panorama: [480, 960, 1344],
+  stock_truck_road: [480, 960, 1600], stock_aerial_tractors: [480, 960, 1600], stock_crop_rows: [480, 960, 1600], stock_grain_closeup: [480, 960, 1600],
+  stock_seedlings: [480, 960, 1600], stock_harvest_hands: [480, 960, 1600], stock_drone_field: [480, 960, 1600], stock_field_robot: [480, 960, 1600],
+  stock_irrigation_pivot: [480, 960, 1600] };
 const photoBase = f => f.replace(/\.(jpg|png)$/, "");
 const photoUrl = (f, size = "lg") => PHOTO_W[photoBase(f)] ? `images/photos/${photoBase(f)}-${size}.webp` : f;
 const photoImg = (f, alt = "") => {
