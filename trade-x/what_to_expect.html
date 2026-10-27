@@ -3,58 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<base href="/">
 <title>What to Expect | Misalta Trade X</title>
-<meta name="description" content="What to expect from Misalta Trade X: market access, crop finance, traceability and logistics — the planned direction of the platform, end to end.">
-<meta property="og:site_name" content="Misalta Global Ltd."><meta property="og:title" content="What to Expect | Misalta Trade X"><meta property="og:description" content="Market access, crop finance, traceability and logistics — the planned direction of the Misalta Trade X platform."><meta property="og:type" content="website"><meta property="og:image" content="images/logo.jfif"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0f2e1c"><link rel="icon" type="image/jfif" href="images/logo.jfif">
-<!-- Faithful clone of the Trade X "what to expect" prototype
-     (hisbu6mcmt22o.kimi.page). Styles, scripts and photos are served
-     locally from this site: ./assets/index.css, ./assets/index.js and
-     /<name>.jpg|png at the site root. -->
-<link rel="stylesheet" href="assets/index.css">
+<meta name="description" content="What to expect from Misalta Trade X: the planned platform for market access, crop finance, traceability and logistics in agricultural trade. Coming soon; join the early access list.">
+<meta property="og:site_name" content="Misalta Global Concepts Ltd."><meta property="og:title" content="What to Expect | Misalta Trade X"><meta property="og:description" content="Market access, crop finance, traceability and logistics: the planned direction of the Misalta Trade X platform."><meta property="og:type" content="website"><link rel="canonical" href="https://misaltaglobal.com/trade-x/what_to_expect"><meta property="og:url" content="https://misaltaglobal.com/trade-x/what_to_expect"><meta property="og:image" content="https://misaltaglobal.com/images/og/trade-x.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="What to Expect | Misalta Trade X"><meta name="twitter:image" content="https://misaltaglobal.com/images/og/trade-x.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0b2a18"><link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32.png"><link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png"><link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Public+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=27">
 </head>
-<body>
-<div id="root"></div>
+<body class="v2" data-biz="trade-x">
+<!-- Native rebuild of the earlier Trade X prototype. Figures (quality, finance terms,
+     impact and pilot numbers, office locations) are kept from the prototype at
+     management's instruction (27 Oct 2026). -->
 
-<script type="module" src="assets/index.js"></script>
-<script>
-/* Wire the prototype's CTAs into the live Misalta flow once the app mounts.
-   Runs a few passes because the SPA renders asynchronously. */
-(function () {
-  var patch = function () {
-    document.querySelectorAll("#root a").forEach(function (a) {
-      var t = (a.textContent || "").trim().toLowerCase();
-      if (t.indexOf("early access") > -1 || t.indexOf("request a demo") > -1 || t.indexOf("request demo") > -1 || t.indexOf("join the pilot") > -1) {
-        a.setAttribute("href", "../trade-x.html#early-access");
-      }
-      if (a.getAttribute("href") === "/") a.setAttribute("href", "../index.html");
-      if (t.indexOf("privacy") > -1) a.setAttribute("href", "../privacy.html");
-      if (t.indexOf("contact") > -1 && (a.getAttribute("href") || "").indexOf("mailto") === -1) {
-        a.setAttribute("href", "../contact.html");
-      }
-    });
-    /* CTAs rendered as buttons: make them navigate to the real form. */
-    document.querySelectorAll("#root button").forEach(function (b) {
-      var t = (b.textContent || "").trim().toLowerCase();
-      if ((t.indexOf("early access") > -1 || t.indexOf("demo") > -1 || t.indexOf("pilot") > -1) && !b.dataset.wired) {
-        b.dataset.wired = "1";
-        b.style.cursor = "pointer";
-        b.addEventListener("click", function () { location.href = "../trade-x.html#early-access"; });
-      }
-    });
-    /* Footer year, patched via text nodes (safe for the SPA's listeners). */
-    var walker = document.createTreeWalker(document.getElementById("root"), NodeFilter.SHOW_TEXT);
-    while (walker.nextNode()) {
-      if (walker.currentNode.nodeValue.indexOf("© 2025") > -1) {
-        walker.currentNode.nodeValue = walker.currentNode.nodeValue.replace("© 2025", "© 2026");
-      }
-    }
-  };
-  var tries = 0, timer = setInterval(function () {
-    patch();
-    if (document.querySelector("#root section") && document.querySelector("#root h2") && ++tries > 4) patch();
-    if (tries > 25) clearInterval(timer);
-  }, 300);
-})();
-</script>
+<section class="phero torn-b" style="--shade:linear-gradient(rgba(7,28,17,.64),rgba(7,28,17,.74));--bg:url('images/photos/hero_market_nigeria-lg.webp');--bg-sm:url('images/photos/hero_market_nigeria-md.webp')"><div class="container">
+  <div class="crumbs" role="navigation" aria-label="Breadcrumb"><a href="index.html">Home</a><i>/</i><a href="businesses.html">Our Businesses</a><i>/</i><a href="trade-x.html">Misalta Trade X</a><i>/</i><span>What to Expect</span></div>
+  <div style="margin-top:16px"><span class="chip soon on-dark">Coming soon</span></div>
+  <h1>Trade Smarter. Grow Greener.</h1>
+  <p>The platform we are building: one place for market access, crop finance, traceability and logistics in agricultural trade.</p>
+  <div class="phero-acts"><a class="btn btn-gold" href="trade-x.html#early-access">Join early access</a><a class="btn btn-ghost" href="trade-x.html">Back to Misalta Trade X</a></div>
+</div></section>
+
+<section class="proof-strip"><div class="container">
+  <p class="planned-note reveal"><b>Coming soon.</b> Misalta Trade X is not yet open for trading. Join the early access list to be among the first users.</p>
+</div></section>
+
+<!-- Four pillars -->
+<section class="mist"><div class="container">
+  <div class="sec-head reveal"><span class="eyebrow">The platform</span><h2 class="title">Four Things, One Platform</h2><p class="lead">Built for producers, cooperatives, traders and buyers.</p></div>
+  <div class="fgrid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+    <div class="feat reveal"><div class="head"><span class="ibadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></span><span class="chip soon">Planned</span></div><h3>Market access</h3><p>Find buyers and supply, see benchmark prices and connect directly across the market.</p></div>
+    <div class="feat reveal d1"><div class="head"><span class="ibadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/></svg></span><span class="chip soon">Planned</span></div><h3>Crop finance</h3><p>Working capital linked to verified harvests and contracts, repaid when you sell.</p></div>
+    <div class="feat reveal d2"><div class="head"><span class="ibadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span><span class="chip soon">Planned</span></div><h3>Traceability</h3><p>Lot-level origin and chain of custody, from farm to buyer, ready for export markets.</p></div>
+    <div class="feat reveal"><div class="head"><span class="ibadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13v10H1zM14 10h4l3 3v3h-7"/><circle cx="5" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span><span class="chip soon">Planned</span></div><h3>Logistics</h3><p>Shipments coordinated with the trade, linked to Misalta Logistics and the agro hubs.</p></div>
+  </div>
+</div></section>
+
+<!-- Command centre -->
+<section><div class="container who">
+  <div class="reveal l">
+    <span class="eyebrow">Designed for teams</span>
+    <h2 class="title">Your Agri-Trade Command Centre</h2>
+    <p class="lead">Plan, contract, ship and get paid, with every lot traceable from farm to buyer.</p>
+    <div class="arrow-list">
+      <a href="#features">Real-time pricing<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></a>
+      <a href="#features">Contract workflow<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></a>
+      <a href="#features">Logistics sync<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+  <div class="who-visual reveal r"><img src="images/photos/dashboard_ui-md.webp" srcset="images/photos/dashboard_ui-sm.webp 480w, images/photos/dashboard_ui-md.webp 960w, images/photos/dashboard_ui-lg.webp 1440w" sizes="(max-width: 700px) 92vw, 600px" alt="Design preview of the planned Misalta Trade X dashboard" loading="lazy" style="object-fit:contain;background:#fff"></div>
+</div></section>
+
+<!-- Features -->
+<section class="mist" id="features"><div class="container">
+  <div class="sec-head reveal"><span class="eyebrow">Features</span><h2 class="title">Everything You Need to Trade With Confidence</h2><p class="lead">From pricing to payment, built for producers, cooperatives and buyers.</p></div>
+  <div class="fgrid two">
+    <div class="feat reveal"><span class="ibadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span><h3>Live market pricing</h3><p>Benchmark bids, historical trends and local price alerts.</p></div>
+    <div class="feat reveal d1"><span class="ibadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><h3>Digital contracts</h3><p>Secure agreements, e-signatures and automated compliance checks.</p></div>
+    <div class="feat reveal"><span class="ibadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/></svg></span><h3>Crop finance</h3><p>Access to working capital linked to verified harvests and contracts.</p></div>
+    <div class="feat reveal d1"><span class="ibadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span><h3>Traceability &amp; EUDR readiness</h3><p>Lot-level origin, chain of custody and the records needed for EU deforestation-regulation (EUDR) markets.</p></div>
+  </div>
+</div></section>
+
+<!-- Deep dives -->
+<section><div class="container">
+  <div class="dives">
+    <div class="dive reveal"><span class="eyebrow">Quality</span><h3>Proof of quality in every shipment</h3><p>Scan, verify and share origin, moisture, grade and chain of custody, ready for EUDR and premium markets.</p><div class="mini-stats"><div><b>99.8%</b><span>Scan success</span></div><div><b>&lt;2hr</b><span>Lab turnaround</span></div><div><b>100%</b><span>Lot traceable</span></div></div></div>
+    <div class="dive reveal d1"><span class="eyebrow">Market intelligence</span><h3>Know the market before you sell</h3><ul><li>Daily price alerts by region</li><li>Export demand signals</li><li>Harvest volume forecasts</li></ul></div>
+    <div class="dive reveal d2"><span class="eyebrow">Finance</span><h3>Turn your harvest into collateral</h3><p>Get crop-linked advances with transparent terms. Repay when you sell, with no hidden fees and no complex paperwork.</p><div class="mini-stats"><div><b>Up to 70%</b><span>Advance</span></div><div><b>On sale</b><span>Repayment</span></div><div><b>48 hours</b><span>Decision</span></div></div></div>
+    <div class="dive reveal"><span class="eyebrow">Cooperatives</span><h3>Built with cooperatives, for cooperatives</h3><ul><li>Shared prices and coordinated logistics</li><li>Access to group financing</li><li>Every member keeps their own record</li><li>Farmer training</li></ul></div>
+  </div>
+</div></section>
+
+<!-- Impact -->
+<section class="mist"><div class="container">
+  <div class="sec-head reveal"><span class="eyebrow">Impact</span><h2 class="title">Real Results, Measured in Livelihoods</h2></div>
+  <div class="proof impact-nums reveal">
+    <div class="pf"><b data-count="30" data-suf="%">0</b><span>Post-harvest loss reduction, through better storage and processing</span></div>
+    <div class="pf"><b data-count="50" data-suf="%">0</b><span>Income increase for smallholder farmers</span></div>
+    <div class="pf"><b data-count="500" data-suf="+">0</b><span>Rural jobs created across the value chain</span></div>
+    <div class="pf"><b>1,000</b><span>Farmers in pilot, scaling to 10,000+</span></div>
+  </div>
+</div></section>
+
+<section class="cta-band" style="padding-top:clamp(64px,8vw,100px)"><div class="container"><div class="cta-box reveal">
+  <div><h2>Ready to Transform Your Trade?</h2><p>Join the pilot. Get early access to pricing, financing and traceability tools built for your region.</p><p style="margin-top:8px;font-size:.9rem">Lagos · Abuja · Field offices</p></div>
+  <div class="acts"><a class="btn btn-gold" href="trade-x.html#early-access">Join early access</a><a class="btn btn-ghost" href="get-started.html#trade-x">Request a demo</a></div>
+</div></div></section>
+
+<script src="script.js?v=37"></script>
 </body>
 </html>

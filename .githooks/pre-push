@@ -1,0 +1,8 @@
+#!/bin/sh
+# Runs the site check before every push; refuses the push if anything is broken.
+# Enable once per computer:  git config core.hooksPath .githooks
+node tools/check.mjs || {
+  echo ""
+  echo "Push blocked: fix the errors above, commit, then push again."
+  exit 1
+}

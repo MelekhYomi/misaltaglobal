@@ -1,0 +1,10 @@
+# Not part of the public website: internal docs, tooling and photo masters
+docs/
+tools/
+.github/
+.githooks/
+images/originals/
+README.md
+.gitattributes
+.gitignore
+.vercelignore

@@ -1,0 +1,68 @@
+# Site map and information architecture
+
+## 1. Page tree
+
+```
+Home  /                                   index.html          [v2 ✓]
+├── About Us  /about                      about.html          leadership, video, clients
+├── News  /news                           news.html           one page, story chosen by #slug
+├── What We Offer  /consulting            consulting.html     Misalta Consulting (6 services)
+├── Our Businesses  /businesses           businesses.html     overview of all ventures
+│   ├── In the field
+│   │   ├── Misalta Farms  /farms                 farms.html            In development
+│   │   ├── Agro-Processing  /agro-processing     agro-processing.html  In development
+│   │   └── Agro Hubs  /agro-hubs                 agro-hubs.html        Planned
+│   ├── The road ahead
+│   │   ├── Misalta Logistics  /logistics         logistics.html        Planned
+│   │   ├── Misalta Energy  /energy               energy.html           Planned
+│   │   └── Misalta Construction  /construction   construction.html     Planned  (/blocks redirects here)
+│   └── Coming soon
+│       └── Misalta Trade X  /trade-x             trade-x.html          Coming soon
+│           └── What to expect  /trade-x/what_to_expect   (compiled prototype)
+├── Invest & Partner  /investment         investment.html
+├── Get Started  /get-started            get-started.html    3-step onboarding, preset by #business, routed by team
+├── Contact  /contact                     contact.html        contact form
+└── Privacy Notice  /privacy              privacy.html        footer only
+```
+
+17 public pages. The `menu-mock.html` design mock is local-only and not deployed.
+
+## 2. Navigation map
+
+| Location | Items |
+|---|---|
+| Top bar (v2) | email · phone · address · social links |
+| Main nav | Home · **Company ▾** · **Consulting ▾** · **Our Businesses ▾** · Invest & Partner · [Contact] |
+| Company ▾ | About Us · Leadership · Our journey · News & updates |
+| Consulting ▾ | Misalta Consulting (Training, Facility Management, Procurement, Financial Advisory, Agentic AI, Agro Services) · Work with us (Join a service, Ask for agro services, Bespoke quote) |
+| Our Businesses ▾ | The value chain (1 Grow: Farms · 2 Add value: Agro-Processing · 3 Store: Agro Hubs · 4 Move: Logistics · 5 Sell: Trade X) · Enablers (Energy, Construction, Consulting) · Overview (All ventures, Trade X early access) |
+| Footer (v2) | Newsletter · Company · The value chain · Enablers · Head Office |
+| Always visible | Enquiry button (opens the modal) · WhatsApp button |
+
+## 3. Homepage section map (v2)
+
+| # | Section | Purpose | Links to |
+|---|---|---|---|
+| 1 | Hero slider (4 slides) | Who we are at a glance; one slide per pillar | businesses, investment, consulting, about, agro-processing, agro-hubs, trade-x |
+| 2 | Who we are | Positioning + 3 proof points + 30+ years badge | consulting, agro-processing, trade-x, about |
+| 3 | Stats strip | 30+ yrs · 8 ventures · 6 services · Trade X | none |
+| 4 | Video banner | Company film in a lightbox | about |
+| 5 | What we offer | 8 venture cards with status | every venture page |
+| 6 | Our value | Mission statement on a photo | investment |
+| 7 | Why choose us | 4 pillars as numbered cards | consulting, agro-processing, trade-x, agro-hubs |
+| 8 | Newsroom | Latest 5 stories, scrolling ticker | news#slug |
+| 9 | Clients | NNPCL, NCDC logos | none |
+| 10 | Footer | Newsletter + full link map | all |
+
+## 4. Audiences and journeys
+
+| Audience | Arrives looking for | Path | Converts at |
+|---|---|---|---|
+| **Investor / partner** | Credibility, pipeline, contact | Home → Our value → Invest & Partner → About (leadership) | Investment enquiry → `invest@` |
+| **Corporate client** | Training, FM, procurement | Home → What we offer → Consulting | Consulting enquiry → `services@` |
+| **Commodity buyer / supplier** | Cocoa products, volumes | Home → Agro-Processing | Supply enquiry → `supply@` |
+| **Farmer / trader** | Market access | Home hero slide 4 → Trade X → What to expect | Early access form → `tradex@` |
+| **Media / general** | News, contacts | News, Contact | Contact form → `info@` / `media@` |
+
+Every journey ends at a form that routes to a named inbox (see ARCHITECTURE §5). Each page should
+offer its audience's conversion action in its first screen and again at the end.

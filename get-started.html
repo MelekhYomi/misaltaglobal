@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get Started | Misalta Global Concepts Ltd.</title>
+<meta name="description" content="Start working with Misalta Global Concepts Ltd. Tell us who you are and which Misalta business you're interested in, and the right team will reply within two business days.">
+<meta property="og:site_name" content="Misalta Global Concepts Ltd."><meta property="og:title" content="Get Started | Misalta Global Concepts Ltd."><meta property="og:description" content="Tell us who you are and which Misalta business you're interested in. The right team replies within two business days."><meta property="og:type" content="website"><link rel="canonical" href="https://misaltaglobal.com/get-started"><meta property="og:url" content="https://misaltaglobal.com/get-started"><meta property="og:image" content="https://misaltaglobal.com/images/og/get-started.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Get Started | Misalta Global Concepts Ltd."><meta name="twitter:image" content="https://misaltaglobal.com/images/og/get-started.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0b2a18"><link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32.png"><link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png"><link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Public+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=27">
+</head>
+<body class="v2">
+
+<section class="phero torn-b" style="--shade:linear-gradient(rgba(7,28,17,.64),rgba(7,28,17,.72));--bg:url('images/photos/hero_field_produce-lg.webp');--bg-sm:url('images/photos/hero_field_produce-md.webp')"><div class="container">
+  <div class="crumbs" role="navigation" aria-label="Breadcrumb"><a href="index.html">Home</a><i>/</i><span>Get Started</span></div>
+  <h1>Let's Get to Work</h1>
+  <p>Three quick steps. Your message goes to the Misalta team that can help, and we reply within two business days.</p>
+</div></section>
+
+<section class="mist"><div class="container">
+  <div class="onboard" id="onboard">
+    <ol class="ob-progress" aria-label="Progress">
+      <li class="on" data-s="1"><span>1</span>About you</li>
+      <li data-s="2"><span>2</span>Your interest</li>
+      <li data-s="3"><span>3</span>Your details</li>
+    </ol>
+
+    <form id="obForm" novalidate>
+      <fieldset class="ob-step on" data-s="1">
+        <legend>Which best describes you?</legend>
+        <div class="ob-chips" id="obRoles" role="radiogroup" aria-label="Which best describes you?"></div>
+        <p class="ob-err" id="obErr1" hidden>Choose the option that fits you best.</p>
+        <div class="ob-nav"><span></span><button type="button" class="btn btn-green" data-next="2">Continue</button></div>
+      </fieldset>
+
+      <fieldset class="ob-step" data-s="2">
+        <legend>What are you interested in?</legend>
+        <div class="ob-chips biz" id="obBiz" role="radiogroup" aria-label="What are you interested in?"></div>
+        <p class="ob-err" id="obErr2" hidden>Choose a Misalta business, or "Not sure yet".</p>
+        <div class="ob-nav"><button type="button" class="btn btn-dark" data-back="1">Back</button><button type="button" class="btn btn-green" data-next="3">Continue</button></div>
+      </fieldset>
+
+      <fieldset class="ob-step" data-s="3">
+        <legend>How can we reach you?</legend>
+        <p class="ob-sum" id="obSum"></p>
+        <div class="row"><div class="field"><label for="obName">Full name *</label><input id="obName" name="Name" autocomplete="name" required></div><div class="field"><label for="obEmail">Email *</label><input id="obEmail" type="email" name="Email" autocomplete="email" required></div></div>
+        <div class="row"><div class="field"><label for="obPhone">Phone or WhatsApp</label><input id="obPhone" name="Phone" autocomplete="tel"></div><div class="field"><label for="obOrg">Organisation</label><input id="obOrg" name="Organisation" autocomplete="organization"></div></div>
+        <div class="field"><label for="obLoc">State and country *</label><input id="obLoc" name="Location" placeholder="e.g. Taraba, Nigeria" required></div>
+        <div class="field"><label for="obMsg">What would you like to do? *</label><textarea id="obMsg" name="Message" rows="4" required placeholder="A few lines is enough: quantities, timelines, the service you need, or the partnership you have in mind."></textarea></div>
+        <label class="consent"><input type="checkbox" name="Consent" value="Yes" required> I agree to be contacted about this enquiry. See the <a href="privacy.html">privacy notice</a>.</label>
+        <p class="ob-err" id="obErr3" hidden>Please fill in the fields marked * and tick the consent box.</p>
+        <div class="ob-nav"><button type="button" class="btn btn-dark" data-back="2">Back</button><button type="submit" class="btn btn-green">Send to the team</button></div>
+        <p class="note">Submitting opens your email app with the message prepared for the right team.</p>
+      </fieldset>
+
+      <div class="ob-step ob-done" data-s="4" tabindex="-1">
+        <span class="ibadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span>
+        <h2>Thank you. You're on your way.</h2>
+        <p id="obDoneMsg">Your enquiry is with the right Misalta team. We reply within two business days.</p>
+        <div class="steps three" style="margin-top:30px">
+          <div class="step"><span class="when">Next</span><h3>We review your enquiry</h3><p>The team for your chosen business reads every message.</p></div>
+          <div class="step"><span class="when">Within 2 business days</span><h3>We get in touch</h3><p>By email, phone or WhatsApp, whichever you gave us.</p></div>
+          <div class="step"><span class="when">Then</span><h3>We get to work</h3><p>A proposal, quote, partnership terms or early access.</p></div>
+        </div>
+        <div class="ob-nav" style="justify-content:center;margin-top:30px"><a class="btn btn-green" href="businesses.html">Explore our businesses</a><a class="btn btn-dark" href="index.html">Back to home</a></div>
+      </div>
+    </form>
+  </div>
+</div></section>
+
+<script src="script.js?v=37"></script>
+</body>
+</html>

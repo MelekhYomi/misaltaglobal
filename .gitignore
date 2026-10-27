@@ -4,3 +4,7 @@ FILE-TREE.html
 # local design mock (not for publication)
 /menu-mock.html
 /_verify.html
+
+# internal planning docs: kept locally, never published (repo is public)
+docs/ROADMAP.md
+docs/CONTENT-STRATEGY.md
