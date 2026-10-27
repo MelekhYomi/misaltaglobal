@@ -22,10 +22,11 @@ Home  /                                   index.html          [v2 ✓]
 ├── Invest & Partner  /investment         investment.html
 ├── Get Started  /get-started            get-started.html    3-step onboarding, preset by #business, routed by team
 ├── Contact  /contact                     contact.html        contact form
+├── Trust & Compliance /trust            trust.html          Company menu, footer, homepage proof strip
 └── Privacy Notice  /privacy              privacy.html        footer only
 ```
 
-17 public pages. The `menu-mock.html` design mock is local-only and not deployed.
+18 public pages. The `menu-mock.html` design mock is local-only and not deployed.
 
 ## 2. Navigation map
 

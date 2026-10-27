@@ -73,6 +73,15 @@ In `CONFIG.team`: fill in `name` and `photo` for each person. An empty name show
 
 ---
 
+## Licences, certifications and compliance
+
+Everything lives in `CREDENTIALS` in `script.js` (group first, then one entry per business). It feeds the register on `trust.html` and the "Licences & compliance" section on every business page.
+
+- Each item is `[name, issuer, why it matters, status, reference]`.
+- Status: `"held"` (certificate on file), `"progress"` (application under way), `"req"` (required, not yet confirmed), `"target"` (voluntary standard).
+- When a certificate arrives: change `"req"` to `"held"` and add its number as the reference (for example the CAC RC number). Update `CRED_REVIEWED`.
+- Only mark an item "held" when the certificate is on file. The site check warns while items are still "Required" or held without a reference.
+
 ## A business gets its own website
 
 1. In `BUSINESSES` (`script.js`), set the business's `domain`, e.g. `domain: "misaltafarms.com"`. Every card, showcase slide and "Learn more" link switches to **Visit site ↗**, and the business page shows a link to the new site.

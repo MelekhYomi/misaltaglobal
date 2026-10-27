@@ -193,6 +193,7 @@ const NI = {
   about: '<circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/>', people: '<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M15 14.5c3 0 6 1.9 6 5.5"/>',
   journey: '<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>', news: '<path d="M4 19.5A2.5 2.5 0 016.5 17H20V3H6.5A2.5 2.5 0 004 5.5z"/><path d="M4 19.5V21h16"/>',
   mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/>', phone: '<path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/>',
+  shield: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
   chat: '<path d="M21 11.5a8.4 8.4 0 01-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1121 11.5z"/>', invest: '<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>',
   grad: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>', building: '<path d="M4 21V5a2 2 0 012-2h8a2 2 0 012 2v16"/><path d="M16 9h2a2 2 0 012 2v10M2 21h20M8 7h4M8 11h4M8 15h4"/>',
   cart: '<path d="M3 4h2l2.4 11.2a2 2 0 002 1.6h7.7a2 2 0 001.9-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17" cy="20.5" r="1.2"/>',
@@ -206,11 +207,12 @@ const bizItem = b => `<a class="mp-biz" href="${bizUrl(b)}"${b.domain ? ' target
 const chainBiz = BUSINESSES.filter(b => b.group === "chain"), enablerBiz = BUSINESSES.filter(b => b.group === "enabler");
 const latest = NEWS[0];
 const PANELS = {
-  company: { label: "Company", pages: ["about.html", "news.html", "credits.html"], html: `
+  company: { label: "Company", pages: ["about.html", "news.html", "credits.html", "trust.html"], html: `
     <div class="mp-col mp-col-wide"><span class="mp-label">The group</span>
       <a class="mp-link" href="about.html"><span class="mp-ic">${svgI(NI.about)}</span><span><b>About Misalta</b><small>Our story, mission and values since 2019</small></span></a>
       <a class="mp-link" href="about.html#leadership"><span class="mp-ic">${svgI(NI.people)}</span><span><b>Our people</b><small>CEO, board, directors and advisers</small></span></a>
       <a class="mp-link" href="about.html#journey"><span class="mp-ic">${svgI(NI.journey)}</span><span><b>Our journey</b><small>From professional services to a group</small></span></a>
+      <a class="mp-link" href="trust.html"><span class="mp-ic">${svgI(NI.shield)}</span><span><b>Trust &amp; compliance</b><small>Licences, certifications and standards</small></span></a>
       <a class="mp-link" href="news.html"><span class="mp-ic">${svgI(NI.news)}</span><span><b>News &amp; updates</b><small>What the group is doing</small></span></a>
       <a class="mp-link" href="contact.html"><span class="mp-ic">${svgI(NI.mail)}</span><span><b>Contact</b><small>Reach the right team directly</small></span></a>
     </div>
@@ -298,7 +300,7 @@ const footerHTML = `
     </div>
   </div>
   <div class="f-cols">
-    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="news.html">News &amp; updates</a><a href="investment.html">Invest &amp; Partner</a><a href="get-started.html">Get started</a></div>
+    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="trust.html">Trust &amp; compliance</a><a href="news.html">News &amp; updates</a><a href="investment.html">Invest &amp; Partner</a><a href="get-started.html">Get started</a></div>
     <div class="f-col"><h4>The value chain</h4>${chainBiz.map(fBiz).join("")}</div>
     <div class="f-col"><h4>Enablers</h4>${enablerBiz.map(fBiz).join("")}<a class="f-more" href="businesses.html">All eight businesses ${svgI(NI.arrow, 2)}</a></div>
     <div class="f-col f-contact"><h4>Get in touch</h4>
@@ -828,3 +830,132 @@ document.querySelectorAll("[data-tmap]").forEach(el => {
   <div class="tmap-legend"><span><i class="lg-proc"></i>Agro-processing site</span><span><i class="lg-hub"></i>Proposed agro hub</span><span><i class="lg-ring"></i>Both</span></div>
   <p class="tmap-note">Taraba State, Nigeria. Schematic: positions are approximate LGA locations, not to scale.</p>`;
 });
+
+/* ======================================================================= */
+/* TRUST & COMPLIANCE register: the licences, registrations and standards each business needs.
+   status: "held" (we hold it: add the reference) · "progress" (application under way)
+           "req" (required for this business; not yet confirmed) · "target" (voluntary standard we are working towards)
+   Only mark "held" once management has the certificate on file. ref: certificate or registration number,
+   shown publicly only if filled in. Update "reviewed" whenever statuses change. */
+const CRED_REVIEWED = "October 2026";
+const CRED_STATUS = { held: ["Held", "op"], progress: ["In progress", "dev"], req: ["Required", "plan"], target: ["Target standard", "soon"] };
+const CREDENTIALS = [
+  { id: "group", name: "Misalta Global Concepts Ltd.", sub: "The group: applies to every business", items: [
+    ["Company incorporation", "Corporate Affairs Commission (CAC)", "Legal registration of the parent company as a limited liability company.", "held", ""],
+    ["Tax Identification Number and Tax Clearance Certificate", "Nigeria Revenue Service (formerly FIRS)", "Proof the group is registered for tax and up to date with its returns.", "req", ""],
+    ["Pension compliance certificate", "National Pension Commission (PenCom)", "Staff pensions remitted under the Pension Reform Act; needed for public-sector work.", "req", ""],
+    ["Employee compensation compliance certificate", "Nigeria Social Insurance Trust Fund (NSITF)", "Cover for staff under the Employee's Compensation Act.", "req", ""],
+    ["Training contribution compliance certificate", "Industrial Training Fund (ITF)", "Annual training contribution paid; needed for government contracts.", "req", ""],
+    ["Federal contractor registration (IRR)", "Bureau of Public Procurement (BPP)", "Listing on the National Database of Federal Contractors, Consultants and Service Providers.", "req", ""],
+    ["Data protection compliance", "Nigeria Data Protection Commission (NDPC)", "Handling personal data under the Nigeria Data Protection Act 2023, with an annual compliance audit.", "req", ""],
+    ["ISO 9001 quality management", "Accredited certification body", "One quality system across the group's businesses.", "target", ""]
+  ] },
+  { id: "consulting", items: [
+    ["Certified Management Consultant (CMC) and Fellowship (FIMC)", "Institute of Management Consultants, Nigeria", "Held by our Founder & CEO, who leads consulting engagements.", "held", ""],
+    ["FMVA® and BIDA® certifications", "Corporate Finance Institute", "Financial modelling, valuation and business intelligence credentials held by our Founder & CEO.", "held", ""],
+    ["Oil and gas supplier registration (NOGICJQS)", "Nigerian Content Development and Monitoring Board (NCDMB)", "Joint qualification system for service providers to the oil and gas industry, including NNPCL.", "req", ""],
+    ["Registration as a training provider", "Industrial Training Fund (ITF)", "Recognition of our training programmes for employers' training plans.", "req", ""],
+    ["IT service provider registration", "National Information Technology Development Agency (NITDA)", "For Agentic AI and technology projects, especially with public-sector clients.", "req", ""]
+  ] },
+  { id: "farms", items: [
+    ["Land title (Certificate or Right of Occupancy)", "Taraba State Government", "Secure, documented rights to the farmland we cultivate and to land held with communities.", "req", ""],
+    ["Environmental Impact Assessment approval", "Federal Ministry of Environment", "Required by the EIA Act before large-scale land clearing and farming.", "req", ""],
+    ["Certified seed and registered inputs", "National Agricultural Seeds Council (NASC) and NAFDAC", "Seed from certified producers and agrochemicals registered for use in Nigeria.", "req", ""],
+    ["GLOBALG.A.P. certification", "GLOBALG.A.P. (independent certification body)", "Good agricultural practice recognised by export buyers and retailers.", "target", ""],
+    ["Sustainable sourcing certification", "e.g. Rainforest Alliance", "For cocoa and tea buyers who need certified, traceable supply.", "target", ""]
+  ] },
+  { id: "agro-processing", items: [
+    ["Product registration and facility inspection", "National Agency for Food and Drug Administration and Control (NAFDAC)", "Every packaged food product registered and the plant inspected before sale.", "req", ""],
+    ["Factory registration", "Federal Ministry of Labour and Employment", "Registration of the factory premises under the Factories Act, with safety inspections.", "req", ""],
+    ["Environmental permit", "Federal Ministry of Environment and Taraba State environmental regulator", "Impact assessment and approval for the processing site, its water and waste.", "req", ""],
+    ["Exporter registration", "Nigerian Export Promotion Council (NEPC)", "Registration needed to export processed products and access export incentives.", "req", ""],
+    ["Phytosanitary and export inspection certificates", "Nigeria Agricultural Quarantine Service (NAQS) and Federal Produce Inspection Service", "Inspection and grading so each export shipment clears at destination.", "req", ""],
+    ["Food safety management (HACCP, ISO 22000 or FSSC 22000)", "Accredited certification body", "International food safety standard expected by large buyers.", "target", ""]
+  ] },
+  { id: "agro-hubs", items: [
+    ["Food storage facility inspection", "National Agency for Food and Drug Administration and Control (NAFDAC)", "Clean, safe storage for food produce held in the hubs.", "req", ""],
+    ["Fire safety certificate", "Federal Fire Service", "Fire protection and safety approval for each warehouse.", "req", ""],
+    ["Fumigation and pest control standards", "Nigeria Agricultural Quarantine Service (NAQS)", "Treatment of stored produce to quarantine standards, especially for export.", "req", ""],
+    ["Warehouse certification for warehouse receipts", "A recognised commodity exchange (e.g. Nigerian Commodity Exchange)", "Lets farmers use stored produce as collateral and sell through an exchange.", "target", ""],
+    ["Food safety management (ISO 22000)", "Accredited certification body", "International standard for safe storage and handling.", "target", ""]
+  ] },
+  { id: "logistics", items: [
+    ["Courier and logistics licence", "Nigerian Postal Commission", "Licence to operate courier and logistics services under the Nigerian Postal Service Act 2023.", "req", ""],
+    ["Fleet safety certification (RTSSS)", "Federal Road Safety Corps (FRSC)", "Road Transport Safety Standardisation Scheme for commercial fleet operators.", "req", ""],
+    ["Vehicle licences, roadworthiness and haulage permits", "State motor licensing and vehicle inspection authorities", "Every vehicle licensed, inspected and permitted for the routes it runs.", "req", ""],
+    ["Goods-in-transit and fleet insurance", "NAICOM-licensed insurers", "Cover for customers' goods and for our vehicles.", "req", ""],
+    ["Freight forwarding registration", "Council for the Regulation of Freight Forwarding in Nigeria (CRFFN)", "Needed if we handle port and export freight for customers.", "target", ""]
+  ] },
+  { id: "trade-x", items: [
+    ["Data protection compliance", "Nigeria Data Protection Commission (NDPC)", "Protecting buyers' and sellers' data under the Nigeria Data Protection Act 2023.", "req", ""],
+    ["Payments through licensed providers", "Central Bank of Nigeria (CBN)", "Money moves only through CBN-licensed payment service providers; Trade X does not hold funds itself.", "req", ""],
+    ["Consumer protection compliance", "Federal Competition and Consumer Protection Commission (FCCPC)", "Fair terms, clear pricing and complaint handling for platform users.", "req", ""],
+    ["Securities registration (only if needed)", "Securities and Exchange Commission (SEC)", "Required only if Trade X later offers commodity contracts or investment products.", "target", ""],
+    ["Card data security (PCI DSS)", "Through our payment providers", "Card details are handled by PCI DSS-certified providers, never stored by Trade X.", "target", ""]
+  ] },
+  { id: "energy", items: [
+    ["Mini-grid registration or permit", "Nigerian Electricity Regulatory Commission (NERC) or the state electricity regulator", "Licence to generate and sell power, as set by the Electricity Act 2023.", "req", ""],
+    ["Installation inspection and certification", "Nigerian Electricity Management Services Agency (NEMSA)", "Every installation tested and certified safe before it is switched on.", "req", ""],
+    ["Registered engineers", "Council for the Regulation of Engineering in Nigeria (COREN)", "Design and supervision signed off by COREN-registered engineers.", "req", ""],
+    ["Equipment conformity (SONCAP)", "Standards Organisation of Nigeria (SON)", "Imported solar panels, inverters and batteries meet Nigerian standards.", "req", ""],
+    ["Environmental approval for larger plants", "Federal Ministry of Environment", "Impact assessment for generation sites above the screening threshold.", "req", ""]
+  ] },
+  { id: "construction", items: [
+    ["Engineering firm registration", "Council for the Regulation of Engineering in Nigeria (COREN)", "The firm and its engineers registered to deliver engineering works.", "req", ""],
+    ["Registered builders, architects and quantity surveyors", "CORBON, ARCON and QSRBN", "Each discipline signed off by a professional registered with its council.", "req", ""],
+    ["Building plan and development approvals", "State physical planning and development control authorities", "Approved plans and permits for every site before work starts.", "req", ""],
+    ["Building materials conformity (MANCAP)", "Standards Organisation of Nigeria (SON)", "Blocks and materials we produce tested against Nigerian Industrial Standards.", "req", ""],
+    ["Health and safety management (ISO 45001)", "Accredited certification body", "Safe sites for our teams, subcontractors and communities.", "target", ""]
+  ] }
+];
+CREDENTIALS.forEach(c => { const b = BUSINESSES.find(x => x.id === c.id); if (b) { c.name = b.name; c.sub = b.group === "chain" ? "Stage " + b.stage : "Enabler · " + b.stage; c.page = b.page; c.status = b.status; } });
+const PARTNER_TYPES = [
+  ["invest", "Development finance and impact investors", "Long-term capital for processing plants, hubs and power."],
+  ["building", "Banks and agricultural lenders", "Working capital and input finance for farmers and offtake."],
+  ["people", "Farmer cooperatives and communities", "Out-grower schemes, land partnerships and fair prices."],
+  ["cart", "Offtakers, processors and exporters", "Buyers for grain, cocoa, tea and processed products."],
+  ["bot", "Equipment and technology suppliers", "Machinery, solar systems, cold chain and software."],
+  ["journey", "Government and development programmes", "Federal and Taraba State agencies and donor programmes."]
+];
+
+const credRow = ([t, issuer, why, st, ref]) => `<li class="cr-row"><div class="cr-main"><b>${t}</b><span class="cr-issuer">${issuer}</span><p>${why}</p>${ref ? `<span class="cr-ref">Ref: ${ref}</span>` : ""}</div><i class="chip ${CRED_STATUS[st][1]}">${CRED_STATUS[st][0]}</i></li>`;
+const credCount = items => Object.keys(CRED_STATUS).map(k => [k, items.filter(i => i[3] === k).length]);
+
+/* trust.html: full register with filters */
+const reg = q0("register");
+if (reg) {
+  const all = CREDENTIALS.flatMap(c => c.items);
+  const sum = q0("credSummary");
+  if (sum) sum.innerHTML = credCount(all).map(([k, n]) => `<div class="pf"><b>${n}</b><span><i class="chip ${CRED_STATUS[k][1]}">${CRED_STATUS[k][0]}</i></span></div>`).join("") + `<div class="pf"><b>${CREDENTIALS.length}</b><span>Entities covered</span></div>`;
+  const rv = q0("credReviewed"); if (rv) rv.textContent = CRED_REVIEWED;
+  q0("credFilter").innerHTML = `<button type="button" class="on" data-f="all">All</button>` + CREDENTIALS.map(c => `<button type="button" data-f="${c.id}">${c.id === "group" ? "Group" : c.name.replace("Misalta ", "").replace(" Ltd.", "")}</button>`).join("");
+  reg.innerHTML = CREDENTIALS.map(c => `<article class="cr-card reveal" id="${c.id}" data-id="${c.id}">
+    <header class="cr-head"><div><small>${c.sub}</small><h3>${c.name}</h3></div>${c.status ? `<i class="chip ${c.status}">${STATUS[c.status]}</i>` : `<i class="chip op">Operating since 2019</i>`}</header>
+    <ul class="cr-list">${c.items.map(credRow).join("")}</ul>
+    ${c.page ? `<a class="mp-all" href="${c.page}">Visit ${c.name.replace(" Ltd.", "")} ${svgI(NI.arrow)}</a>` : ""}
+  </article>`).join("");
+  q0("credFilter").addEventListener("click", e => {
+    const b = e.target.closest("[data-f]"); if (!b) return;
+    q0("credFilter").querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b));
+    reg.querySelectorAll(".cr-card").forEach(c => c.hidden = b.dataset.f !== "all" && c.dataset.id !== b.dataset.f);
+  });
+  const pt = q0("partnerTypes");
+  if (pt) pt.innerHTML = PARTNER_TYPES.map(([ic, t, d]) => `<div class="pt-card reveal"><span class="mp-ic">${svgI(NI[ic])}</span><b>${t}</b><p>${d}</p></div>`).join("");
+  /* open a business straight from trust.html#farms */
+  const h = location.hash.slice(1);
+  if (h && CREDENTIALS.some(c => c.id === h)) q0("credFilter").querySelector(`[data-f="${h}"]`)?.click();
+}
+
+/* business pages: "Licences & compliance" section before the FAQ, from the same register */
+const credBiz = CREDENTIALS.find(c => c.page && c.page === page);
+const faqSec = document.querySelector(".faq-sec");
+if (credBiz && faqSec) {
+  faqSec.insertAdjacentHTML("beforebegin", `<section class="cred-sec mist" id="compliance"><div class="container cred-wrap">
+    <div class="cred-intro reveal"><span class="eyebrow">Licences &amp; compliance</span><h2 class="title">Built to Be Licensed, Safe and Bankable</h2>
+      <p class="lead">These are the licences, registrations and standards ${credBiz.name.replace(" Ltd.", "")} works under, with an honest status for each. Group-wide registrations such as CAC, tax and data protection are on the <a href="trust.html">Trust &amp; Compliance</a> page.</p>
+      <div class="cred-legend">${Object.values(CRED_STATUS).map(([t, c]) => `<i class="chip ${c}">${t}</i>`).join("")}</div>
+      <a class="btn btn-green btn-sm" href="trust.html#${credBiz.id}">See the full register</a></div>
+    <ul class="cr-list cr-card reveal">${credBiz.items.map(credRow).join("")}</ul>
+  </div></section>`);
+}
+document.querySelectorAll("#register .reveal, #partnerTypes .reveal, .cred-sec .reveal").forEach(el => io.observe(el));

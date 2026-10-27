@@ -139,6 +139,9 @@ if (/phone: "\+234 000 000 0000"/.test(scriptJs)) warn("CONFIG", "phone number i
 if (/whatsapp: "2340000000000"/.test(scriptJs)) warn("CONFIG", "WhatsApp number is still a placeholder (the button goes nowhere)");
 if (/address: "Address to be confirmed"/.test(scriptJs)) warn("CONFIG", "head-office address is still a placeholder");
 if (/keys: \{ default: "", info: "", services: "", supply: "", tradex: "", invest: "", media: "" \}/.test(scriptJs)) warn("CONFIG", "no Web3Forms keys: forms fall back to the visitor's email app");
+{ const reqN = (scriptJs.match(/", "req", ""\]/g) || []).length, heldNoRef = (scriptJs.match(/", "held", ""\]/g) || []).length;
+  if (reqN) warn("CREDENTIALS", `${reqN} licences/registrations still marked "Required": set "held" (with ref) or "progress" as management confirms`);
+  if (heldNoRef) warn("CREDENTIALS", `${heldNoRef} "Held" items have no reference number yet (e.g. CAC RC number)`); }
 if ((NEWS_SLUGS.length) < 3) warn("NEWS", `${NEWS_SLUGS.length} stories: the homepage news band stays hidden until there are 3`);
 
 /* report */
