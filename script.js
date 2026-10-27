@@ -491,18 +491,22 @@ if (show) {
   labels.forEach((t, n) => tabsBox.insertAdjacentHTML("beforeend", `<button role="tab" aria-selected="false" data-n="${n}"><span>${t}</span><i></i></button>`));
   const tabs = [...tabsBox.children];
   const DUR = 7000, still = matchMedia("(prefers-reduced-motion:reduce)").matches;
-  let i = 0, timer = null, paused = false, stopped = still;
+  let i = 0, timer = null, paused = false, stopped = still, offscreen = false;
   const loadBg = n => { const s = slides[(n + slides.length) % slides.length], bg = s.querySelector(".bg"); if (s.dataset.bg && !bg.style.backgroundImage) bg.style.background = s.dataset.bg + " center/cover no-repeat"; };
   function go(n, user) {
     i = (n + slides.length) % slides.length;
     loadBg(i); loadBg(i + 1);
     slides.forEach((s, k) => { s.classList.toggle("active", k === i); s.setAttribute("aria-hidden", k !== i); s.querySelectorAll("a,button").forEach(a => a.tabIndex = k === i ? 0 : -1); });
     tabs.forEach((t, k) => { t.classList.remove("on", "run"); t.setAttribute("aria-selected", k === i); if (k === i) { t.classList.add("on"); void t.offsetWidth; if (!stopped) t.classList.add("run"); } });
-    tabs[i].scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
+    /* keep the active tab visible by scrolling the tab strip only, never the page */
+    const tl = tabs[i].offsetLeft - tabsBox.offsetLeft, tr = tl + tabs[i].offsetWidth;
+    if (tl < tabsBox.scrollLeft || tr > tabsBox.scrollLeft + tabsBox.clientWidth) tabsBox.scrollTo({ left: Math.max(0, tl - 16), behavior: "smooth" });
     if (user) stopped = true;
     schedule();
   }
-  function schedule() { clearTimeout(timer); tabs.forEach(t => t.classList.toggle("hold", paused)); if (!stopped && !paused) timer = setTimeout(() => go(i + 1), DUR); }
+  function schedule() { clearTimeout(timer); tabs.forEach(t => t.classList.toggle("hold", paused || offscreen)); if (!stopped && !paused && !offscreen) timer = setTimeout(() => go(i + 1), DUR); }
+  /* no auto-advance while the showcase is scrolled out of view */
+  new IntersectionObserver(([en]) => { offscreen = !en.isIntersecting; schedule(); }, { threshold: .25 }).observe(show);
   tabs.forEach(t => t.onclick = () => { track("Showcase tab", { business: t.textContent }); stopped = true; tabs[i].classList.remove("run"); go(+t.dataset.n, true); });
   tabsBox.addEventListener("keydown", e => { if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); go(i + (e.key === "ArrowRight" ? 1 : -1), true); tabs[i].focus(); } });
   show.addEventListener("mouseenter", () => { paused = true; schedule(); });
