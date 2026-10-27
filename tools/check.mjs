@@ -141,7 +141,7 @@ if (/address: "Address to be confirmed"/.test(scriptJs)) warn("CONFIG", "head-of
 if (/keys: \{ default: "", info: "", services: "", supply: "", tradex: "", invest: "", media: "" \}/.test(scriptJs)) warn("CONFIG", "no Web3Forms keys: forms fall back to the visitor's email app");
 { const reqN = (scriptJs.match(/", "req", ""\]/g) || []).length, heldNoRef = (scriptJs.match(/", "held", ""\]/g) || []).length;
   if (reqN) warn("CREDENTIALS", `${reqN} licences/registrations still marked "Required": set "held" (with ref) or "progress" as management confirms`);
-  if (heldNoRef) warn("CREDENTIALS", `${heldNoRef} "Held" items have no reference number (fine for personal certifications)`); }
+  if (heldNoRef) warn("CREDENTIALS", `${heldNoRef} "Held" items have no reference number yet: add certificate numbers when available (not needed for personal certifications)`); }
 if ((NEWS_SLUGS.length) < 3) warn("NEWS", `${NEWS_SLUGS.length} stories: the homepage news band stays hidden until there are 3`);
 
 /* report */

@@ -843,16 +843,16 @@ const CRED_STATUS = { held: ["Held", "op"], progress: ["In progress", "dev"], re
 const CREDENTIALS = [
   { id: "group", name: "Misalta Global Concepts Ltd.", sub: "The group: applies to every business", items: [
     ["Company incorporation", "Corporate Affairs Commission (CAC)", "Legal registration of the parent company as a limited liability company.", "held", CONFIG.rc],
-    ["Tax Identification Number and Tax Clearance Certificate", "Nigeria Revenue Service (formerly FIRS)", "Proof the group is registered for tax and up to date with its returns.", "req", ""],
+    ["Tax Identification Number and Tax Clearance Certificate", "Nigeria Revenue Service (formerly FIRS)", "Proof the group is registered for tax and up to date with its returns.", "held", ""],
     ["VAT registration", "Nigeria Revenue Service (formerly FIRS)", "Registered to charge and remit value added tax on our services and products.", "req", ""],
     ["State tax clearance (PAYE)", "Taraba State Internal Revenue Service", "Staff income tax deducted and remitted in our home state.", "req", ""],
     ["Annual returns filed", "Corporate Affairs Commission (CAC)", "The company is in good standing, with yearly returns filed on time.", "req", ""],
-    ["Pension compliance certificate", "National Pension Commission (PenCom)", "Staff pensions remitted under the Pension Reform Act; needed for public-sector work.", "req", ""],
-    ["Employee compensation compliance certificate", "Nigeria Social Insurance Trust Fund (NSITF)", "Cover for staff under the Employee's Compensation Act.", "req", ""],
+    ["Pension compliance certificate", "National Pension Commission (PenCom)", "Staff pensions remitted under the Pension Reform Act; needed for public-sector work.", "held", ""],
+    ["Employee compensation compliance certificate", "Nigeria Social Insurance Trust Fund (NSITF)", "Cover for staff under the Employee's Compensation Act.", "held", ""],
     ["Health insurance for staff", "National Health Insurance Authority (NHIA)", "Staff covered under the National Health Insurance Authority Act 2022.", "req", ""],
     ["Group life insurance", "NAICOM-licensed insurer", "Life cover for every employee, as the Pension Reform Act requires.", "req", ""],
-    ["Training contribution compliance certificate", "Industrial Training Fund (ITF)", "Annual training contribution paid; needed for government contracts.", "req", ""],
-    ["Federal contractor registration (IRR)", "Bureau of Public Procurement (BPP)", "Listing on the National Database of Federal Contractors, Consultants and Service Providers.", "req", ""],
+    ["Training contribution compliance certificate", "Industrial Training Fund (ITF)", "Annual training contribution paid; needed for government contracts.", "held", ""],
+    ["Federal contractor registration (IRR)", "Bureau of Public Procurement (BPP)", "Listing on the National Database of Federal Contractors, Consultants and Service Providers.", "held", ""],
     ["Anti-money laundering registration (SCUML)", "Special Control Unit against Money Laundering (EFCC)", "Registration for designated non-financial businesses, including consultancies and traders.", "req", ""],
     ["MSME registration", "Small and Medium Enterprises Development Agency of Nigeria (SMEDAN)", "Access to government enterprise programmes and support.", "target", ""],
     ["Data protection compliance", "Nigeria Data Protection Commission (NDPC)", "Handling personal data under the Nigeria Data Protection Act 2023, with an annual compliance audit.", "req", ""],
@@ -861,7 +861,7 @@ const CREDENTIALS = [
   { id: "consulting", items: [
     ["Certified Management Consultant (CMC) and Fellowship (FIMC)", "Institute of Management Consultants, Nigeria", "Held by our Founder & CEO, who leads consulting engagements.", "held", ""],
     ["FMVA® and BIDA® certifications", "Corporate Finance Institute", "Financial modelling, valuation and business intelligence credentials held by our Founder & CEO.", "held", ""],
-    ["Oil and gas supplier registration (NOGICJQS)", "Nigerian Content Development and Monitoring Board (NCDMB)", "Joint qualification system for service providers to the oil and gas industry, including NNPCL.", "req", ""],
+    ["Oil and gas supplier registration (NOGICJQS)", "Nigerian Content Development and Monitoring Board (NCDMB)", "Joint qualification system for service providers to the oil and gas industry, including NNPCL.", "held", ""],
     ["Registration as a training provider", "Industrial Training Fund (ITF)", "Recognition of our training programmes for employers' training plans.", "req", ""],
     ["IT service provider registration", "National Information Technology Development Agency (NITDA)", "For Agentic AI and technology projects, especially with public-sector clients.", "req", ""],
     ["Professional indemnity insurance", "NAICOM-licensed insurer", "Cover for clients if our advice or services ever fall short.", "target", ""]
