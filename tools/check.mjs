@@ -55,7 +55,7 @@ for (const page of pages) {
   /* structure */
   const h1 = (h.match(/<h1[\s>]/g) || []).length;
   if (page !== "news.html" && h1 !== 1) err(page, `expected 1 <h1>, found ${h1}`);
-  if (!/<body class="v2"/.test(h)) err(page, "body is not on the v2 design");
+  if (!/<body class="v2[ "]/.test(h)) err(page, "body is not on the v2 design");
   if (/v2\.css/.test(h)) err(page, "still links v2.css");
   if (/Misalta Global Ltd\./.test(h)) err(page, 'uses the old name "Misalta Global Ltd."');
   if (/\son(click|error|load|submit|change)=/i.test(h)) err(page, "inline event handler (blocked by CSP)");
@@ -89,6 +89,24 @@ for (const page of pages) {
 }
 if (versions.css.size > 1) err("pages", `styles.css versions differ across pages: ${[...versions.css].join(", ")}`);
 if (versions.js.size > 1) err("pages", `script.js versions differ across pages: ${[...versions.js].join(", ")}`);
+
+/* content that must never disappear when pages are regenerated */
+const MUST = {
+  "index.html": ['id="showcase"', 'id="bizGrid"', 'class="proof-strip"'],
+  "businesses.html": ['data-biz-grid="chain"', 'data-biz-grid="enabler"'],
+  "farms.html": ['data-tmap="all"', "100,000", "under cultivation"],
+  "agro-processing.html": ['data-tmap="processing"', "Mayo Dassa Old Airstrip"],
+  "agro-hubs.html": ['data-tmap="hub"', "Gashaka"],
+  "investment.html": ['data-tmap="all"', 'id="pipeline"', 'id="partner"'],
+  "about.html": ['id="team-ceo"', 'id="team-dir"', 'id="team-adv"'],
+  "get-started.html": ['id="obForm"']
+};
+for (const [page, needles] of Object.entries(MUST)) {
+  if (!existsSync(join(ROOT, page))) { err(page, "page is missing"); continue; }
+  const h = read(page);
+  for (const n of needles) if (!h.includes(n)) err(page, `required content missing: ${n}`);
+}
+if (/farmland in Taraba State/.test(read("farms.html"))) err("farms.html", 'says "farmland"; management confirmed "under cultivation"');
 
 /* sitemap + robots */
 const sitemap = read("sitemap.xml");
