@@ -28,6 +28,24 @@ Originals are kept locally in `images/originals/stock/` (not committed; re-downl
 | stock_drone_field | Pexels 12032545 (cropped) | Trade X "What to expect" |
 | stock_field_robot | Pexels 3876417 (cropped) | Trade X "What to expect" |
 
+## Wikimedia Commons photos in use (downloaded 27 Oct 2026)
+
+Credited publicly on the Photo Credits page (`credits.html`, built from `images/photo-credits.json`). Originals kept locally in `images/originals/commons/`.
+
+| Site name | Source | Author | Licence |
+|---|---|---|---|
+| photo_solar_irrigation | [SOLAR POWER IRRIGATION RICE FARMING.jpg](https://commons.wikimedia.org/wiki/File:SOLAR_POWER_IRRIGATION_RICE_FARMING.jpg) | SMMIMAGES | CC BY-SA 4.0 |
+| photo_solar_irawo | [Solar photovoltaic panels in Irawo, Atisbo, Oyo State, Nigeria.jpg](https://commons.wikimedia.org/wiki/File:Solar_photovoltaic_panels_in_Irawo,_Atisbo,_Oyo_State,_Nigeria.jpg) | NigerianScribe | CC0 |
+| photo_solar_installers | [Men working on the solar panel 01.jpg](https://commons.wikimedia.org/wiki/File:Men_working_on_the_solar_panel_01.jpg) | Ngostary2k | CC0 |
+| photo_solar_rooftop | [Sun empowers solar panels.jpg](https://commons.wikimedia.org/wiki/File:Sun_empowers_solar_panels.jpg) | Onwuka Glory | CC BY-SA 4.0 |
+| photo_block_factory | [A block factory in Agbede.jpg](https://commons.wikimedia.org/wiki/File:A_block_factory_in_Agbede.jpg) | Chic portfolios | CC BY-SA 4.0 |
+| photo_building_site | [Building under construction Nigeria.jpg](https://commons.wikimedia.org/wiki/File:Building_under_construction_Nigeria.jpg) | Fatimah Bello | CC BY-SA 4.0 |
+| photo_dawanau_market | [Dawanau Market.jpg](https://commons.wikimedia.org/wiki/File:Dawanau_Market.jpg) | Gwanki | CC BY-SA 4.0 |
+| photo_corn_grains | [Corn grains on sale at the Monday Market in Kakuri, Kaduna 01.jpg](https://commons.wikimedia.org/wiki/File:Corn_grains_on_sale_at_the_Monday_Market_in_Kakuri,_Kaduna_01.jpg) | Kambai Akau | CC BY-SA 4.0 |
+| photo_grain_market | [GRAIN MARKET.jpg](https://commons.wikimedia.org/wiki/File:GRAIN_MARKET.jpg) | SMMIMAGES | CC BY-SA 4.0 |
+
+Galleries using these photos say they are illustrative (solar and building sites in Nigeria today, not Misalta projects). Photos showing another organisation's branding or close-ups of identifiable people were deliberately not used.
+
 ## Candidates from the Agribusiness theme demo
 
 The demo at agribusiness.cmsmasters.studio credits these originals. **Never copy images from the demo site itself**; download from the original source under its own licence.

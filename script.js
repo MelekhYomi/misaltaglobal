@@ -98,10 +98,10 @@ const BUSINESSES = [
     img: "hero_market_nigeria.jpg", line: "A digital marketplace connecting farmers, suppliers, brokers and buyers.",
     who: "Farmers, traders and buyers", cta: { label: "Join early access", href: "trade-x.html#early-access" } },
   { id: "energy", group: "enabler", stage: "Power", tab: "Energy", name: "Misalta Energy", status: "plan", page: "energy.html", domain: "",
-    img: "", art: "sun", line: "Solar and backup power for agro-industrial sites and the communities around them.",
+    img: "photo_solar_irrigation.jpg", art: "sun", line: "Solar and backup power for agro-industrial sites and the communities around them.",
     who: "Energy partners, installers and financiers", cta: { label: "Partner on energy", open: "invest" } },
   { id: "construction", group: "enabler", stage: "Build", tab: "Construction", name: "Misalta Construction", status: "plan", page: "construction.html", domain: "",
-    img: "", art: "blocks", line: "Concrete blocks, building materials and real estate.",
+    img: "photo_block_factory.jpg", art: "blocks", line: "Concrete blocks, building materials and real estate.",
     who: "Developers, builders and buyers", cta: { label: "Get notified at launch", href: "construction.html" } }
 ];
 /* Optimised photos live in images/photos/<name>-sm|md|lg.webp (see docs/ARCHITECTURE.md).
@@ -111,7 +111,10 @@ const PHOTO_W = { cocoa_pods_hands: [480, 864, 864], cooperative_group: [480, 86
   hero_market_nigeria: [480, 960, 1600], hero_training_session: [480, 960, 1600], impact_field_panorama: [480, 960, 1344],
   stock_truck_road: [480, 960, 1600], stock_aerial_tractors: [480, 960, 1600], stock_crop_rows: [480, 960, 1600], stock_grain_closeup: [480, 960, 1600],
   stock_seedlings: [480, 960, 1600], stock_harvest_hands: [480, 960, 1600], stock_drone_field: [480, 960, 1600], stock_field_robot: [480, 960, 1600],
-  stock_irrigation_pivot: [480, 960, 1600] };
+  stock_irrigation_pivot: [480, 960, 1600],
+  photo_solar_irrigation: [480, 960, 1600], photo_solar_irawo: [480, 960, 1600], photo_solar_installers: [480, 960, 1600], photo_solar_rooftop: [480, 960, 1600],
+  photo_block_factory: [480, 960, 1600], photo_building_site: [480, 960, 1600], photo_dawanau_market: [480, 960, 1600], photo_corn_grains: [480, 960, 1600],
+  photo_grain_market: [480, 960, 1600] };
 const photoBase = f => f.replace(/\.(jpg|png)$/, "");
 const photoUrl = (f, size = "lg") => PHOTO_W[photoBase(f)] ? `images/photos/${photoBase(f)}-${size}.webp` : f;
 const photoImg = (f, alt = "") => {
@@ -262,7 +265,7 @@ const footerHTML = `
     <div><h4>Enablers</h4><a href="consulting.html">Misalta Consulting</a><a href="energy.html">Misalta Energy</a><a href="construction.html">Misalta Construction</a><a href="businesses.html">All ventures</a></div>
     <div><h4>Head Office</h4><span>${CONFIG.address}</span><a href="mailto:${E.info}">${E.info}</a><a href="tel:${CONFIG.phone.replace(/\s/g, "")}">${CONFIG.phone}</a>${Object.entries(CONFIG.social).filter(([, u]) => u).map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("")}</div>
   </div>
-  <div class="copy"><span>© ${new Date().getFullYear()} ${CONFIG.company} All rights reserved.</span><span><a href="privacy.html" style="display:inline">Privacy Notice</a></span></div>
+  <div class="copy"><span>© ${new Date().getFullYear()} ${CONFIG.company} All rights reserved.</span><span><a href="privacy.html" style="display:inline">Privacy Notice</a> · <a href="credits.html" style="display:inline">Photo credits</a></span></div>
 </div></footer>
 `;
 document.body.insertAdjacentHTML("beforeend", footerHTML + `

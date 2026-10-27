@@ -154,3 +154,11 @@ Photos are served from `images/photos/` as WebP in three sizes: `<name>-sm.webp`
 - **Responsive backgrounds**: page heroes and banners set `--shade`, `--bg` (1600 px) and `--bg-sm` (960 px) inline; `styles.css` chooses by screen width.
 - **Site check**: `node tools/check.mjs` before every publish (see README).
 
+## 10. Animated diagrams
+
+Energy ("How the power flows") and Trade X ("How Trade X connects") use hand-built SVG animated with CSS keyframes and SVG `<animateMotion>`. There is no JavaScript or third-party library, so the CSP needs no change. Each diagram has a wide desktop version (`.anim-desk`) and a tall phone version (`.anim-mob`), and both stop animating for visitors who prefer reduced motion. The markup lives in the page generator's `anim_energy.html` / `anim_tradex.html` partials, and the styles in `styles.css` (`.anim-*`).
+
+## 11. Photo credits
+
+`credits.html` lists every third-party photo with author, licence and source, and is linked from every footer. CC BY and CC BY-SA photos must stay listed there while they are used.
+

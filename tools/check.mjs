@@ -99,7 +99,10 @@ const MUST = {
   "agro-hubs.html": ['data-tmap="hub"', "Gashaka"],
   "investment.html": ['data-tmap="all"', 'id="pipeline"', 'id="partner"'],
   "about.html": ['id="team-ceo"', 'id="team-dir"', 'id="team-adv"'],
-  "get-started.html": ['id="obForm"']
+  "get-started.html": ['id="obForm"'],
+  "trade-x.html": ['id="early-access"', 'anim-tradex'],
+  "energy.html": ['anim-energy'],
+  "credits.html": ['Wikimedia Commons']
 };
 for (const [page, needles] of Object.entries(MUST)) {
   if (!existsSync(join(ROOT, page))) { err(page, "page is missing"); continue; }
