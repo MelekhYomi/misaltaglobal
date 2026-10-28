@@ -246,7 +246,7 @@ const PANELS = {
       <a class="mp-all" href="consulting.html">All consulting services ${svgI(NI.arrow)}</a>
     </div>
     <div class="mp-feature" style="--fbg:url('${photoUrl("hero_training_session.jpg", "md")}')"><span class="mp-ftext"><small>Trusted by NNPCL and NCDC</small><b>Book a service with our in-house team</b><span class="mp-acts"><a class="btn btn-gold btn-sm" href="#" data-open="services">Book a service</a></span></span></div>` },
-  businesses: { label: "Our Businesses", pages: ["businesses.html", ...BUSINESSES.map(b => b.page), "what_to_expect.html"].filter(p => p !== "consulting.html"), html: `
+  businesses: { label: "Our Business", pages: ["businesses.html", ...BUSINESSES.map(b => b.page), "what_to_expect.html"].filter(p => p !== "consulting.html"), html: `
     <div class="mp-col"><span class="mp-label">The value chain</span>${chainBiz.map(bizItem).join("")}</div>
     <div class="mp-col"><span class="mp-label">Enablers</span>${enablerBiz.map(bizItem).join("")}
       <a class="mp-all" href="businesses.html">See all eight businesses ${svgI(NI.arrow)}</a></div>
