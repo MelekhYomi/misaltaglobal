@@ -133,6 +133,7 @@ Downloaded 28 Oct 2026 from each organisation's official website, trimmed and re
 | nim.webp | https://nim.ng/wp-content/uploads/2023/11/NIM-LOGO-4-300x300.png |
 | afcfta.webp | https://au-afcfta.org/wp-content/uploads/2026/08/cropped-The-AfCFTA-Official-Logo-270x270.png |
 | ndpc.webp | https://ndpc.gov.ng/wp-content/uploads/2024/02/NDPC-copped.png |
+| ncaa.webp | https://ncaa.gov.ng/images/logo.png |
 | cfi.svg | https://cdn.corporatefinanceinstitute.com/wp-content/themes/cfi/dist/images/logotm-cfi.svg |
 
 No official logo found online for Taraba State IRS, IMC Nigeria or Taraba Shapers Association; they show as text seals. ISO and Halal show as text seals (ISO does not allow its logo to be used by certified organisations).

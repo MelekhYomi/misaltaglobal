@@ -42,7 +42,7 @@ export function buildKB() {
   lines.push(`Legal name: ${c.company} (${c.rc}). Short name: ${c.short}.`);
   lines.push(`Phone and WhatsApp: ${c.phone} (WhatsApp link https://wa.me/${c.whatsapp}). Head office address: ${c.address}.`);
   lines.push("Team emails: " + Object.entries(c.emails).map(([k, v]) => `${k}: ${v}`).join("; ") + ".");
-  lines.push("Social: " + Object.entries(c.social).filter(([, u]) => u).map(([k, v]) => `${k} ${v}`).join("; ") + ".");
+  lines.push("Social: " + Object.entries(c.social).map(([k, v]) => v ? `${k} ${v}` : `${k} (address not published yet; do not give one)`).join("; ") + ".");
   lines.push("Reply time: the team replies within two business days.");
   lines.push("\n# Leadership (a role with no name is still to be announced; never invent names)");
   for (const v of Object.values(c.team || {}))

@@ -16,9 +16,11 @@ const CONFIG = {
   address: "Address to be confirmed",
   social: {
     LinkedIn: "https://www.linkedin.com/company/misalta-global-ltd/",
-    Facebook: "",
+    Facebook: "",                        // empty = the icon shows with a dummy link until the address is added
     Instagram: "",
-    X: ""
+    X: "",
+    YouTube: "",
+    TikTok: ""
   },
   /* Website forms → inbox (Web3Forms, free up to 250 submissions/month per key).
      To switch on: go to https://web3forms.com, enter the inbox address, and paste
@@ -176,14 +178,26 @@ const NEWS = [
 const E = CONFIG.emails;
 
 const page = (location.pathname.split("/").pop() || "index").replace(/(\.html)?$/, ".html"); // clean URLs: /about → about.html
-const linkedinIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>`;
-const socialLinks = Object.entries(CONFIG.social).filter(([, u]) => u).map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener" aria-label="${n}" title="${n}">${n === "LinkedIn" ? linkedinIcon : n.slice(0, 2)}</a>`).join("");
+/* social icons: every network shows; one without an address yet gets a dummy link */
+const SOC_I = {
+  LinkedIn: '<path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z" fill="currentColor" stroke="none"/>',
+  Facebook: '<path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v7h4v-7h3l1-4h-4V8z"/>',
+  Instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
+  X: '<path d="M4 4l6.5 8.5L4 20h2l5.4-6.3L16 20h4l-6.8-9L19.4 4h-2l-5 5.8L8 4z" fill="currentColor" stroke="none"/>',
+  YouTube: '<rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor"/>',
+  TikTok: '<path d="M14 3v11.5a3.5 3.5 0 11-3.5-3.5"/><path d="M14 3c.5 2.8 2.3 4.6 5 5"/>'
+};
+const socIcon = n => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SOC_I[n] || ""}</svg>`;
+const socLink = (n, u, cls = "") => u
+  ? `<a class="${cls}" href="${u}" target="_blank" rel="noopener" aria-label="${n}" title="${n}">${socIcon(n)}</a>`
+  : `<a class="${cls}" href="#" data-soc-dummy aria-label="${n}" title="${n}">${socIcon(n)}</a>`;
+const socialLinks = Object.entries(CONFIG.social).map(([n, u]) => socLink(n, u, "c-soc")).join("");
 const mark = `<img class="logo-img" src="images/logo.jfif" alt="Misalta Global Concepts Ltd. logo"><span class="logo-text">Misalta<small>GLOBAL LTD.</small><small class="motto">Building Tomorrow, Growing Value</small></span>`;
 
 const ico = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
 const topbar = `<div class="topbar"><div class="container">
   <div class="tb-l"><a href="mailto:${E.info}">${ico('<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/>')}${E.info}</a><a href="tel:${CONFIG.phone.replace(/\s/g, "")}">${ico('<path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/>')}${CONFIG.phone}</a><span>${ico('<path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>')}${CONFIG.address}</span></div>
-  <div class="tb-soc">${Object.entries(CONFIG.social).filter(([, u]) => u).map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("")}</div>
+  <div class="tb-soc">${Object.entries(CONFIG.social).map(([n, u]) => socLink(n, u)).join("")}</div>
 </div></div>`;
 
 /* ================= header: main menu, mega panels, mobile drawer =================
@@ -284,13 +298,7 @@ if (firstSec) { firstSec.id ||= "main"; document.querySelector(".skip").href = "
 
 /* ================= footer: brand + newsletter, link columns, contact routes, legal bar =================
    White footer built from CONFIG, BUSINESSES and E, so contact details and statuses stay in one place. */
-const SOC_I = {
-  LinkedIn: '<path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z" fill="currentColor" stroke="none"/>',
-  Facebook: '<path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v7h4v-7h3l1-4h-4V8z"/>',
-  Instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
-  X: '<path d="M4 4l16 16M20 4L4 20"/>'
-};
-const fSocial = Object.entries(CONFIG.social).filter(([, u]) => u).map(([n, u]) => `<a class="f-soc" href="${u}" target="_blank" rel="noopener" aria-label="${n}" title="${n}">${svgI(SOC_I[n] || "")}</a>`).join("");
+const fSocial = Object.entries(CONFIG.social).map(([n, u]) => socLink(n, u, "f-soc")).join("");
 const fBiz = b => `<a href="${bizUrl(b)}"${b.domain ? ' target="_blank" rel="noopener"' : ""}><span class="f-dot ${b.status}" title="${STATUS[b.status]}" aria-hidden="true"></span>${b.name.replace(" Ltd.", "")}<span class="sr">, ${STATUS[b.status].toLowerCase()}</span></a>`;
 const ROUTES = [["Investment & partnership", E.invest], ["Supply & offtake", E.supply], ["Consulting services", E.services], ["Media & press", E.media]];
 const footerHTML = `
@@ -667,7 +675,7 @@ setT("c-addr", CONFIG.address);
 document.querySelectorAll("[data-mail]").forEach(a => { const m = E[a.dataset.mail] || E.info; a.href = "mailto:" + m; const t = a.querySelector("b"); if (t) t.textContent = m; });
 document.querySelectorAll("[data-wa]").forEach(a => a.href = "https://wa.me/" + CONFIG.whatsapp);
 const soc = document.getElementById("soc");
-if (soc) soc.innerHTML = socialLinks || '<span class="note">Social links to be added.</span>';
+if (soc) soc.innerHTML = socialLinks;
 
 /* team */
 const initials = n => n.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase();
@@ -875,8 +883,8 @@ const CREDENTIALS = [
     ["FMVA® and BIDA® certifications", "Corporate Finance Institute", "Financial modelling, valuation and business intelligence credentials held by our Founder & CEO.", "held", ""],
     ["ISO 21001 management system for training providers", "Accredited certification body", "International standard for organisations that deliver training and education.", "held", "xxxxxx"],
     ["Corporate membership", "Institute of Management Consultants (IMC), Nigeria", "Misalta as a corporate member of Nigeria's professional body for management consultants.", "held", "xxxxxx"],
-    ["Licensed Data Protection Compliance Organisation (DPCO)", "Nigeria Data Protection Commission (NDPC)", "Licence to audit, train and certify organisations on Nigeria Data Protection Act compliance.", "progress", ""],
-    ["Drone operator permit (RPAS)", "Nigerian Civil Aviation Authority (NCAA)", "Permit to operate drones commercially for surveillance, mapping and agricultural services.", "req", ""],
+    ["Licensed Data Protection Compliance Organisation (DPCO)", "Nigeria Data Protection Commission (NDPC)", "Licence to audit, train and certify organisations on Nigeria Data Protection Act compliance.", "held", "xxxxxx"],
+    ["Drone operator permit (RPAS)", "Nigerian Civil Aviation Authority (NCAA)", "Permit to operate drones commercially for surveillance, mapping and agricultural services.", "held", "xxxxxx"],
     ["Oil and gas supplier registration (NOGICJQS)", "Nigerian Content Development and Monitoring Board (NCDMB)", "Joint qualification system for service providers to the oil and gas industry, including NNPCL.", "held", "xxxxxx"],
     ["Registration as a training provider", "Industrial Training Fund (ITF)", "Recognition of our training programmes for employers' training plans.", "req", ""],
     ["IT service provider registration", "National Information Technology Development Agency (NITDA)", "For Agentic AI and technology projects, especially with public-sector clients.", "req", ""],
@@ -1001,7 +1009,7 @@ const CRED_BADGES = [ // [logo in images/logos (or "" for a text seal), seal tex
   ["", "IMC", "Corporate member", "Institute of Management Consultants"], ["", "TSA", "Taraba Shapers Association", "Partner"],
   ["", "TSIRS", "PAYE tax clearance", "Taraba State IRS"], ["", "CMC", "Certified Management Consultant", "IMC Nigeria"],
   ["cfi.svg", "CFI", "FMVA® · BIDA®", "Corporate Finance Institute"],
-  ["ndpc.webp", "NDPC", "DPCO licence", "In progress"], ["", "HALAL", "Halal certification", "In progress"], ["", "ISO", "ISO 27001 security", "In progress"]
+  ["ndpc.webp", "NDPC", "Licensed DPCO", "Data Protection Commission"], ["ncaa.webp", "NCAA", "Drone operator permit", "Civil Aviation Authority"], ["", "HALAL", "Halal certification", "In progress"], ["", "ISO", "ISO 27001 security", "In progress"]
 ];
 const proofRow = page === "index.html" && document.querySelector(".proof-strip .proof");
 if (proofRow) {
@@ -1065,3 +1073,6 @@ if (courseTabs) {
     const sel = q0("courseSelect"); if (sel) sel.value = a.dataset.course;
   });
 }
+
+/* dummy social links (address not added yet): stay put instead of jumping to the top */
+document.addEventListener("click", e => { if (e.target.closest("[data-soc-dummy]")) e.preventDefault(); });

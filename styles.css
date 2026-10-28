@@ -1313,3 +1313,12 @@ footer.site-foot::before{content:"";position:absolute;left:0;right:0;top:-1px;he
 .link-green{color:var(--v-green);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 @media(max-width:1024px){.tformats,.courses{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.tformats,.courses{grid-template-columns:1fr}}
+
+/* ================= social icons ================= */
+.v2 .topbar .tb-soc{gap:6px}
+.v2 .topbar .tb-soc a{width:26px;height:26px;border-radius:50%;justify-content:center;background:rgba(255,255,255,.08)}
+.v2 .topbar .tb-soc a:hover{background:var(--v-leaf);color:var(--v-dark)}
+.v2 .topbar .tb-soc svg{width:14px;height:14px;color:inherit}
+.c-soc{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1px solid var(--v-line);color:var(--v-deep);margin:0 6px 6px 0}
+.c-soc:hover{background:var(--v-green);border-color:var(--v-green);color:#fff}
+.c-soc svg,.f-soc svg{width:18px;height:18px}

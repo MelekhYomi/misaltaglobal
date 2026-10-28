@@ -142,6 +142,8 @@ for (const name of photoW ? [...photoW[1].matchAll(/([a-z_]+): \[/g)].map(m => m
 /* placeholders and pending content: warnings */
 if (/phone: "\+234 000 000 0000"/.test(scriptJs)) warn("CONFIG", "phone number is still a placeholder");
 if (/whatsapp: "2340000000000"/.test(scriptJs)) warn("CONFIG", "WhatsApp number is still a placeholder (the button goes nowhere)");
+{ const soc = scriptJs.match(/social: \{([\s\S]*?)\}/); const empty = soc ? [...soc[1].matchAll(/(\w+): ""/g)].map(m => m[1]) : [];
+  if (empty.length) warn("CONFIG", `social links still to add (icons use dummy links): ${empty.join(", ")}`); }
 if (/address: "Address to be confirmed"/.test(scriptJs)) warn("CONFIG", "head-office address is still a placeholder");
 if (/keys: \{ default: "", info: "", services: "", supply: "", tradex: "", invest: "", media: "" \}/.test(scriptJs)) warn("CONFIG", "no Web3Forms keys: forms fall back to the visitor's email app");
 { const reqN = (scriptJs.match(/", "req", ""\]/g) || []).length, heldNoRef = (scriptJs.match(/", "held", "xxxxxx"\]/g) || []).length;
