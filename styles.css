@@ -1,3 +1,8 @@
+/* fonts: self-hosted variable fonts (Latin), one file per family; swap keeps text visible while they load */
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/inter-latin.woff2) format('woff2')}
+@font-face{font-family:'Public Sans';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/public-sans-latin.woff2) format('woff2')}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/archivo-latin.woff2) format('woff2')}
+@font-face{font-family:'Archivo Narrow';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/archivo-narrow-latin.woff2) format('woff2')}
 :root{
   --cocoa:#0f2e1c; --cocoa2:#1b4a2c; --choc:#2a6a3f;
   --forest:#0b2a18; --green:#1f7a3f; --leaf:#6fb23f;
@@ -770,7 +775,7 @@ a.chan:hover{border-color:var(--v-green);transform:translateY(-2px)}
 /* Header/banner photos: inline --bg (1600 px) and --bg-sm (960 px) with an optional --shade
    overlay; phones only download the smaller file. */
 [style*="--bg:"]{background-image:var(--shade,none),var(--bg)!important;background-size:cover;background-position:center;background-repeat:no-repeat}
-@media(max-width:700px){[style*="--bg:"]{background-image:var(--shade,none),var(--bg-sm)!important}}
+@media(max-width:1100px){[style*="--bg:"]{background-image:var(--shade,none),var(--bg-sm)!important}}
 
 /* ==========================================================================
    Agribusiness pages (Farms, Agro Processing, Agro Hubs): body.v2.agri

@@ -139,6 +139,16 @@ for (const name of photoW ? [...photoW[1].matchAll(/([a-z_]+): \[/g)].map(m => m
   const kbPath = join(ROOT, "api", "_kb.mjs");
   if (!existsSync(kbPath) || lf(readFileSync(kbPath, "utf8")) !== KB_FILE) err("api/_kb.mjs", "Misalta AI knowledge is out of date: run node tools/build-kb.mjs"); }
 
+/* speed: fonts are self-hosted, and every page loads the same styles/script version (they are cached for a year) */
+{ const vers = new Set();
+  for (const page of pages) {
+    const h = read(page);
+    if (/fonts\.googleapis\.com/.test(h)) err(page, "loads Google Fonts: run the speed tags script (fonts are self-hosted)");
+    const v = h.match(/styles\.css\?v=(\d+)/), j = h.match(/script\.js\?v=(\d+)/);
+    if (v && j) vers.add(v[1] + "/" + j[1]);
+  }
+  if (vers.size > 1) err("pages", `pages load different styles/script versions (${[...vers].join(", ")}); bump them together`); }
+
 /* placeholders and pending content: warnings */
 if (/phone: "\+234 000 000 0000"/.test(scriptJs)) warn("CONFIG", "phone number is still a placeholder");
 if (/whatsapp: "2340000000000"/.test(scriptJs)) warn("CONFIG", "WhatsApp number is still a placeholder (the button goes nowhere)");
