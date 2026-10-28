@@ -1165,3 +1165,4 @@ footer.site-foot::before{content:"";position:absolute;left:0;right:0;top:-1px;he
 .mq-txt small{display:block;font-size:.7rem;color:#5d6e63;margin-top:2px}
 @media(max-width:700px){.cred-mq{flex-direction:column;align-items:stretch;gap:12px}.mq-label{max-width:none;text-align:center}.mq-track{animation-duration:45s}}
 @media(prefers-reduced-motion:reduce){.mq-track{animation:none;flex-wrap:wrap;width:auto;gap:10px;justify-content:center}.mq-dup{display:none}.mq-view{-webkit-mask-image:none;mask-image:none}.mq-item{margin-right:0}}
+.mq-logo img{height:44px;width:auto;max-width:150px;object-fit:contain;flex:none}

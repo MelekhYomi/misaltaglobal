@@ -112,3 +112,23 @@ If used, add "Images by Freepik" (with a link to freepik.com) in the footer or o
 ## Fit
 
 Most of the demo photography shows European greenhouses, wheat fields and North American farms. For a Nigerian group whose story is cocoa and grains in Taraba State, choose images that could plausibly be Misalta's own: West African farmers, cocoa, maize and sorghum, open fields, produce markets. Real photos of Misalta's sites and people will always be stronger than stock.
+
+## Organisation logos (images/logos/)
+
+Downloaded 28 Oct 2026 from each organisation's official website, trimmed and resized to 96px high WebP. Shown in the homepage credentials strip only to identify registrations and certifications held; ownership is acknowledged on credits.html.
+
+| File | Source |
+|---|---|
+| cac.webp | https://www.cac.gov.ng/logo.png |
+| nrs.webp | https://www.nrs.gov.ng/favicon.png |
+| pencom.webp | https://www.pencom.gov.ng/wp-content/themes/beaches/logo.png |
+| nsitf.webp | https://nsitf.gov.ng/nsitf-logo.png |
+| itf.webp | https://itf.gov.ng/logo_5.jpeg (cropped to the round seal) |
+| bpp.webp | BPP logo from https://bpp.gov.ng (bpp-storage S3 upload) |
+| ncdmb.webp | https://ncdmb.gov.ng/wp-content/uploads/2020/12/ncdmdbsite_logo-2-removebg-preview-new.png |
+| nhia.webp | https://www.nhia.gov.ng/wp-content/uploads/2025/04/NHIA-1-1.png |
+| scuml.webp | https://scuml.efcc.gov.ng/wp-content/uploads/2025/08/dtiu-copy.png |
+| smedan.webp | https://smedan.gov.ng/wp-content/uploads/2024/03/Group-1.png |
+| cfi.svg | https://cdn.corporatefinanceinstitute.com/wp-content/themes/cfi/dist/images/logotm-cfi.svg |
+
+No official logo found online for Taraba State IRS or IMC Nigeria; they show as text seals. ISO and Halal show as text seals (ISO does not allow its logo to be used by certified organisations).

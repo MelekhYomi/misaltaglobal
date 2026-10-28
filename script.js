@@ -880,7 +880,7 @@ const CREDENTIALS = [
     ["Exporter registration", "Nigerian Export Promotion Council (NEPC)", "Registration needed to export processed products and access export incentives.", "req", ""],
     ["Phytosanitary and export inspection certificates", "Nigeria Agricultural Quarantine Service (NAQS) and Federal Produce Inspection Service", "Inspection and grading so each export shipment clears at destination.", "req", ""],
     ["Food safety management (HACCP, ISO 22000 or FSSC 22000)", "Accredited certification body", "International food safety standard expected by large buyers.", "target", ""],
-    ["Halal certification", "Recognised halal certification body", "Opens markets in Northern Nigeria, the Middle East and North Africa.", "target", ""]
+    ["Halal certification", "Recognised halal certification body", "Opens markets in Northern Nigeria, the Middle East and North Africa.", "progress", ""]
   ] },
   { id: "agro-hubs", items: [
     ["Food storage facility inspection", "National Agency for Food and Drug Administration and Control (NAFDAC)", "Clean, safe storage for food produce held in the hubs.", "req", ""],
@@ -902,7 +902,7 @@ const CREDENTIALS = [
     ["Consumer protection compliance", "Federal Competition and Consumer Protection Commission (FCCPC)", "Fair terms, clear pricing and complaint handling for platform users.", "req", ""],
     ["Securities registration (only if needed)", "Securities and Exchange Commission (SEC)", "Required only if Trade X later offers commodity contracts or investment products.", "target", ""],
     ["Card data security (PCI DSS)", "Through our payment providers", "Card details are handled by PCI DSS-certified providers, never stored by Trade X.", "target", ""],
-    ["Information security management (ISO 27001)", "Accredited certification body", "Independent assurance that platform data and systems are protected.", "target", ""]
+    ["Information security management (ISO 27001)", "Accredited certification body", "Independent assurance that platform data and systems are protected.", "progress", ""]
   ] },
   { id: "energy", items: [
     ["Mini-grid registration or permit", "Nigerian Electricity Regulatory Commission (NERC) or the state electricity regulator", "Licence to generate and sell power, as set by the Electricity Act 2023.", "req", ""],
@@ -972,20 +972,22 @@ if (credBiz && faqSec) {
 document.querySelectorAll("#register .reveal, #partnerTypes .reveal, .cred-sec .reveal").forEach(el => io.observe(el));
 
 /* homepage proof strip: scrolling row of clients, registrations and certifications (added below the existing row) */
-const CRED_BADGES = [
-  ["CAC", "Corporate Affairs Commission", CONFIG.rc], ["NRS", "Tax clearance · TIN · VAT", "Nigeria Revenue Service"],
-  ["PenCom", "Pension compliance", "National Pension Commission"], ["NSITF", "Employee compensation", "Social Insurance Trust Fund"],
-  ["ITF", "Training contribution", "Industrial Training Fund"], ["BPP", "Federal contractor (IRR)", "Bureau of Public Procurement"],
-  ["NCDMB", "NOGICJQS registered", "Nigerian Content Board"], ["NHIA", "Staff health insurance", "Health Insurance Authority"],
-  ["SCUML", "AML registered", "Special Control Unit"], ["TSIRS", "PAYE tax clearance", "Taraba State IRS"],
-  ["CMC", "Certified Management Consultant", "IMC Nigeria"], ["CFI", "FMVA® · BIDA®", "Corporate Finance Institute"]
+const CRED_BADGES = [ // [logo in images/logos (or "" for a text seal), seal text, what we hold, issuer or reference]
+  ["cac.webp", "CAC", "Registered company", CONFIG.rc], ["nrs.webp", "NRS", "Tax clearance · TIN · VAT", "Nigeria Revenue Service"],
+  ["pencom.webp", "PenCom", "Pension compliance", "National Pension Commission"], ["nsitf.webp", "NSITF", "Employee compensation", "Social Insurance Trust Fund"],
+  ["itf.webp", "ITF", "Training contribution", "Industrial Training Fund"], ["bpp.webp", "BPP", "Federal contractor (IRR)", "Bureau of Public Procurement"],
+  ["ncdmb.webp", "NCDMB", "NOGICJQS registered", "Nigerian Content Board"], ["nhia.webp", "NHIA", "Staff health insurance", "Health Insurance Authority"],
+  ["scuml.webp", "SCUML", "AML registered", "SCUML · EFCC"], ["smedan.webp", "SMEDAN", "MSME registered", "SMEDAN"],
+  ["", "TSIRS", "PAYE tax clearance", "Taraba State IRS"], ["", "CMC", "Certified Management Consultant", "IMC Nigeria"],
+  ["cfi.svg", "CFI", "FMVA® · BIDA®", "Corporate Finance Institute"],
+  ["", "HALAL", "Halal certification", "In progress"], ["", "ISO", "ISO 27001 security", "In progress"]
 ];
 const proofRow = page === "index.html" && document.querySelector(".proof-strip .proof");
 if (proofRow) {
-  const badge = ([ab, t, s]) => `<a class="mq-item" href="trust.html" tabindex="-1"><span class="mq-seal">${ab}</span><span class="mq-txt"><b>${t}</b><small>${s}</small></span></a>`;
+  const badge = ([logo, ab, t, s]) => `<a class="mq-item${logo ? " mq-logo" : ""}" href="trust.html" tabindex="-1">${logo ? `<img src="images/logos/${logo}" alt="${ab}" decoding="async" height="44">` : `<span class="mq-seal">${ab}</span>`}<span class="mq-txt"><b>${t}</b><small>${s}</small></span></a>`;
   const client = (src, alt, t) => `<a class="mq-item mq-client" href="consulting.html" tabindex="-1"><img src="${src}" alt="${alt}" loading="lazy"><span class="mq-txt"><b>${t}</b><small>Client</small></span></a>`;
-  const set = client("images/clients/nnpcl-320.webp", "NNPC Limited", "NNPC Limited") + CRED_BADGES.slice(0, 6).map(badge).join("")
-    + client("images/clients/ncdc-480.webp", "Nigeria Centre for Disease Control", "NCDC") + CRED_BADGES.slice(6).map(badge).join("");
+  const set = client("images/clients/nnpcl-320.webp", "NNPC Limited", "NNPC Limited") + CRED_BADGES.slice(0, 7).map(badge).join("")
+    + client("images/clients/ncdc-480.webp", "Nigeria Centre for Disease Control", "NCDC") + CRED_BADGES.slice(7).map(badge).join("");
   proofRow.insertAdjacentHTML("afterend", `<div class="cred-mq" role="region" aria-label="Clients, registrations and certifications">
     <span class="mq-label">Registered, certified and trusted</span>
     <div class="mq-view"><div class="mq-track">${set}<span class="mq-dup" aria-hidden="true">${set}</span></div></div>
