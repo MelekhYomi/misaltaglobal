@@ -21,8 +21,11 @@ const text = html => html
   .replace(/&amp;/g, "&").replace(/&nbsp;/g, " ").replace(/&#39;|&rsquo;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">")
   .replace(/[ \t]+/g, " ").replace(/ *\n */g, "\n").replace(/\n{2,}/g, "\n").trim();
 
+// Git on Windows may check files out with CRLF line endings; build from LF so the output is the same everywhere.
+export const lf = s => s.replace(/\r\n/g, "\n");
+
 function siteData() {
-  const js = readFileSync(join(ROOT, "script.js"), "utf8");
+  const js = lf(readFileSync(join(ROOT, "script.js"), "utf8"));
   // The data blocks at the top of script.js are plain literals; run just those in a sandbox.
   const head = js.slice(0, js.indexOf("const E = CONFIG.emails;"));
   const cred = js.slice(js.indexOf("const CRED_REVIEWED"), js.indexOf("const credRow"));
@@ -57,7 +60,7 @@ export function buildKB() {
   for (const n of d.NEWS) lines.push(`- ${n.date}: ${n.title}. ${n.lede} (/news#${n.slug})`);
   lines.push("\n# Website pages (visible text)");
   for (const p of PAGES) {
-    const html = readFileSync(join(ROOT, p + ".html"), "utf8");
+    const html = lf(readFileSync(join(ROOT, p + ".html"), "utf8"));
     lines.push(`\n=== Page /${p === "index" ? "" : p} ===\n${text(html)}`);
   }
   return lines.join("\n");

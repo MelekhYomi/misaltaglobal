@@ -135,9 +135,9 @@ for (const name of photoW ? [...photoW[1].matchAll(/([a-z_]+): \[/g)].map(m => m
   for (const t of ["sm", "md", "lg"]) if (!existsSync(join(ROOT, `images/photos/${name}-${t}.webp`))) err("images/photos", `missing ${name}-${t}.webp`);
 
 /* Misalta AI: the knowledge file must match the current site content */
-{ const { KB_FILE } = await import("./build-kb.mjs");
+{ const { KB_FILE, lf } = await import("./build-kb.mjs");
   const kbPath = join(ROOT, "api", "_kb.mjs");
-  if (!existsSync(kbPath) || readFileSync(kbPath, "utf8") !== KB_FILE) err("api/_kb.mjs", "Misalta AI knowledge is out of date: run node tools/build-kb.mjs"); }
+  if (!existsSync(kbPath) || lf(readFileSync(kbPath, "utf8")) !== KB_FILE) err("api/_kb.mjs", "Misalta AI knowledge is out of date: run node tools/build-kb.mjs"); }
 
 /* placeholders and pending content: warnings */
 if (/phone: "\+234 000 000 0000"/.test(scriptJs)) warn("CONFIG", "phone number is still a placeholder");
