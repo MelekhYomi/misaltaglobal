@@ -7,7 +7,7 @@ Home  /                                   index.html          [v2 ✓]
 ├── About Us  /about                      about.html          leadership, video, clients
 ├── News  /news                           news.html           one page, story chosen by #slug
 ├── What We Offer  /consulting            consulting.html     Misalta Consulting (6 services)
-├── Our Businesses  /businesses           businesses.html     overview of all ventures
+├── Our Business  /businesses           businesses.html     overview of all ventures
 │   ├── In the field
 │   │   ├── Misalta Farms  /farms                 farms.html            In development
 │   │   ├── Agro-Processing  /agro-processing     agro-processing.html  In development
@@ -35,10 +35,10 @@ Home  /                                   index.html          [v2 ✓]
 | Location | Items |
 |---|---|
 | Top bar (v2) | email · phone · address · social links |
-| Main nav (desktop, 1100px and wider) | Logo · Home · **Company ▾** · **Consulting ▾** · **Our Businesses ▾** · Invest & Partner · Contact · [Get started] |
+| Main nav (desktop, 1100px and wider) | Logo · Home · **Company ▾** · **Our Business ▾** · Invest & Partner · Contact · [Get started] |
 | Company ▾ (mega panel) | About Misalta · Our people · Our journey · News & updates · Contact, plus a card for the latest NEWS story |
 | Consulting ▾ (mega panel) | The six services with icons and one-line descriptions · All consulting services · card: Book a service (opens the enquiry modal) |
-| Our Businesses ▾ (mega panel) | The value chain (Stage 1 · Grow … Stage 5 · Sell) and Enablers (Enabler · Know-how / Power / Build), each with photo and status chip · See all eight businesses · card: Get started / Invest |
+| Our Business ▾ (mega panel) | The value chain (Stage 1 · Grow … Stage 5 · Sell) and Enablers (Enabler · Know-how / Power / Build), each with photo and status chip · See all eight businesses · card: Get started / Invest |
 | Phone and tablet (below 1100px) | Logo · [Get started] · menu button, which opens a slide-in drawer: Home, the three sections as accordions (current one open), Invest & Partner, Contact, then Get started and Call / WhatsApp / Email |
 | Footer (white) | Brand, intro and social icons · Newsletter card · Company · The value chain and Enablers (status dot per business) · Get in touch (email, phone, WhatsApp, address) · Reach the right team (invest@, supply@, services@, media@) · © line, Privacy notice, Photo credits, Contact, Back to top |
 | Always visible | Enquiry button (opens the modal) · WhatsApp button |
