@@ -239,7 +239,7 @@ const PANELS = {
     <div class="mp-col"><span class="mp-label">Enablers</span>${enablerBiz.map(bizItem).join("")}
       <a class="mp-all" href="training.html">Training Academy: 33 courses ${svgI(NI.arrow)}</a>
       <a class="mp-all" href="businesses.html">See all eight businesses ${svgI(NI.arrow)}</a></div>
-    <div class="mp-feature" style="--fbg:url('${photoUrl("photo_taraba_tea.jpg", "md")}')"><span class="mp-ftext"><small>One group · Eight businesses</small><b>Find the business that fits what you need</b><span class="mp-acts"><a class="btn btn-gold btn-sm" href="get-started.html">Get started</a><a class="btn btn-ghost btn-sm" href="investment.html">Invest</a></span></span></div>` }
+    <div class="mp-feature" style="--fbg:url('${photoUrl("photo_taraba_tea.jpg", "md")}')"><span class="mp-ftext"><small>One group · Eight businesses</small><b>Find the business that fits what you need</b><span class="mp-acts"><a class="btn btn-gold btn-sm" href="contact.html#get-started">Get started</a><a class="btn btn-ghost btn-sm" href="investment.html">Invest</a></span></span></div>` }
 };
 const navLink = (href, label) => `<li><a class="mnav-link${page === href ? " is-current" : ""}" href="${href}"${page === href ? ' aria-current="page"' : ""}>${label}</a></li>`;
 const navTrigger = key => `<li><button class="mnav-link mnav-trigger${onPage(PANELS[key].pages) ? " is-current" : ""}" type="button" aria-expanded="false" aria-controls="mp-${key}" data-panel="${key}">${PANELS[key].label}${svgI(NI.chev, 2.2)}</button></li>`;
@@ -254,8 +254,7 @@ document.body.insertAdjacentHTML("afterbegin", `
     ${navLink("index.html", "Home")}${navTrigger("company")}${navTrigger("businesses")}${navLink("investment.html", "Invest &amp; Partner")}
   </ul></nav>
   <div class="nav-actions">
-    <a class="nav-contact${page === "contact.html" ? " is-current" : ""}" href="contact.html">Contact</a>
-    <a class="btn btn-gold nav-cta" href="get-started.html">Get started</a>
+    <a class="btn btn-gold nav-cta" href="contact.html">Contact</a>
     <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
   </div>
 </div>
@@ -270,10 +269,9 @@ document.body.insertAdjacentHTML("afterbegin", `
     ${acc("company", PANELS.company.html.split('<a class="mp-feature')[0].replace('mp-col mp-col-wide', 'mp-col'))}
     ${acc("businesses", `<div class="mp-col"><span class="mp-label">The value chain</span>${chainBiz.map(bizItem).join("")}<span class="mp-label">Enablers</span>${enablerBiz.map(bizItem).join("")}<a class="mp-all" href="training.html">Training Academy: 33 courses ${svgI(NI.arrow)}</a><a class="mp-all" href="businesses.html">See all eight businesses ${svgI(NI.arrow)}</a></div>`)}
     <a class="dr-link${page === "investment.html" ? " is-current" : ""}" href="investment.html">Invest &amp; Partner</a>
-    <a class="dr-link${page === "contact.html" ? " is-current" : ""}" href="contact.html">Contact</a>
   </div>
   <div class="dr-foot">
-    <a class="btn btn-gold dr-cta" href="get-started.html">Get started</a>
+    <a class="btn btn-gold dr-cta" href="contact.html">Contact</a>
     <div class="dr-quick">
       <a href="${telHref}">${svgI(NI.phone)}<span>Call</span></a>
       <a data-wa href="contact.html" target="_blank" rel="noopener">${svgI(NI.chat)}<span>WhatsApp</span></a>
@@ -305,7 +303,7 @@ const footerHTML = `
     </div>
   </div>
   <div class="f-cols">
-    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="trust.html">Trust &amp; compliance</a><a href="training.html">Training Academy</a><a href="faq.html">FAQ</a><a href="news.html">News &amp; updates</a><a href="investment.html">Invest &amp; Partner</a><a href="get-started.html">Get started</a></div>
+    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="trust.html">Trust &amp; compliance</a><a href="training.html">Training Academy</a><a href="faq.html">FAQ</a><a href="news.html">News &amp; updates</a><a href="investment.html">Invest &amp; Partner</a><a href="contact.html#get-started">Get started</a></div>
     <div class="f-col"><h4>The value chain</h4>${chainBiz.map(fBiz).join("")}</div>
     <div class="f-col"><h4>Enablers</h4>${enablerBiz.map(fBiz).join("")}<a class="f-more" href="businesses.html">All eight businesses ${svgI(NI.arrow, 2)}</a></div>
     <div class="f-col f-contact"><h4>Get in touch</h4>
@@ -368,7 +366,7 @@ document.addEventListener("click", e => {
   if (/^mailto:/.test(h)) track("Contact click", { channel: "email" });
   else if (/^tel:/.test(h)) track("Contact click", { channel: "phone" });
   else if (/wa\.me\//.test(h)) track("Contact click", { channel: "whatsapp" });
-  else if (/get-started\.html/.test(h)) track("Get started click", { from: a.textContent.trim().slice(0, 40) });
+  else if (/contact(\.html)?(\?|#|$)/.test(h)) track("Contact click", { channel: "page", from: a.textContent.trim().slice(0, 40) });
 });
 
 /* images that fail to load remove themselves (or their <figure>); no inline handlers, so a strict CSP works */
@@ -734,9 +732,9 @@ if (nHero && nArt && nGrid) {
   addEventListener("hashchange", routeNews);
 }
 
-/* ================= Get Started onboarding (get-started.html) =================
-   Step 1 who you are · step 2 which business (preset from the URL hash, e.g.
-   get-started.html#agro-processing) · step 3 details. The enquiry is routed to
+/* ================= Get Started onboarding (contact.html#get-started) =================
+   Step 1 who you are · step 2 which business (preset from the URL, e.g.
+   contact.html?for=agro-processing) · step 3 details. The enquiry is routed to
    the inbox of the business chosen; investors and government go to invest@. */
 const ob = document.getElementById("obForm");
 if (ob) {
@@ -778,10 +776,10 @@ if (ob) {
   });
   ob.addEventListener("change", e => { if (e.target.name === "Role") q0("obErr1").hidden = true; if (e.target.name === "Business") q0("obErr2").hidden = true; });
 
-  /* preset from #business-id, e.g. a "Get started" link on a business page */
-  const preset = decodeURIComponent(location.hash.slice(1));
+  /* preset from ?for=business-id (a "Get started" link on a business page), or an old #business-id link */
+  const preset = new URLSearchParams(location.search).get("for") || decodeURIComponent(location.hash.slice(1));
   const pre = preset && ob.querySelector(`input[name=Business][value="${CSS.escape(preset)}"]`);
-  if (pre) pre.checked = true;
+  if (pre) { pre.checked = true; setTimeout(() => q0("get-started").scrollIntoView({ block: "start" }), 0); }
 
   ob.addEventListener("submit", e => {
     e.preventDefault();

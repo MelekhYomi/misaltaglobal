@@ -12,7 +12,7 @@ const OUT = join(ROOT, "api", "_kb.mjs");
 
 // Pages the assistant learns from, in reading order. Legal and utility pages are summarised elsewhere.
 const PAGES = ["index", "about", "businesses", "consulting", "farms", "agro-processing", "agro-hubs", "logistics",
-  "training", "trade-x", "trade-x/what_to_expect", "energy", "construction", "investment", "trust", "faq", "contact", "get-started", "news"];
+  "training", "trade-x", "trade-x/what_to_expect", "energy", "construction", "investment", "trust", "faq", "contact", "news"];
 
 const text = html => html
   .replace(/<head[\s\S]*?<\/head>|<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>|<form[\s\S]*?<\/form>/g, " ")

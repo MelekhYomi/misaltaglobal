@@ -17,6 +17,16 @@
       "source": "/blocks.html",
       "destination": "/construction",
       "permanent": true
+    },
+    {
+      "source": "/get-started",
+      "destination": "/contact#get-started",
+      "permanent": true
+    },
+    {
+      "source": "/get-started.html",
+      "destination": "/contact#get-started",
+      "permanent": true
     }
   ],
   "headers": [

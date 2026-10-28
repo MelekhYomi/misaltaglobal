@@ -23,7 +23,7 @@ const pages = readdirSync(ROOT).filter(f => f.endsWith(".html") && f !== "menu-m
 const scriptJs = read("script.js");
 const BIZ_IDS = [...scriptJs.matchAll(/\{ id: "([a-z-]+)", group:/g)].map(m => m[1]);
 const NEWS_SLUGS = [...scriptJs.matchAll(/slug: "([a-z0-9-]+)"/g)].map(m => m[1]);
-const DYNAMIC_ANCHORS = { "businesses.html": BIZ_IDS, "get-started.html": BIZ_IDS.concat("group", "unsure"), "news.html": NEWS_SLUGS, "index.html": ["showcase"] };
+const DYNAMIC_ANCHORS = { "businesses.html": BIZ_IDS, "news.html": NEWS_SLUGS, "index.html": ["showcase"] };
 
 const resolveLocal = (page, ref) => {
   /* returns repo-relative path for a local URL, or null if external */
@@ -99,7 +99,7 @@ const MUST = {
   "agro-hubs.html": ['data-tmap="hub"', "Gashaka"],
   "investment.html": ['data-tmap="all"', 'id="pipeline"', 'id="partner"'],
   "about.html": ['id="team-ceo"', 'id="team-dir"', 'id="team-adv"'],
-  "get-started.html": ['id="obForm"'],
+  "contact.html": ['id="obForm"', 'id="get-started"'],
   "trade-x.html": ['id="early-access"', 'anim-tradex'],
   "energy.html": ['anim-energy'],
   "credits.html": ['Wikimedia Commons']
