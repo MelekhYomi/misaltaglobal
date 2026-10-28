@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://misaltaglobal.com/sitemap.xml
+Sitemap: https://misaltaglobal.com/sitemap-blog.xml

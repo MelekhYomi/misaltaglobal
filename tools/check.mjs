@@ -17,13 +17,14 @@ const read = p => readFileSync(join(ROOT, p), "utf8");
 
 /* pages: every public .html (menu-mock is a local design file, ignored by git) */
 const pages = readdirSync(ROOT).filter(f => f.endsWith(".html") && f !== "menu-mock.html")
-  .concat(existsSync(join(ROOT, "trade-x/what_to_expect.html")) ? ["trade-x/what_to_expect.html"] : []);
+  .concat(existsSync(join(ROOT, "trade-x/what_to_expect.html")) ? ["trade-x/what_to_expect.html"] : [])
+  .concat(existsSync(join(ROOT, "blog")) ? readdirSync(join(ROOT, "blog"), { recursive: true }).filter(f => f.endsWith(".html")).map(f => "blog/" + f.replace(/\\/g, "/")) : []);
 
 /* ids that script.js creates at runtime (cards, presets, news router) */
 const scriptJs = read("script.js");
 const BIZ_IDS = [...scriptJs.matchAll(/\{ id: "([a-z-]+)", group:/g)].map(m => m[1]);
 const NEWS_SLUGS = [...scriptJs.matchAll(/slug: "([a-z0-9-]+)"/g)].map(m => m[1]);
-const DYNAMIC_ANCHORS = { "businesses.html": BIZ_IDS, "news.html": NEWS_SLUGS, "index.html": ["showcase"] };
+const DYNAMIC_ANCHORS = { "businesses.html": BIZ_IDS, "index.html": ["showcase"] };
 
 const resolveLocal = (page, ref) => {
   /* returns repo-relative path for a local URL, or null if external */
@@ -54,7 +55,7 @@ for (const page of pages) {
   } else if (!/<meta name="robots" content="noindex">/.test(h)) err(page, "404 page should be noindex");
   /* structure */
   const h1 = (h.match(/<h1[\s>]/g) || []).length;
-  if (page !== "news.html" && h1 !== 1) err(page, `expected 1 <h1>, found ${h1}`);
+  if (h1 !== 1) err(page, `expected 1 <h1>, found ${h1}`);
   if (!/<body class="v2[ "]/.test(h)) err(page, "body is not on the v2 design");
   if (/v2\.css/.test(h)) err(page, "still links v2.css");
   if (/Misalta Global Ltd\./.test(h)) err(page, 'uses the old name "Misalta Global Ltd."');
@@ -112,12 +113,16 @@ for (const [page, needles] of Object.entries(MUST)) {
 if (/farmland in Taraba State/.test(read("farms.html"))) err("farms.html", 'says "farmland"; management confirmed "under cultivation"');
 
 /* sitemap + robots */
-const sitemap = read("sitemap.xml");
-for (const page of pages.filter(p => p !== "404.html")) {
+const sitemap = read("sitemap.xml") + (existsSync(join(ROOT, "sitemap-blog.xml")) ? read("sitemap-blog.xml") : "");
+for (const page of pages.filter(p => p !== "404.html" && !/<meta name="robots" content="noindex/.test(read(p)))) {
   const url = `${SITE}/${page === "index.html" ? "" : page.replace(/\.html$/, "")}`;
   if (!sitemap.includes(`<loc>${url}</loc>`)) err("sitemap.xml", `missing ${url}`);
 }
 if (!/Sitemap: https:\/\/misaltaglobal\.com\/sitemap\.xml/.test(read("robots.txt"))) err("robots.txt", "missing Sitemap line");
+if (!/Sitemap: https:\/\/misaltaglobal\.com\/sitemap-blog\.xml/.test(read("robots.txt"))) err("robots.txt", "missing blog Sitemap line");
+{ const { staleBlogFiles } = await import("./build-blog.mjs");
+  const stale = staleBlogFiles();
+  if (stale.length) err("blog", `out of date (${stale.slice(0, 3).join(", ")}${stale.length > 3 ? ", …" : ""}): run node tools/build-blog.mjs`); }
 
 /* vercel.json */
 try {

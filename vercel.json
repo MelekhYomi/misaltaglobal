@@ -27,6 +27,16 @@
       "source": "/get-started.html",
       "destination": "/contact#get-started",
       "permanent": true
+    },
+    {
+      "source": "/news",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/news.html",
+      "destination": "/blog",
+      "permanent": true
     }
   ],
   "headers": [

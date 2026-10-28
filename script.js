@@ -133,15 +133,21 @@ const STATUS = { op: "Operating", dev: "In development", soon: "Launching soon",
 const bizUrl = b => b.domain ? "https://" + b.domain : b.page;
 
 /* ======================================================================= */
-/* NEWSROOM data. One object per story:
+/* BLOG posts data (NEWS). One object per post:
    - first 5 stories feed the ticker on the home page
-   - news.html renders any story in full detail via news.html#<slug>
+   - the blog (blog.html, blog/<slug>.html, category and author pages) is generated from this list:
+     run node tools/build-blog.mjs after any change
+   - category: a CATEGORIES id (the group or one of the businesses); author: an AUTHORS id;
+     published: ISO date (YYYY-MM-DD, or YYYY-MM while the exact day is being confirmed)
    - grid cards below the article load in batches as the page scrolls
    body items: ["p", paragraph] | ["img", src, caption]
    Photos go in /images. Attachment notes in comments are private. */
 const NEWS = [
   {
     slug: "csn-leadership-meeting",
+    category: "group",
+    author: "misalta-team",
+    published: "2026-10",
     tag: "Meeting",
     date: "October 2026",
     title: "Misalta meets the leadership of the Computer Society of Nigeria",
@@ -158,6 +164,9 @@ const NEWS = [
   },
   {
     slug: "whatsmed-celebration",
+    category: "group",
+    author: "misalta-team",
+    published: "2026-10",
     tag: "Milestone",
     date: "October 2026",
     title: "CEO celebrates with Whatsmed on their win",
@@ -174,6 +183,26 @@ const NEWS = [
   }
 ];
 /* ======================================================================= */
+
+/* CATEGORIES: the group plus every business Misalta houses. One list for the blog, filters and
+   anywhere content is grouped by business; a new business in BUSINESSES becomes a category automatically. */
+const CATEGORIES = [
+  { id: "group", name: "Misalta Group", line: "Company news, leadership, partnerships and milestones across the group.", page: "about.html" },
+  ...BUSINESSES.map(b => ({ id: b.id, name: b.name.replace(" Ltd.", ""), line: b.line, page: b.page }))
+];
+
+/* AUTHORS: who writes on the blog. sameAs = public profiles (LinkedIn etc.) so search engines
+   can connect the author's articles to them. Add a person here, then use their id on a story. */
+const AUTHORS = [
+  { id: "samaila-bah", name: "Samaila Bah", role: "Founder & Chief Executive Officer", photo: "images/ceo.jfif",
+    bio: "Founder and CEO of Misalta Global Concepts Ltd. A financial analyst and business consultant (FMVA®, BIDA®, FIMC, CMC) with a focus on finance, investment and renewable energy.",
+    topics: ["Finance & investment", "Renewable energy", "Business strategy", "Technology"],
+    sameAs: ["https://www.linkedin.com/in/samaila-bah/"] },
+  { id: "misalta-team", name: "Misalta Communications Team", role: "Editorial team", photo: "images/logo.jfif",
+    bio: "News, milestones, events and announcements from across the Misalta group and its businesses.",
+    topics: ["Company news", "Partnerships", "Events", "Announcements"],
+    sameAs: ["https://www.linkedin.com/company/misalta-global-ltd/"] }
+];
 
 const E = CONFIG.emails;
 
@@ -231,7 +260,7 @@ const PANELS = {
       <a class="mp-link" href="faq.html"><span class="mp-ic">${svgI(NI.about)}</span><span><b>FAQ</b><small>Quick answers to common questions</small></span></a>
       <a class="mp-link" href="contact.html"><span class="mp-ic">${svgI(NI.mail)}</span><span><b>Contact</b><small>Reach the right team directly</small></span></a>
     </div>
-    ${latest ? `<a class="mp-feature mp-news" href="news.html#${latest.slug}"><img src="${latest.cover}" alt="" loading="lazy"><span class="mp-ftext"><small>${latest.tag} · ${latest.date}</small><b>${latest.title}</b><em>Read the story ${svgI(NI.arrow)}</em></span></a>` : ""}` },
+    ${latest ? `<a class="mp-feature mp-news" href="blog/${latest.slug}.html"><img src="${latest.cover}" alt="" loading="lazy"><span class="mp-ftext"><small>${latest.tag} · ${latest.date}</small><b>${latest.title}</b><em>Read the story ${svgI(NI.arrow)}</em></span></a>` : ""}` },
   businesses: { label: "Our Business", pages: ["businesses.html", ...BUSINESSES.map(b => b.page), "what_to_expect.html", "training.html"], html: `
     <div class="mp-col"><span class="mp-label">The value chain</span>${chainBiz.map(bizItem).join("")}</div>
     <div class="mp-col"><span class="mp-label">Enablers</span>${enablerBiz.map(bizItem).join("")}
@@ -239,7 +268,8 @@ const PANELS = {
       <a class="mp-all" href="businesses.html">See all eight businesses ${svgI(NI.arrow)}</a></div>
     <div class="mp-feature" style="--fbg:url('${photoUrl("photo_taraba_tea.jpg", "md")}')"><span class="mp-ftext"><small>One group · Eight businesses</small><b>Find the business that fits what you need</b><span class="mp-acts"><a class="btn btn-gold btn-sm" href="contact.html#get-started">Get started</a><a class="btn btn-ghost btn-sm" href="investment.html">Invest</a></span></span></div>` }
 };
-const navLink = (href, label) => `<li><a class="mnav-link${page === href ? " is-current" : ""}" href="${href}"${page === href ? ' aria-current="page"' : ""}>${label}</a></li>`;
+const inBlog = /\/blog(\/|\.html|$)/.test(location.pathname);
+const navLink = (href, label) => { const cur = page === href || (href === "blog.html" && inBlog); return `<li><a class="mnav-link${cur ? " is-current" : ""}" href="${href}"${cur ? ' aria-current="page"' : ""}>${label}</a></li>`; };
 const navTrigger = key => `<li><button class="mnav-link mnav-trigger${onPage(PANELS[key].pages) ? " is-current" : ""}" type="button" aria-expanded="false" aria-controls="mp-${key}" data-panel="${key}">${PANELS[key].label}${svgI(NI.chev, 2.2)}</button></li>`;
 const acc = (key, body) => `<div class="dr-sec"><button class="dr-acc" type="button" aria-expanded="${onPage(PANELS[key].pages)}" aria-controls="dr-${key}">${PANELS[key].label}${svgI(NI.chev, 2.2)}</button><div class="dr-body" id="dr-${key}"${onPage(PANELS[key].pages) ? "" : " hidden"}>${body}</div></div>`;
 const telHref = "tel:" + CONFIG.phone.replace(/\s/g, "");
@@ -249,7 +279,7 @@ document.body.insertAdjacentHTML("afterbegin", `
 <header class="nav" id="hdr">${topbar}<div class="container nav-in">
   <a class="logo" href="index.html" aria-label="Misalta Global Concepts Ltd., home">${mark}</a>
   <nav class="mnav" id="mnav" aria-label="Main"><ul class="mnav-list">
-    ${navLink("index.html", "Home")}${navTrigger("company")}${navTrigger("businesses")}${navLink("investment.html", "Invest &amp; Partner")}${navLink("news.html", "Blogs")}
+    ${navLink("index.html", "Home")}${navTrigger("company")}${navTrigger("businesses")}${navLink("investment.html", "Invest &amp; Partner")}${navLink("blog.html", "Blogs")}
   </ul></nav>
   <div class="nav-actions">
     <a class="btn btn-gold nav-cta" href="contact.html">Contact</a>
@@ -267,7 +297,7 @@ document.body.insertAdjacentHTML("afterbegin", `
     ${acc("company", PANELS.company.html.split('<a class="mp-feature')[0].replace('mp-col mp-col-wide', 'mp-col'))}
     ${acc("businesses", `<div class="mp-col"><span class="mp-label">The value chain</span>${chainBiz.map(bizItem).join("")}<span class="mp-label">Enablers</span>${enablerBiz.map(bizItem).join("")}<a class="mp-all" href="training.html">Training Academy: 33 courses ${svgI(NI.arrow)}</a><a class="mp-all" href="businesses.html">See all eight businesses ${svgI(NI.arrow)}</a></div>`)}
     <a class="dr-link${page === "investment.html" ? " is-current" : ""}" href="investment.html">Invest &amp; Partner</a>
-    <a class="dr-link${page === "news.html" ? " is-current" : ""}" href="news.html">Blogs</a>
+    <a class="dr-link${inBlog ? " is-current" : ""}" href="blog.html">Blogs</a>
   </div>
   <div class="dr-foot">
     <a class="btn btn-gold dr-cta" href="contact.html">Contact</a>
@@ -302,7 +332,7 @@ const footerHTML = `
     </div>
   </div>
   <div class="f-cols">
-    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="trust.html">Trust &amp; compliance</a><a href="training.html">Training Academy</a><a href="faq.html">FAQ</a><a href="news.html">Blogs</a><a href="investment.html">Invest &amp; Partner</a><a href="contact.html#get-started">Get started</a></div>
+    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="trust.html">Trust &amp; compliance</a><a href="training.html">Training Academy</a><a href="faq.html">FAQ</a><a href="blog.html">Blogs</a><a href="investment.html">Invest &amp; Partner</a><a href="contact.html#get-started">Get started</a></div>
     <div class="f-col"><h4>The value chain</h4>${chainBiz.map(fBiz).join("")}</div>
     <div class="f-col"><h4>Enablers</h4>${enablerBiz.map(fBiz).join("")}<a class="f-more" href="businesses.html">All eight businesses ${svgI(NI.arrow, 2)}</a></div>
     <div class="f-col f-contact"><h4>Get in touch</h4>
@@ -683,50 +713,30 @@ if (q("team-adv")) q("team-adv").innerHTML = T.advisers.map(p => person(p)).join
 if (q("team-board")) q("team-board").innerHTML = (T.board || []).map(p => person(p)).join("");
 document.querySelectorAll(".person.reveal").forEach(el => io.observe(el));
 
-/* ================= news: home ticker + dynamic news.html ================= */
+/* ================= blog: home ticker ================= */
 /* Ticker on the home page (top 5, slow marquee, pauses on hover). */
 const nt = q("news-tick");
 if (nt && NEWS.length < 3) q("news-band")?.remove();
 else if (nt) {
-  const items = NEWS.slice(0, 5).map(n => `<a class="tick-item" href="news.html#${n.slug}"><span class="tmeta">${n.tag} · ${n.date}</span><span class="tt">${n.title}</span><span class="tmore">Read story →</span></a>`).join("");
+  const items = NEWS.slice(0, 5).map(n => `<a class="tick-item" href="blog/${n.slug}.html"><span class="tmeta">${n.tag} · ${n.date}</span><span class="tt">${n.title}</span><span class="tmore">Read story →</span></a>`).join("");
   nt.innerHTML = `<div class="tick-track">${items}${items}</div>`;
 }
 
-/* news.html: one page for every story. location.hash picks the story;
-   grid cards just change the hash, hashchange re-renders in place. */
-const nHero = q("n-hero-in"), nArt = q("n-art-in"), nGrid = q("n-grid");
-if (nHero && nArt && nGrid) {
-  const BATCH = 3;
-  let nGridIO = null, sent = q("n-sentinel");
-  const fig = (src, cap, alt) => `<figure class="news-fig"><img src="${src}" alt="${alt || cap || ""}" loading="lazy" data-fallback="figure">${cap ? `<figcaption>${cap}</figcaption>` : ""}</figure>`;
-  function buildGrid(excl) {
-    const others = NEWS.filter(x => x.slug !== excl);
-    nGrid.innerHTML = "";
-    let i = 0;
-    const end = q("n-end"); end.style.display = "none";
-    const loadMore = () => {
-      const slice = others.slice(i, i + BATCH);
-      if (!slice.length) { if (nGridIO) nGridIO.disconnect(); end.style.display = "block"; return; }
-      slice.forEach(n => nGrid.insertAdjacentHTML("beforeend",
-        `<a class="card n-grid-card reveal" href="#${n.slug}"><img src="${n.cover}" alt="${n.title}" loading="lazy" data-fallback="remove"><div class="n-card-in"><span class="eyebrow" style="color:var(--v-green)">${n.tag} · ${n.date}</span><h3>${n.title}</h3></div></a>`));
-      i += BATCH;
-      nGrid.querySelectorAll(".reveal").forEach(el => io.observe(el));
-    };
-    loadMore();
-    if (nGridIO) nGridIO.disconnect();
-    nGridIO = new IntersectionObserver(es => { if (es[0].isIntersecting) loadMore(); }, { rootMargin: "420px" });
-    nGridIO.observe(sent);
-  }
-  function routeNews() {
-    const slug = decodeURIComponent((location.hash || "").replace(/^#/, "").trim());
-    const n = NEWS.find(x => x.slug === slug) || NEWS[0];
-    nHero.innerHTML = `<span class="eyebrow" style="color:var(--leaf)">${n.tag} · ${n.date} · Blogs</span><h1 style="max-width:860px;margin:10px auto 0">${n.title}</h1>${n.cover ? `<img class="news-cover" src="${n.cover}" alt="${n.title}" data-fallback="remove">${n.coverCap ? `<div class="cover-cap">${n.coverCap}</div>` : ""}` : ""}`;
-    nArt.innerHTML = `<p class="news-lede">${n.lede}</p>` + n.body.map(it => it[0] === "p" ? `<p>${it[1]}</p>` : fig(it[1], it[2], n.title)).join("");
-    buildGrid(n.slug);
-    window.scrollTo({ top: 0, behavior: "auto" });
-  }
-  routeNews();
-  addEventListener("hashchange", routeNews);
+/* blog.html: filter posts from the search box or ?q= (the sidebar search on every blog page submits here) */
+const postList = q("postList"), blogQ = q("blogQ");
+if (postList && blogQ) {
+  const cards = [...postList.querySelectorAll(".post-card")];
+  const filter = () => {
+    const words = blogQ.value.toLowerCase().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    cards.forEach(c => { const hit = words.every(w => c.dataset.search.includes(w)); c.hidden = !hit; shown += hit; });
+    q("blogCount").textContent = `${shown} post${shown === 1 ? "" : "s"}`;
+    q("blogEmpty").hidden = shown > 0;
+  };
+  blogQ.value = new URLSearchParams(location.search).get("q") || "";
+  blogQ.addEventListener("input", filter);
+  blogQ.form.addEventListener("submit", e => { e.preventDefault(); filter(); });
+  if (blogQ.value) filter();
 }
 
 /* ================= Get Started onboarding (contact.html#get-started) =================

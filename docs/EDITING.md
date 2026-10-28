@@ -93,6 +93,13 @@ Everything lives in `CREDENTIALS` in `script.js` (group first, then one entry pe
 
 - `faq.html` and `training.html` (plus the PDF brochure) are generated from lists of questions and courses. Edit the lists and regenerate, rather than editing the HTML by hand.
 
+## Blog, categories and authors
+
+- **Posts** live in `NEWS` in `script.js`. Each needs a `slug`, `category` (a `CATEGORIES` id), `author` (an `AUTHORS` id), `published` (YYYY-MM-DD), title, lede, cover and body.
+- **Categories** are the group plus every business in `BUSINESSES`; a new business becomes a category automatically.
+- **Authors** live in `AUTHORS`: name, role, photo, bio, topics and `sameAs` (LinkedIn and other public profiles, so Google links the articles to the person).
+- After any change run `node tools/build-blog.mjs`. It writes `blog.html`, a page per post, category and author, `blog/feed.xml` and `sitemap-blog.xml`. Categories and authors with no posts yet are kept out of search results until they have one. The site check fails if the blog is out of date.
+
 ## A business gets its own website
 
 1. In `BUSINESSES` (`script.js`), set the business's `domain`, e.g. `domain: "misaltafarms.com"`. Every card, showcase slide and "Learn more" link switches to **Visit site ↗**, and the business page shows a link to the new site.
