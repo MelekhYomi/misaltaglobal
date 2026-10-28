@@ -96,7 +96,7 @@ const BUSINESSES = [
     img: "stock_truck_road.jpg", line: "Cold rooms and specialised transport, from farm gate to buyer and across borders.",
     who: "Producers, traders and industry", cta: { label: "Register interest", href: "logistics.html" } },
   { id: "trade-x", group: "chain", stage: "5 · Sell", tab: "Trade X", name: "Misalta Trade X", status: "soon", page: "trade-x.html", domain: "",
-    img: "hero_market_nigeria.jpg", line: "A digital marketplace connecting farmers, suppliers, brokers and buyers.",
+    img: "hero_market_nigeria.jpg", line: "A digital marketplace bridging farmers, buyers and traders, so farmers get a fair price.",
     who: "Farmers, traders and buyers", cta: { label: "Join early access", href: "trade-x.html#early-access" } },
   { id: "energy", group: "enabler", stage: "Power", tab: "Energy", name: "Misalta Energy", status: "plan", page: "energy.html", domain: "",
     img: "photo_solar_irrigation.jpg", art: "sun", line: "Oil and gas services, gas and LPG, power, renewables and bioenergy for industry and communities.",
@@ -859,6 +859,7 @@ const CREDENTIALS = [
     ["ISO 9001 quality management", "Accredited certification body", "One quality system across the group's businesses.", "held", "xxxxxx"],
     ["ISO 14001 environmental management", "Accredited certification body", "Managing our environmental impact on farms, sites and plants.", "held", "xxxxxx"],
     ["Corporate membership", "Nigerian Institute of Management (Chartered) (NIM)", "Membership of Nigeria's chartered body for management practice and standards.", "held", "xxxxxx"],
+    ["AfCFTA trade registration", "AfCFTA Secretariat and Nigeria's National Action Committee on AfCFTA", "Registered to trade under the African Continental Free Trade Area, with AfCFTA rules of origin for duty-free trade across Africa.", "held", "xxxxxx"],
     ["Partner organisation", "Taraba Shapers Association", "Working with Taraba's community of young leaders and change-makers.", "held", "xxxxxx"]
   ] },
   { id: "consulting", items: [
@@ -985,7 +986,7 @@ const CRED_BADGES = [ // [logo in images/logos (or "" for a text seal), seal tex
   ["itf.webp", "ITF", "Training contribution", "Industrial Training Fund"], ["bpp.webp", "BPP", "Federal contractor (IRR)", "Bureau of Public Procurement"],
   ["ncdmb.webp", "NCDMB", "NOGICJQS registered", "Nigerian Content Board"], ["nhia.webp", "NHIA", "Staff health insurance", "Health Insurance Authority"],
   ["scuml.webp", "SCUML", "AML registered", "SCUML · EFCC"], ["smedan.webp", "SMEDAN", "MSME registered", "SMEDAN"],
-  ["nepc.webp", "NEPC", "Registered exporter", "Nigerian Export Promotion Council"], ["nim.webp", "NIM", "Corporate member", "Nigerian Institute of Management"],
+  ["nepc.webp", "NEPC", "Registered exporter", "Nigerian Export Promotion Council"], ["afcfta.webp", "AfCFTA", "African free trade", "AfCFTA registered"], ["nim.webp", "NIM", "Corporate member", "Nigerian Institute of Management"],
   ["", "ISO", "ISO 9001 quality", "Certified"], ["", "ISO", "ISO 14001 environment", "Certified"], ["", "ISO", "ISO 21001 training", "Certified"],
   ["", "IMC", "Corporate member", "Institute of Management Consultants"], ["", "TSA", "Taraba Shapers Association", "Partner"],
   ["", "TSIRS", "PAYE tax clearance", "Taraba State IRS"], ["", "CMC", "Certified Management Consultant", "IMC Nigeria"],
