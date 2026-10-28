@@ -166,5 +166,45 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "artist": "Ngozi osadebe",
     "file": "commons_deforestation_training_workshop_02.jpg"
+  },
+  "photo_conference_hall": {
+    "title": "File:COP8488.jpg (15308338378).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:COP8488.jpg_(15308338378).jpg",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "artist": "AMISOM Public Information",
+    "file": "commons_amisom_conference_hall.jpg"
+  },
+  "photo_workshop_northeast": {
+    "title": "File:Wiki Loves Folklore 2026 Training Workshop in Northeast Nigeria 02.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Wiki_Loves_Folklore_2026_Training_Workshop_in_Northeast_Nigeria_02.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "artist": "Mr. Snatch",
+    "file": "commons_workshop_northeast_nigeria.jpg"
+  },
+  "photo_youth_classroom": {
+    "title": "File:Dagaare Wiki Ajumako Training 2.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dagaare_Wiki_Ajumako_Training_2.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "artist": "Alhassan Mohammed Awal",
+    "file": "commons_youth_classroom_ghana.jpg"
+  },
+  "photo_cowork_laptops": {
+    "title": "File:Train the Trainer Workshop for Reading Wikipedia in the Classroom 05.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Train_the_Trainer_Workshop_for_Reading_Wikipedia_in_the_Classroom_05.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "artist": "Awinebotima",
+    "file": "commons_cowork_laptops_ghana.jpg"
+  },
+  "photo_trainer_screen": {
+    "title": "File:Wikipedia training in kumasiWikihub.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Wikipedia_training_in_kumasiWikihub.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "artist": "TO THE GAME",
+    "file": "commons_trainer_screen_kumasi.jpg"
   }
 }
