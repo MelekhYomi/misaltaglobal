@@ -191,7 +191,6 @@ const socIcon = n => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
 const socLink = (n, u, cls = "") => u
   ? `<a class="${cls}" href="${u}" target="_blank" rel="noopener" aria-label="${n}" title="${n}">${socIcon(n)}</a>`
   : `<a class="${cls}" href="#" data-soc-dummy aria-label="${n}" title="${n}">${socIcon(n)}</a>`;
-const socialLinks = Object.entries(CONFIG.social).map(([n, u]) => socLink(n, u, "c-soc")).join("");
 const mark = `<img class="logo-img" src="images/logo.jfif" alt="Misalta Global Concepts Ltd. logo"><span class="logo-text">Misalta<small>GLOBAL LTD.</small><small class="motto">Building Tomorrow, Growing Value</small></span>`;
 
 const ico = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
@@ -660,8 +659,6 @@ setT("c-addr", CONFIG.address);
 /* contact links anywhere: <a data-mail="services"> and <a data-wa> fill from CONFIG */
 document.querySelectorAll("[data-mail]").forEach(a => { const m = E[a.dataset.mail] || E.info; a.href = "mailto:" + m; const t = a.querySelector("b"); if (t) t.textContent = m; });
 document.querySelectorAll("[data-wa]").forEach(a => a.href = "https://wa.me/" + CONFIG.whatsapp);
-const soc = document.getElementById("soc");
-if (soc) soc.innerHTML = socialLinks;
 
 /* team */
 const initials = n => n.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase();
