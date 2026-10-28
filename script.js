@@ -720,7 +720,7 @@ if (nHero && nArt && nGrid) {
   function routeNews() {
     const slug = decodeURIComponent((location.hash || "").replace(/^#/, "").trim());
     const n = NEWS.find(x => x.slug === slug) || NEWS[0];
-    nHero.innerHTML = `<span class="eyebrow" style="color:var(--leaf)">${n.tag} · ${n.date} · News &amp; updates</span><h1 style="max-width:860px;margin:10px auto 0">${n.title}</h1>${n.cover ? `<img class="news-cover" src="${n.cover}" alt="${n.title}" data-fallback="remove">${n.coverCap ? `<div class="cover-cap">${n.coverCap}</div>` : ""}` : ""}`;
+    nHero.innerHTML = `<span class="eyebrow" style="color:var(--leaf)">${n.tag} · ${n.date} · Blogs</span><h1 style="max-width:860px;margin:10px auto 0">${n.title}</h1>${n.cover ? `<img class="news-cover" src="${n.cover}" alt="${n.title}" data-fallback="remove">${n.coverCap ? `<div class="cover-cap">${n.coverCap}</div>` : ""}` : ""}`;
     nArt.innerHTML = `<p class="news-lede">${n.lede}</p>` + n.body.map(it => it[0] === "p" ? `<p>${it[1]}</p>` : fig(it[1], it[2], n.title)).join("");
     buildGrid(n.slug);
     window.scrollTo({ top: 0, behavior: "auto" });
