@@ -33,7 +33,8 @@ export function buildBlog() {
   const { CONFIG, NEWS, CATEGORIES, AUTHORS, CSSV, JSV } = data();
   const cat = id => CATEGORIES.find(c => c.id === id) || CATEGORIES[0];
   const author = id => AUTHORS.find(a => a.id === id) || AUTHORS.find(a => a.id === "misalta-team") || AUTHORS[0];
-  const posts = NEWS.map(n => ({ ...n, cat: cat(n.category || "group"), by: author(n.author) }));
+  const posts = NEWS.map(n => ({ ...n, cat: cat(n.category || "group"), by: author(n.author) }))
+    .sort((a, b) => (b.published || "").localeCompare(a.published || ""));  // newest first
   const postUrl = p => `blog/${p.slug}.html`, catUrl = c => `blog/category/${c.id}.html`, authUrl = a => `blog/author/${a.id}.html`;
   const ldDate = p => p.published || "";
   const ogImg = p => /\.(jpe?g|png|webp)$/i.test(p.cover || "") ? abs(p.cover) : `${SITE}/images/og/blog.jpg`;

@@ -23,7 +23,7 @@ const pages = readdirSync(ROOT).filter(f => f.endsWith(".html") && f !== "menu-m
 /* ids that script.js creates at runtime (cards, presets, news router) */
 const scriptJs = read("script.js");
 const BIZ_IDS = [...scriptJs.matchAll(/\{ id: "([a-z-]+)", group:/g)].map(m => m[1]);
-const NEWS_SLUGS = [...scriptJs.matchAll(/slug: "([a-z0-9-]+)"/g)].map(m => m[1]);
+const NEWS_SLUGS = [...scriptJs.matchAll(/"?slug"?: "([a-z0-9-]+)"/g)].map(m => m[1]);
 const DYNAMIC_ANCHORS = { "businesses.html": BIZ_IDS, "index.html": ["showcase"] };
 
 const resolveLocal = (page, ref) => {
