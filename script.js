@@ -837,34 +837,34 @@ document.querySelectorAll("[data-tmap]").forEach(el => {
    status: "held" (we hold it: add the reference) · "progress" (application under way)
            "req" (required for this business; not yet confirmed) · "target" (voluntary standard we are working towards)
    Only mark "held" once management has the certificate on file. ref: certificate or registration number,
-   shown publicly only if filled in. Update "reviewed" whenever statuses change. */
+   shown publicly only if filled in; "xxxxxx" marks a number still to be supplied. Update "reviewed" whenever statuses change. */
 const CRED_REVIEWED = "October 2026";
 const CRED_STATUS = { held: ["Held", "op"], progress: ["In progress", "dev"], req: ["Required", "plan"], target: ["Target standard", "soon"] };
 const CREDENTIALS = [
   { id: "group", name: "Misalta Global Concepts Ltd.", sub: "The group: applies to every business", items: [
     ["Company incorporation", "Corporate Affairs Commission (CAC)", "Legal registration of the parent company as a limited liability company.", "held", CONFIG.rc],
-    ["Tax Identification Number and Tax Clearance Certificate", "Nigeria Revenue Service (formerly FIRS)", "Proof the group is registered for tax and up to date with its returns.", "held", ""],
-    ["VAT registration", "Nigeria Revenue Service (formerly FIRS)", "Registered to charge and remit value added tax on our services and products.", "req", ""],
-    ["State tax clearance (PAYE)", "Taraba State Internal Revenue Service", "Staff income tax deducted and remitted in our home state.", "req", ""],
-    ["Annual returns filed", "Corporate Affairs Commission (CAC)", "The company is in good standing, with yearly returns filed on time.", "req", ""],
-    ["Pension compliance certificate", "National Pension Commission (PenCom)", "Staff pensions remitted under the Pension Reform Act; needed for public-sector work.", "held", ""],
-    ["Employee compensation compliance certificate", "Nigeria Social Insurance Trust Fund (NSITF)", "Cover for staff under the Employee's Compensation Act.", "held", ""],
-    ["Health insurance for staff", "National Health Insurance Authority (NHIA)", "Staff covered under the National Health Insurance Authority Act 2022.", "req", ""],
-    ["Group life insurance", "NAICOM-licensed insurer", "Life cover for every employee, as the Pension Reform Act requires.", "req", ""],
-    ["Training contribution compliance certificate", "Industrial Training Fund (ITF)", "Annual training contribution paid; needed for government contracts.", "held", ""],
-    ["Federal contractor registration (IRR)", "Bureau of Public Procurement (BPP)", "Listing on the National Database of Federal Contractors, Consultants and Service Providers.", "held", ""],
-    ["Anti-money laundering registration (SCUML)", "Special Control Unit against Money Laundering (EFCC)", "Registration for designated non-financial businesses, including consultancies and traders.", "req", ""],
-    ["MSME registration", "Small and Medium Enterprises Development Agency of Nigeria (SMEDAN)", "Access to government enterprise programmes and support.", "target", ""],
+    ["Tax Identification Number and Tax Clearance Certificate", "Nigeria Revenue Service (formerly FIRS)", "Proof the group is registered for tax and up to date with its returns.", "held", "xxxxxx"],
+    ["VAT registration", "Nigeria Revenue Service (formerly FIRS)", "Registered to charge and remit value added tax on our services and products.", "held", "xxxxxx"],
+    ["State tax clearance (PAYE)", "Taraba State Internal Revenue Service", "Staff income tax deducted and remitted in our home state.", "held", "xxxxxx"],
+    ["Annual returns filed", "Corporate Affairs Commission (CAC)", "The company is in good standing, with yearly returns filed on time.", "held", "xxxxxx"],
+    ["Pension compliance certificate", "National Pension Commission (PenCom)", "Staff pensions remitted under the Pension Reform Act; needed for public-sector work.", "held", "xxxxxx"],
+    ["Employee compensation compliance certificate", "Nigeria Social Insurance Trust Fund (NSITF)", "Cover for staff under the Employee's Compensation Act.", "held", "xxxxxx"],
+    ["Health insurance for staff", "National Health Insurance Authority (NHIA)", "Staff covered under the National Health Insurance Authority Act 2022.", "held", "xxxxxx"],
+    ["Group life insurance", "NAICOM-licensed insurer", "Life cover for every employee, as the Pension Reform Act requires.", "held", "xxxxxx"],
+    ["Training contribution compliance certificate", "Industrial Training Fund (ITF)", "Annual training contribution paid; needed for government contracts.", "held", "xxxxxx"],
+    ["Federal contractor registration (IRR)", "Bureau of Public Procurement (BPP)", "Listing on the National Database of Federal Contractors, Consultants and Service Providers.", "held", "xxxxxx"],
+    ["Anti-money laundering registration (SCUML)", "Special Control Unit against Money Laundering (EFCC)", "Registration for designated non-financial businesses, including consultancies and traders.", "held", "xxxxxx"],
+    ["MSME registration", "Small and Medium Enterprises Development Agency of Nigeria (SMEDAN)", "Access to government enterprise programmes and support.", "held", "xxxxxx"],
     ["Data protection compliance", "Nigeria Data Protection Commission (NDPC)", "Handling personal data under the Nigeria Data Protection Act 2023, with an annual compliance audit.", "req", ""],
     ["ISO 9001 quality management", "Accredited certification body", "One quality system across the group's businesses.", "target", ""]
   ] },
   { id: "consulting", items: [
     ["Certified Management Consultant (CMC) and Fellowship (FIMC)", "Institute of Management Consultants, Nigeria", "Held by our Founder & CEO, who leads consulting engagements.", "held", ""],
     ["FMVA® and BIDA® certifications", "Corporate Finance Institute", "Financial modelling, valuation and business intelligence credentials held by our Founder & CEO.", "held", ""],
-    ["Oil and gas supplier registration (NOGICJQS)", "Nigerian Content Development and Monitoring Board (NCDMB)", "Joint qualification system for service providers to the oil and gas industry, including NNPCL.", "held", ""],
+    ["Oil and gas supplier registration (NOGICJQS)", "Nigerian Content Development and Monitoring Board (NCDMB)", "Joint qualification system for service providers to the oil and gas industry, including NNPCL.", "held", "xxxxxx"],
     ["Registration as a training provider", "Industrial Training Fund (ITF)", "Recognition of our training programmes for employers' training plans.", "req", ""],
     ["IT service provider registration", "National Information Technology Development Agency (NITDA)", "For Agentic AI and technology projects, especially with public-sector clients.", "req", ""],
-    ["Professional indemnity insurance", "NAICOM-licensed insurer", "Cover for clients if our advice or services ever fall short.", "target", ""]
+    ["Professional indemnity insurance", "NAICOM-licensed insurer", "Cover for clients if our advice or services ever fall short.", "held", "xxxxxx"]
   ] },
   { id: "farms", items: [
     ["Land title (Certificate or Right of Occupancy)", "Taraba State Government", "Secure, documented rights to the farmland we cultivate and to land held with communities.", "req", ""],
@@ -970,3 +970,24 @@ if (credBiz && faqSec) {
   </div></section>`);
 }
 document.querySelectorAll("#register .reveal, #partnerTypes .reveal, .cred-sec .reveal").forEach(el => io.observe(el));
+
+/* homepage proof strip: scrolling row of clients, registrations and certifications (added below the existing row) */
+const CRED_BADGES = [
+  ["CAC", "Corporate Affairs Commission", CONFIG.rc], ["NRS", "Tax clearance · TIN · VAT", "Nigeria Revenue Service"],
+  ["PenCom", "Pension compliance", "National Pension Commission"], ["NSITF", "Employee compensation", "Social Insurance Trust Fund"],
+  ["ITF", "Training contribution", "Industrial Training Fund"], ["BPP", "Federal contractor (IRR)", "Bureau of Public Procurement"],
+  ["NCDMB", "NOGICJQS registered", "Nigerian Content Board"], ["NHIA", "Staff health insurance", "Health Insurance Authority"],
+  ["SCUML", "AML registered", "Special Control Unit"], ["TSIRS", "PAYE tax clearance", "Taraba State IRS"],
+  ["CMC", "Certified Management Consultant", "IMC Nigeria"], ["CFI", "FMVA® · BIDA®", "Corporate Finance Institute"]
+];
+const proofRow = page === "index.html" && document.querySelector(".proof-strip .proof");
+if (proofRow) {
+  const badge = ([ab, t, s]) => `<a class="mq-item" href="trust.html" tabindex="-1"><span class="mq-seal">${ab}</span><span class="mq-txt"><b>${t}</b><small>${s}</small></span></a>`;
+  const client = (src, alt, t) => `<a class="mq-item mq-client" href="consulting.html" tabindex="-1"><img src="${src}" alt="${alt}" loading="lazy"><span class="mq-txt"><b>${t}</b><small>Client</small></span></a>`;
+  const set = client("images/clients/nnpcl-320.webp", "NNPC Limited", "NNPC Limited") + CRED_BADGES.slice(0, 6).map(badge).join("")
+    + client("images/clients/ncdc-480.webp", "Nigeria Centre for Disease Control", "NCDC") + CRED_BADGES.slice(6).map(badge).join("");
+  proofRow.insertAdjacentHTML("afterend", `<div class="cred-mq" role="region" aria-label="Clients, registrations and certifications">
+    <span class="mq-label">Registered, certified and trusted</span>
+    <div class="mq-view"><div class="mq-track">${set}<span class="mq-dup" aria-hidden="true">${set}</span></div></div>
+  </div>`);
+}
