@@ -270,7 +270,8 @@ body.v2{font-family:'Inter',system-ui,sans-serif;background:#fff;color:var(--v-t
 .v2 .topbar{background:var(--v-dark);color:#ffffffd9;font-size:.8rem;height:40px;overflow:hidden;transition:margin .35s}
 .v2 header.nav.scrolled .topbar{margin-top:-40px}
 .v2 .topbar .container{display:flex;align-items:center;justify-content:space-between;height:40px;gap:18px}
-.v2 .topbar .tb-l{display:flex;gap:22px;align-items:center;min-width:0}
+.v2 .topbar .tb-l{display:flex;gap:22px;align-items:center;min-width:0;overflow:hidden}
+.v2 .topbar .tb-soc{flex:none}
 .v2 .topbar a,.v2 .topbar span{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;color:inherit}
 .v2 .topbar a:hover{color:var(--v-leaf)}
 .v2 .topbar svg{width:15px;height:15px;color:var(--v-leaf);flex:none}

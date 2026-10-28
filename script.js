@@ -196,7 +196,7 @@ const mark = `<img class="logo-img" src="images/logo.jfif" alt="Misalta Global C
 
 const ico = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
 const topbar = `<div class="topbar"><div class="container">
-  <div class="tb-l"><a href="mailto:${E.info}">${ico('<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/>')}${E.info}</a><a href="tel:${CONFIG.phone.replace(/\s/g, "")}">${ico('<path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/>')}${CONFIG.phone}</a><span>${ico('<path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>')}${CONFIG.address}</span></div>
+  <div class="tb-l"><a href="mailto:${E.info}">${ico('<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/>')}${E.info}</a><a href="tel:${CONFIG.phone.replace(/\s/g, "")}">${ico('<path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/>')}${CONFIG.phone}</a></div>
   <div class="tb-soc">${Object.entries(CONFIG.social).map(([n, u]) => socLink(n, u)).join("")}</div>
 </div></div>`;
 
