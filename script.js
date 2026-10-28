@@ -222,13 +222,12 @@ const bizItem = b => `<a class="mp-biz" href="${bizUrl(b)}"${b.domain ? ' target
 const chainBiz = BUSINESSES.filter(b => b.group === "chain"), enablerBiz = BUSINESSES.filter(b => b.group === "enabler");
 const latest = NEWS[0];
 const PANELS = {
-  company: { label: "Company", pages: ["about.html", "news.html", "credits.html", "trust.html", "faq.html"], html: `
+  company: { label: "Company", pages: ["about.html", "credits.html", "trust.html", "faq.html"], html: `
     <div class="mp-col mp-col-wide"><span class="mp-label">The group</span>
       <a class="mp-link" href="about.html"><span class="mp-ic">${svgI(NI.about)}</span><span><b>About Misalta</b><small>Our story, mission and values since 2019</small></span></a>
       <a class="mp-link" href="about.html#leadership"><span class="mp-ic">${svgI(NI.people)}</span><span><b>Our people</b><small>CEO, board, directors and advisers</small></span></a>
       <a class="mp-link" href="about.html#journey"><span class="mp-ic">${svgI(NI.journey)}</span><span><b>Our journey</b><small>From professional services to a group</small></span></a>
       <a class="mp-link" href="trust.html"><span class="mp-ic">${svgI(NI.shield)}</span><span><b>Trust &amp; compliance</b><small>Licences, certifications and standards</small></span></a>
-      <a class="mp-link" href="news.html"><span class="mp-ic">${svgI(NI.news)}</span><span><b>News &amp; updates</b><small>What the group is doing</small></span></a>
       <a class="mp-link" href="faq.html"><span class="mp-ic">${svgI(NI.about)}</span><span><b>FAQ</b><small>Quick answers to common questions</small></span></a>
       <a class="mp-link" href="contact.html"><span class="mp-ic">${svgI(NI.mail)}</span><span><b>Contact</b><small>Reach the right team directly</small></span></a>
     </div>
@@ -250,7 +249,7 @@ document.body.insertAdjacentHTML("afterbegin", `
 <header class="nav" id="hdr">${topbar}<div class="container nav-in">
   <a class="logo" href="index.html" aria-label="Misalta Global Concepts Ltd., home">${mark}</a>
   <nav class="mnav" id="mnav" aria-label="Main"><ul class="mnav-list">
-    ${navLink("index.html", "Home")}${navTrigger("company")}${navTrigger("businesses")}${navLink("investment.html", "Invest &amp; Partner")}
+    ${navLink("index.html", "Home")}${navTrigger("company")}${navTrigger("businesses")}${navLink("investment.html", "Invest &amp; Partner")}${navLink("news.html", "Blogs")}
   </ul></nav>
   <div class="nav-actions">
     <a class="btn btn-gold nav-cta" href="contact.html">Contact</a>
@@ -268,6 +267,7 @@ document.body.insertAdjacentHTML("afterbegin", `
     ${acc("company", PANELS.company.html.split('<a class="mp-feature')[0].replace('mp-col mp-col-wide', 'mp-col'))}
     ${acc("businesses", `<div class="mp-col"><span class="mp-label">The value chain</span>${chainBiz.map(bizItem).join("")}<span class="mp-label">Enablers</span>${enablerBiz.map(bizItem).join("")}<a class="mp-all" href="training.html">Training Academy: 33 courses ${svgI(NI.arrow)}</a><a class="mp-all" href="businesses.html">See all eight businesses ${svgI(NI.arrow)}</a></div>`)}
     <a class="dr-link${page === "investment.html" ? " is-current" : ""}" href="investment.html">Invest &amp; Partner</a>
+    <a class="dr-link${page === "news.html" ? " is-current" : ""}" href="news.html">Blogs</a>
   </div>
   <div class="dr-foot">
     <a class="btn btn-gold dr-cta" href="contact.html">Contact</a>
@@ -302,7 +302,7 @@ const footerHTML = `
     </div>
   </div>
   <div class="f-cols">
-    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="trust.html">Trust &amp; compliance</a><a href="training.html">Training Academy</a><a href="faq.html">FAQ</a><a href="news.html">News &amp; updates</a><a href="investment.html">Invest &amp; Partner</a><a href="contact.html#get-started">Get started</a></div>
+    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="trust.html">Trust &amp; compliance</a><a href="training.html">Training Academy</a><a href="faq.html">FAQ</a><a href="news.html">Blogs</a><a href="investment.html">Invest &amp; Partner</a><a href="contact.html#get-started">Get started</a></div>
     <div class="f-col"><h4>The value chain</h4>${chainBiz.map(fBiz).join("")}</div>
     <div class="f-col"><h4>Enablers</h4>${enablerBiz.map(fBiz).join("")}<a class="f-more" href="businesses.html">All eight businesses ${svgI(NI.arrow, 2)}</a></div>
     <div class="f-col f-contact"><h4>Get in touch</h4>
