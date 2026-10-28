@@ -1166,3 +1166,20 @@ footer.site-foot::before{content:"";position:absolute;left:0;right:0;top:-1px;he
 @media(max-width:700px){.cred-mq{flex-direction:column;align-items:stretch;gap:12px}.mq-label{max-width:none;text-align:center}.mq-track{animation-duration:45s}}
 @media(prefers-reduced-motion:reduce){.mq-track{animation:none;flex-wrap:wrap;width:auto;gap:10px;justify-content:center}.mq-dup{display:none}.mq-view{-webkit-mask-image:none;mask-image:none}.mq-item{margin-right:0}}
 .mq-logo img{height:44px;width:auto;max-width:150px;object-fit:contain;flex:none}
+
+/* ================= Misalta Energy: sectors ================= */
+.sectors{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sector{display:flex;flex-direction:column;background:#fff;border:1px solid var(--v-line);border-radius:18px;padding:26px;transition:border-color .2s,box-shadow .2s,transform .2s}
+.sector:hover{border-color:var(--v-green);box-shadow:0 18px 36px -24px rgba(15,46,28,.45);transform:translateY(-3px)}
+.sector header{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+.sector-ic{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:#eaf3e4;color:var(--v-green)}
+.sector-ic svg{width:26px;height:26px}
+.sector h3{font-size:1.12rem;margin-bottom:6px}
+.sector .chip{font-size:.6rem}
+.sector ul{list-style:none;display:grid;gap:8px;margin-bottom:14px}
+.sector li{position:relative;padding-left:20px;font-size:.88rem;line-height:1.5;color:var(--v-text)}
+.sector li::before{content:"";position:absolute;left:2px;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--v-leaf)}
+.sector-note{font-size:.82rem;line-height:1.5;color:var(--v-deep);background:#f4f8f1;border-left:3px solid var(--v-green);padding:10px 12px;border-radius:0 8px 8px 0;margin-bottom:14px}
+.sector-reg{margin-top:auto;padding-top:12px;border-top:1px dashed var(--v-line);font-size:.75rem;font-weight:600;letter-spacing:.02em;color:#5d6e63}
+@media(max-width:1024px){.sectors{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.sectors{grid-template-columns:1fr}}

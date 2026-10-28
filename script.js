@@ -72,7 +72,7 @@ const CONFIG = {
 /* ================= THE GROUP'S BUSINESSES =================
    One entry per business. The homepage showcase (and later the cards,
    menu and forms) are built from this list.
-   - status: "op" Operating · "dev" In development · "soon" Coming soon · "plan" Planned
+   - status: "op" Operating · "dev" In development · "soon" Launching soon · "plan" Planned
    - cta: the main action, matched to status. Use href for a link, or open
      for an enquiry-modal tab ("invest" | "supply" | "services").
    - group/stage: "chain" (the five value-chain stages, in order) or "enabler";
@@ -99,8 +99,8 @@ const BUSINESSES = [
     img: "hero_market_nigeria.jpg", line: "A digital marketplace connecting farmers, suppliers, brokers and buyers.",
     who: "Farmers, traders and buyers", cta: { label: "Join early access", href: "trade-x.html#early-access" } },
   { id: "energy", group: "enabler", stage: "Power", tab: "Energy", name: "Misalta Energy", status: "plan", page: "energy.html", domain: "",
-    img: "photo_solar_irrigation.jpg", art: "sun", line: "Solar and backup power for agro-industrial sites and the communities around them.",
-    who: "Energy partners, installers and financiers", cta: { label: "Partner on energy", open: "invest" } },
+    img: "photo_solar_irrigation.jpg", art: "sun", line: "Oil and gas services, gas and LPG, power, renewables and bioenergy for industry and communities.",
+    who: "Oil and gas operators, energy partners and financiers", cta: { label: "Partner on energy", open: "invest" } },
   { id: "construction", group: "enabler", stage: "Build", tab: "Construction", name: "Misalta Construction", status: "plan", page: "construction.html", domain: "",
     img: "photo_block_factory.jpg", art: "blocks", line: "Concrete blocks, building materials and real estate.",
     who: "Developers, builders and buyers", cta: { label: "Get notified at launch", href: "construction.html" } }
@@ -127,7 +127,7 @@ const photoImg = (f, alt = "") => {
   const set = [["sm", w[0]], ["md", w[1]], ["lg", w[2]]].filter((x, i, a) => a.findIndex(y => y[1] === x[1]) === i);
   return `<img src="${photoUrl(f, "md")}" srcset="${set.map(([t, px]) => `${photoUrl(f, t)} ${px}w`).join(", ")}" sizes="(max-width: 700px) 92vw, 360px" alt="${alt}" loading="lazy">`;
 };
-const STATUS = { op: "Operating", dev: "In development", soon: "Coming soon", plan: "Planned" };
+const STATUS = { op: "Operating", dev: "In development", soon: "Launching soon", plan: "Planned" };
 const bizUrl = b => b.domain ? "https://" + b.domain : b.page;
 
 /* ======================================================================= */
@@ -910,6 +910,8 @@ const CREDENTIALS = [
     ["Information security management (ISO 27001)", "Accredited certification body", "Independent assurance that platform data and systems are protected.", "progress", ""]
   ] },
   { id: "energy", items: [
+    ["Oil and gas service permit", "Nigerian Upstream Petroleum Regulatory Commission (NUPRC)", "Permit to provide services to upstream oil and gas operators.", "req", ""],
+    ["Downstream licences (LPG, CNG and petroleum products)", "Nigerian Midstream and Downstream Petroleum Regulatory Authority (NMDPRA)", "Licences to store, fill, distribute and retail gas and petroleum products.", "req", ""],
     ["Mini-grid registration or permit", "Nigerian Electricity Regulatory Commission (NERC) or the state electricity regulator", "Licence to generate and sell power, as set by the Electricity Act 2023.", "req", ""],
     ["Installation inspection and certification", "Nigerian Electricity Management Services Agency (NEMSA)", "Every installation tested and certified safe before it is switched on.", "req", ""],
     ["Registered engineers", "Council for the Regulation of Engineering in Nigeria (COREN)", "Design and supervision signed off by COREN-registered engineers.", "req", ""],
