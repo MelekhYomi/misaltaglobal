@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "functions": { "api/assistant.mjs": { "maxDuration": 60 } },
   "trailingSlash": false,
   "redirects": [
     { "source": "/blocks", "destination": "/construction", "permanent": true },

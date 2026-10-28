@@ -208,13 +208,14 @@ const bizItem = b => `<a class="mp-biz" href="${bizUrl(b)}"${b.domain ? ' target
 const chainBiz = BUSINESSES.filter(b => b.group === "chain"), enablerBiz = BUSINESSES.filter(b => b.group === "enabler");
 const latest = NEWS[0];
 const PANELS = {
-  company: { label: "Company", pages: ["about.html", "news.html", "credits.html", "trust.html"], html: `
+  company: { label: "Company", pages: ["about.html", "news.html", "credits.html", "trust.html", "faq.html"], html: `
     <div class="mp-col mp-col-wide"><span class="mp-label">The group</span>
       <a class="mp-link" href="about.html"><span class="mp-ic">${svgI(NI.about)}</span><span><b>About Misalta</b><small>Our story, mission and values since 2019</small></span></a>
       <a class="mp-link" href="about.html#leadership"><span class="mp-ic">${svgI(NI.people)}</span><span><b>Our people</b><small>CEO, board, directors and advisers</small></span></a>
       <a class="mp-link" href="about.html#journey"><span class="mp-ic">${svgI(NI.journey)}</span><span><b>Our journey</b><small>From professional services to a group</small></span></a>
       <a class="mp-link" href="trust.html"><span class="mp-ic">${svgI(NI.shield)}</span><span><b>Trust &amp; compliance</b><small>Licences, certifications and standards</small></span></a>
       <a class="mp-link" href="news.html"><span class="mp-ic">${svgI(NI.news)}</span><span><b>News &amp; updates</b><small>What the group is doing</small></span></a>
+      <a class="mp-link" href="faq.html"><span class="mp-ic">${svgI(NI.about)}</span><span><b>FAQ</b><small>Quick answers to common questions</small></span></a>
       <a class="mp-link" href="contact.html"><span class="mp-ic">${svgI(NI.mail)}</span><span><b>Contact</b><small>Reach the right team directly</small></span></a>
     </div>
     ${latest ? `<a class="mp-feature mp-news" href="news.html#${latest.slug}"><img src="${latest.cover}" alt="" loading="lazy"><span class="mp-ftext"><small>${latest.tag} · ${latest.date}</small><b>${latest.title}</b><em>Read the story ${svgI(NI.arrow)}</em></span></a>` : ""}` },
@@ -301,7 +302,7 @@ const footerHTML = `
     </div>
   </div>
   <div class="f-cols">
-    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="trust.html">Trust &amp; compliance</a><a href="news.html">News &amp; updates</a><a href="investment.html">Invest &amp; Partner</a><a href="get-started.html">Get started</a></div>
+    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="trust.html">Trust &amp; compliance</a><a href="faq.html">FAQ</a><a href="news.html">News &amp; updates</a><a href="investment.html">Invest &amp; Partner</a><a href="get-started.html">Get started</a></div>
     <div class="f-col"><h4>The value chain</h4>${chainBiz.map(fBiz).join("")}</div>
     <div class="f-col"><h4>Enablers</h4>${enablerBiz.map(fBiz).join("")}<a class="f-more" href="businesses.html">All eight businesses ${svgI(NI.arrow, 2)}</a></div>
     <div class="f-col f-contact"><h4>Get in touch</h4>
@@ -321,7 +322,7 @@ const footerHTML = `
 `;
 document.body.insertAdjacentHTML("beforeend", footerHTML + `
 
-<div class="fab"><button class="iv" data-open="invest" title="Make an enquiry" aria-label="Make an enquiry">✉</button><a class="wa" href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">💬</a></div>
+<div class="fab"><button class="ai-launch" id="aiLaunch" type="button" aria-controls="aiPanel" aria-expanded="false" aria-label="Ask Misalta AI"><span class="ai-launch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 01-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1121 11.5z"/><path d="M12 7.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/></svg></span><span class="ai-launch-txt">Ask Misalta AI</span></button><a class="wa" href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">💬</a></div>
 
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Make an enquiry"><div class="box"><button class="close" id="mclose" aria-label="Close">×</button>
   <h3 style="font-size:1.8rem">Make an Enquiry</h3><p style="color:#5a6a60">Tell us what you are interested in and the right team will follow up.</p>
@@ -911,8 +912,8 @@ const CREDENTIALS = [
     ["Information security management (ISO 27001)", "Accredited certification body", "Independent assurance that platform data and systems are protected.", "progress", ""]
   ] },
   { id: "energy", items: [
-    ["Oil and gas service permit", "Nigerian Upstream Petroleum Regulatory Commission (NUPRC)", "Permit to provide services to upstream oil and gas operators.", "req", ""],
-    ["Downstream licences (LPG, CNG and petroleum products)", "Nigerian Midstream and Downstream Petroleum Regulatory Authority (NMDPRA)", "Licences to store, fill, distribute and retail gas and petroleum products.", "req", ""],
+    ["Oil and gas service permit", "Nigerian Upstream Petroleum Regulatory Commission (NUPRC)", "Permit to provide services to upstream oil and gas operators.", "held", "xxxxxx"],
+    ["Downstream licences (LPG, CNG and petroleum products)", "Nigerian Midstream and Downstream Petroleum Regulatory Authority (NMDPRA)", "Licences to store, fill, distribute and retail gas and petroleum products.", "held", "xxxxxx"],
     ["Mini-grid registration or permit", "Nigerian Electricity Regulatory Commission (NERC) or the state electricity regulator", "Licence to generate and sell power, as set by the Electricity Act 2023.", "req", ""],
     ["Installation inspection and certification", "Nigerian Electricity Management Services Agency (NEMSA)", "Every installation tested and certified safe before it is switched on.", "req", ""],
     ["Registered engineers", "Council for the Regulation of Engineering in Nigeria (COREN)", "Design and supervision signed off by COREN-registered engineers.", "req", ""],
@@ -1004,3 +1005,40 @@ if (proofRow) {
     <div class="mq-view"><div class="mq-track">${set}<span class="mq-dup" aria-hidden="true">${set}</span></div></div>
   </div>`);
 }
+
+/* faq.html: instant search across every question and answer */
+const faqSearch = q0("faqSearch");
+if (faqSearch) {
+  const items = [...document.querySelectorAll(".faq-group details")];
+  faqSearch.addEventListener("input", () => {
+    const words = faqSearch.value.toLowerCase().split(/\s+/).filter(Boolean);
+    items.forEach(d => {
+      const hit = words.every(w => d.textContent.toLowerCase().includes(w));
+      d.hidden = !hit;
+      if (words.length && hit) d.open = true;
+    });
+    document.querySelectorAll(".faq-group").forEach(g => g.hidden = !g.querySelector("details:not([hidden])"));
+    q0("faqEmpty").hidden = items.some(d => !d.hidden);
+  });
+}
+
+/* Misalta AI: load the assistant the first time someone opens it (keeps every page light) */
+const AI_VERSION = "1";
+let aiLoading = null;
+function openAssistant(question) {
+  if (window.misaltaAI) return question ? misaltaAI.ask(question) : misaltaAI.open();
+  aiLoading ||= new Promise((resolve, reject) => {
+    const sc = document.createElement("script");
+    sc.src = "assistant.js?v=" + AI_VERSION; sc.onload = resolve; sc.onerror = reject;
+    document.body.appendChild(sc);
+  });
+  aiLoading.then(() => openAssistant(question)).catch(() => { aiLoading = null; toast("Misalta AI couldn't load. Please call or WhatsApp " + CONFIG.phone + "."); });
+}
+q0("aiLaunch").addEventListener("click", () => {
+  const p = q0("aiPanel");
+  if (p && !p.hidden) misaltaAI.close(); else openAssistant();
+});
+document.addEventListener("click", e => {
+  const t = e.target.closest("[data-assistant]");
+  if (t) { e.preventDefault(); openAssistant(t.dataset.assistant || undefined); }
+});

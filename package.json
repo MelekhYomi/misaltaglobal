@@ -1,0 +1,13 @@
+{
+  "name": "misaltaglobal",
+  "private": true,
+  "description": "Misalta Global Concepts Ltd. website: static pages plus the Misalta AI function in api/",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "check": "node tools/check.mjs",
+    "kb": "node tools/build-kb.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "0.134.0"
+  }
+}
