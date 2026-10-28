@@ -212,7 +212,7 @@ const AUTHORS = [
     bio: "News, milestones, events and announcements from across the Misalta group and its businesses.",
     topics: ["Company news", "Partnerships", "Events", "Announcements"],
     sameAs: ["https://www.linkedin.com/company/misalta-global-ltd/"] },
-  { id: "hillary", name: "Hillary", role: "Contributor", photo: "images/authors/hillary.svg",
+  { id: "hillary", name: "Mr Hillary", role: "Contributor", photo: "images/authors/hillary.svg",
     bio: "Writes on farming, post-harvest handling and agro-processing for the Misalta blog.",
     topics: ["Agribusiness", "Farming practice", "Post-harvest & storage", "Agro-processing"], sameAs: [] },
   { id: "yomi-dele", name: "Yomi Dele", role: "Contributor", photo: "images/authors/yomi-dele.svg",
