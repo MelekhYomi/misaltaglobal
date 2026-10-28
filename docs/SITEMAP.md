@@ -23,6 +23,8 @@ Home  /                                   index.html          [v2 ✓]
 ├── Get Started  /get-started            get-started.html    3-step onboarding, preset by #business, routed by team
 ├── Contact  /contact                     contact.html        contact form
 ├── Trust & Compliance /trust            trust.html          Company menu, footer, homepage proof strip
+├── FAQ               /faq                faq.html            Company menu, footer, Misalta AI
+├── Training Academy  /training           training.html       Consulting menu and page, footer (PDF brochure in /downloads)
 └── Privacy Notice  /privacy              privacy.html        footer only
 ```
 

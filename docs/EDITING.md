@@ -82,6 +82,17 @@ Everything lives in `CREDENTIALS` in `script.js` (group first, then one entry pe
 - When a certificate arrives: change `"req"` to `"held"` and add its number as the reference (for example the CAC RC number). Update `CRED_REVIEWED`.
 - Only mark an item "held" when the certificate is on file. The site check warns while items are still "Required" or held without a reference.
 
+## Misalta AI (the website assistant)
+
+- **Switch it on:** in Vercel, Project → Settings → Environment Variables, add `ANTHROPIC_API_KEY` (from console.anthropic.com), then redeploy. Without it the assistant runs in quick-answer mode (FAQ answers and contact options).
+- **Model:** `claude-opus-5-5` by default. Set `MISALTA_AI_MODEL` (for example `claude-haiku-5-5`) to change it without touching code. Set a monthly spend limit in the Anthropic console.
+- **Knowledge:** the assistant answers from the site itself. After changing page text or the data in `script.js`, run `node tools/build-kb.mjs` (the site check fails until you do).
+- **Enquiries:** it prepares a card the visitor confirms; delivery uses the same Web3Forms or email-app route as every form on the site.
+
+## FAQ and Training Academy
+
+- `faq.html` and `training.html` (plus the PDF brochure) are generated from lists of questions and courses. Edit the lists and regenerate, rather than editing the HTML by hand.
+
 ## A business gets its own website
 
 1. In `BUSINESSES` (`script.js`), set the business's `domain`, e.g. `domain: "misaltafarms.com"`. Every card, showcase slide and "Learn more" link switches to **Visit site ↗**, and the business page shows a link to the new site.

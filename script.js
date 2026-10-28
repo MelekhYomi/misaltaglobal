@@ -81,7 +81,7 @@ const CONFIG = {
      (e.g. "misaltafarms.com") and every "Learn more" link switches to it. */
 const BUSINESSES = [
   { id: "consulting", group: "enabler", stage: "Know-how", tab: "Consulting", name: "Misalta Consulting", status: "op", page: "consulting.html", domain: "",
-    img: "hero_training_session.jpg", line: "Training, facility management, procurement and financial advisory, trusted by NNPCL and NCDC.",
+    img: "hero_training_session.jpg", line: "Training courses, digital marketing, data protection, asset and facility management, procurement, financial advisory, oil and gas services and licensing, and drone services. Trusted by NNPCL and NCDC.",
     who: "Organisations and government agencies", cta: { label: "Book a service", open: "services" } },
   { id: "farms", group: "chain", stage: "1 · Grow", tab: "Farms", name: "Misalta Farms", status: "dev", page: "farms.html", domain: "",
     img: "stock_crop_rows.jpg", line: "Cultivation across Taraba State, supplying the rest of the group.",
@@ -198,11 +198,18 @@ const NI = {
   chat: '<path d="M21 11.5a8.4 8.4 0 01-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1121 11.5z"/>', invest: '<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>',
   grad: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>', building: '<path d="M4 21V5a2 2 0 012-2h8a2 2 0 012 2v16"/><path d="M16 9h2a2 2 0 012 2v10M2 21h20M8 7h4M8 11h4M8 15h4"/>',
   cart: '<path d="M3 4h2l2.4 11.2a2 2 0 002 1.6h7.7a2 2 0 001.9-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17" cy="20.5" r="1.2"/>',
-  bot: '<rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M9 13h.01M15 13h.01M9 17h6"/>', sprout: '<path d="M12 21v-9"/><path d="M12 12C12 7 8 4 3 4c0 5 4 8 9 8z"/><path d="M12 14c0-4 3-7 9-7 0 4-3 7-9 7z"/>'
+  bot: '<rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M9 13h.01M15 13h.01M9 17h6"/>',
+  megaphone: '<path d="M3 11v2a2 2 0 002 2h2l5 4V5L7 9H5a2 2 0 00-2 2z"/><path d="M16 8a5 5 0 010 8M19 5a9 9 0 010 14"/>',
+  rig: '<path d="M12 2l-6 20M12 2l6 20M8.5 13h7M7.3 17h9.4M10 8h4"/><path d="M3 22h18"/>',
+  drone: '<circle cx="5" cy="5" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M7 7l3 3M17 7l-3 3M7 17l3-3M17 17l-3-3"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/>',
+  license: '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h5"/><circle cx="15" cy="16" r="2"/>', sprout: '<path d="M12 21v-9"/><path d="M12 12C12 7 8 4 3 4c0 5 4 8 9 8z"/><path d="M12 14c0-4 3-7 9-7 0 4-3 7-9 7z"/>'
 };
-const SERVICES = [["grad", "Training Services", "Capacity building and professional training"], ["building", "Facility Management", "Safe, efficient workplaces"],
-  ["cart", "Procurement Support", "Reliable suppliers, on time and on budget"], ["invest", "Financial Advisory", "Planning, budgeting and decisions"],
-  ["bot", "Agentic AI", "Automation for repetitive work", "New"], ["sprout", "Agro Services", "Farm planning and value-chain guidance"]];
+const SERVICES = [["grad", "Training Academy", "33 courses in tech, data, AI and business", "", "training.html"], ["megaphone", "Digital Marketing", "Social media, content and campaigns", "New"],
+  ["shield", "Data Protection", "NDPA compliance, audits and training", "New"], ["building", "Asset & Facility Management", "Safe, efficient buildings and assets"], ["cart", "Procurement Support", "Reliable suppliers, on time and on budget"],
+  ["invest", "Financial Advisory", "Planning, budgeting and decisions"], ["rig", "Oil & Gas Services", "Training, supply and facility services"],
+  ["license", "Oil & Gas Licensing Support", "NUPRC, NMDPRA and NCDMB permits", "New"], ["drone", "Drone Services", "Surveillance, mapping and agro drones", "New"],
+  ["bot", "Agentic AI", "Automation for repetitive work", "New"],
+  ["sprout", "Agro Services", "Farm planning and value-chain guidance"]];
 const onPage = list => list.includes(page);
 const bizItem = b => `<a class="mp-biz" href="${bizUrl(b)}"${b.domain ? ' target="_blank" rel="noopener"' : ""}><img src="${photoUrl(b.img, "sm")}" alt="" loading="lazy" width="56" height="56"><span><small>${b.group === "chain" ? "Stage " + b.stage : "Enabler · " + b.stage}</small><b>${b.name.replace(" Ltd.", "")}</b></span><i class="chip ${b.status}">${STATUS[b.status]}</i></a>`;
 const chainBiz = BUSINESSES.filter(b => b.group === "chain"), enablerBiz = BUSINESSES.filter(b => b.group === "enabler");
@@ -219,9 +226,9 @@ const PANELS = {
       <a class="mp-link" href="contact.html"><span class="mp-ic">${svgI(NI.mail)}</span><span><b>Contact</b><small>Reach the right team directly</small></span></a>
     </div>
     ${latest ? `<a class="mp-feature mp-news" href="news.html#${latest.slug}"><img src="${latest.cover}" alt="" loading="lazy"><span class="mp-ftext"><small>${latest.tag} · ${latest.date}</small><b>${latest.title}</b><em>Read the story ${svgI(NI.arrow)}</em></span></a>` : ""}` },
-  consulting: { label: "Consulting", pages: ["consulting.html"], html: `
+  consulting: { label: "Consulting", pages: ["consulting.html", "training.html"], html: `
     <div class="mp-col mp-col-wide"><span class="mp-label">Misalta Consulting · Operating today</span>
-      <div class="mp-services">${SERVICES.map(([ic, t, d, tag]) => `<a class="mp-link" href="consulting.html#offer"><span class="mp-ic">${svgI(NI[ic])}</span><span><b>${t}${tag ? ` <i class="chip soon">${tag}</i>` : ""}</b><small>${d}</small></span></a>`).join("")}</div>
+      <div class="mp-services">${SERVICES.map(([ic, t, d, tag, href]) => `<a class="mp-link" href="${href || "consulting.html#offer"}"><span class="mp-ic">${svgI(NI[ic])}</span><span><b>${t}${tag ? ` <i class="chip soon">${tag}</i>` : ""}</b><small>${d}</small></span></a>`).join("")}</div>
       <a class="mp-all" href="consulting.html">All consulting services ${svgI(NI.arrow)}</a>
     </div>
     <div class="mp-feature" style="--fbg:url('${photoUrl("hero_training_session.jpg", "md")}')"><span class="mp-ftext"><small>Trusted by NNPCL and NCDC</small><b>Book a service with our in-house team</b><span class="mp-acts"><a class="btn btn-gold btn-sm" href="#" data-open="services">Book a service</a></span></span></div>` },
@@ -258,7 +265,7 @@ document.body.insertAdjacentHTML("afterbegin", `
   <div class="dr-scroll">
     <a class="dr-link${page === "index.html" ? " is-current" : ""}" href="index.html">Home</a>
     ${acc("company", PANELS.company.html.split('<a class="mp-feature')[0].replace('mp-col mp-col-wide', 'mp-col'))}
-    ${acc("consulting", `<div class="mp-col">${SERVICES.map(([ic, t, d, tag]) => `<a class="mp-link" href="consulting.html#offer"><span class="mp-ic">${svgI(NI[ic])}</span><span><b>${t}${tag ? ` <i class="chip soon">${tag}</i>` : ""}</b><small>${d}</small></span></a>`).join("")}<a class="btn btn-green btn-sm dr-btn" href="#" data-open="services">Book a service</a></div>`)}
+    ${acc("consulting", `<div class="mp-col">${SERVICES.map(([ic, t, d, tag, href]) => `<a class="mp-link" href="${href || "consulting.html#offer"}"><span class="mp-ic">${svgI(NI[ic])}</span><span><b>${t}${tag ? ` <i class="chip soon">${tag}</i>` : ""}</b><small>${d}</small></span></a>`).join("")}<a class="btn btn-green btn-sm dr-btn" href="#" data-open="services">Book a service</a></div>`)}
     ${acc("businesses", `<div class="mp-col"><span class="mp-label">The value chain</span>${chainBiz.map(bizItem).join("")}<span class="mp-label">Enablers</span>${enablerBiz.map(bizItem).join("")}<a class="mp-all" href="businesses.html">See all eight businesses ${svgI(NI.arrow)}</a></div>`)}
     <a class="dr-link${page === "investment.html" ? " is-current" : ""}" href="investment.html">Invest &amp; Partner</a>
     <a class="dr-link${page === "contact.html" ? " is-current" : ""}" href="contact.html">Contact</a>
@@ -302,7 +309,7 @@ const footerHTML = `
     </div>
   </div>
   <div class="f-cols">
-    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="trust.html">Trust &amp; compliance</a><a href="faq.html">FAQ</a><a href="news.html">News &amp; updates</a><a href="investment.html">Invest &amp; Partner</a><a href="get-started.html">Get started</a></div>
+    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="trust.html">Trust &amp; compliance</a><a href="training.html">Training Academy</a><a href="faq.html">FAQ</a><a href="news.html">News &amp; updates</a><a href="investment.html">Invest &amp; Partner</a><a href="get-started.html">Get started</a></div>
     <div class="f-col"><h4>The value chain</h4>${chainBiz.map(fBiz).join("")}</div>
     <div class="f-col"><h4>Enablers</h4>${enablerBiz.map(fBiz).join("")}<a class="f-more" href="businesses.html">All eight businesses ${svgI(NI.arrow, 2)}</a></div>
     <div class="f-col f-contact"><h4>Get in touch</h4>
@@ -345,7 +352,7 @@ document.body.insertAdjacentHTML("beforeend", footerHTML + `
   <form class="mf hidden" id="f-services" data-kind="Misalta Consulting Enquiry" data-to="${E.services}">
     <div class="row"><div class="field"><label>Full name</label><input name="Name" required></div><div class="field"><label>Email</label><input type="email" name="Email" required></div></div>
     <div class="row"><div class="field"><label>Organisation</label><input name="Organisation"></div><div class="field"><label>Phone</label><input name="Phone"></div></div>
-    <div class="field"><label>Service needed</label><select name="Service"><option>Training services</option><option>Facility management</option><option>Procurement support</option><option>Financial advisory</option><option>Agentic AI</option><option>Agro services</option><option>Other</option></select></div>
+    <div class="field"><label>Service needed</label><select name="Service"><option>Training and courses</option><option>Digital marketing services</option><option>Data protection and compliance</option><option>Asset and facility management</option><option>Procurement support</option><option>Financial advisory</option><option>Oil and gas services</option><option>Oil and gas licensing support</option><option>Drone services</option><option>Agentic AI</option><option>Agro services</option><option>Other</option></select></div>
     <div class="field"><label>Message</label><textarea name="Message" rows="3"></textarea></div>
     <label class="consent"><input type="checkbox" name="Consent" value="Yes" required> I agree to be contacted about this enquiry. See the <a href="privacy.html">privacy notice</a>.</label>
     <button class="btn btn-gold" style="width:100%;justify-content:center">Send Consulting Enquiry</button></form>
@@ -868,6 +875,8 @@ const CREDENTIALS = [
     ["FMVA® and BIDA® certifications", "Corporate Finance Institute", "Financial modelling, valuation and business intelligence credentials held by our Founder & CEO.", "held", ""],
     ["ISO 21001 management system for training providers", "Accredited certification body", "International standard for organisations that deliver training and education.", "held", "xxxxxx"],
     ["Corporate membership", "Institute of Management Consultants (IMC), Nigeria", "Misalta as a corporate member of Nigeria's professional body for management consultants.", "held", "xxxxxx"],
+    ["Licensed Data Protection Compliance Organisation (DPCO)", "Nigeria Data Protection Commission (NDPC)", "Licence to audit, train and certify organisations on Nigeria Data Protection Act compliance.", "progress", ""],
+    ["Drone operator permit (RPAS)", "Nigerian Civil Aviation Authority (NCAA)", "Permit to operate drones commercially for surveillance, mapping and agricultural services.", "req", ""],
     ["Oil and gas supplier registration (NOGICJQS)", "Nigerian Content Development and Monitoring Board (NCDMB)", "Joint qualification system for service providers to the oil and gas industry, including NNPCL.", "held", "xxxxxx"],
     ["Registration as a training provider", "Industrial Training Fund (ITF)", "Recognition of our training programmes for employers' training plans.", "req", ""],
     ["IT service provider registration", "National Information Technology Development Agency (NITDA)", "For Agentic AI and technology projects, especially with public-sector clients.", "req", ""],
@@ -992,7 +1001,7 @@ const CRED_BADGES = [ // [logo in images/logos (or "" for a text seal), seal tex
   ["", "IMC", "Corporate member", "Institute of Management Consultants"], ["", "TSA", "Taraba Shapers Association", "Partner"],
   ["", "TSIRS", "PAYE tax clearance", "Taraba State IRS"], ["", "CMC", "Certified Management Consultant", "IMC Nigeria"],
   ["cfi.svg", "CFI", "FMVA® · BIDA®", "Corporate Finance Institute"],
-  ["", "HALAL", "Halal certification", "In progress"], ["", "ISO", "ISO 27001 security", "In progress"]
+  ["ndpc.webp", "NDPC", "DPCO licence", "In progress"], ["", "HALAL", "Halal certification", "In progress"], ["", "ISO", "ISO 27001 security", "In progress"]
 ];
 const proofRow = page === "index.html" && document.querySelector(".proof-strip .proof");
 if (proofRow) {
@@ -1042,3 +1051,17 @@ document.addEventListener("click", e => {
   const t = e.target.closest("[data-assistant]");
   if (t) { e.preventDefault(); openAssistant(t.dataset.assistant || undefined); }
 });
+
+/* training.html: filter the catalogue by area; "Enrol" on a course picks it in the form */
+const courseTabs = q0("courseTabs");
+if (courseTabs) {
+  courseTabs.addEventListener("click", e => {
+    const b = e.target.closest("[data-cat]"); if (!b) return;
+    courseTabs.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b));
+    document.querySelectorAll(".course-cat").forEach(c => c.hidden = b.dataset.cat !== "all" && c.dataset.cat !== b.dataset.cat);
+  });
+  document.addEventListener("click", e => {
+    const a = e.target.closest("[data-course]"); if (!a) return;
+    const sel = q0("courseSelect"); if (sel) sel.value = a.dataset.course;
+  });
+}
