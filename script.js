@@ -11,7 +11,7 @@ const CONFIG = {
     invest: "invest@misaltaglobal.com",
     media: "media@misaltaglobal.com"
   },
-  phone: "+234 000 000 0000",
+  phone: "+234 815 722 6791",
   whatsapp: "2340000000000",            // international format, no + or spaces
   address: "Address to be confirmed",
   social: {
