@@ -347,7 +347,8 @@ const footerHTML = `
     </div>
   </div>
   <div class="f-cols">
-    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="trust.html">Trust &amp; compliance</a><a href="training.html">Training Academy</a><a href="faq.html">FAQ</a><a href="blog.html">Blogs</a><a href="investment.html">Invest &amp; Partner</a><a href="contact.html#get-started">Get started</a></div>
+    <div class="f-col"><h4>Company</h4><a href="about.html">About Misalta</a><a href="about.html#leadership">Our people</a><a href="about.html#journey">Our journey</a><a href="trust.html">Trust &amp; compliance</a></div>
+    <div class="f-col"><h4>Explore</h4><a href="blog.html">Blogs</a><a href="training.html">Training Academy</a><a href="investment.html">Invest &amp; Partner</a><a href="faq.html">FAQ</a><a href="contact.html#get-started">Get Started</a></div>
     <div class="f-col"><h4>The value chain</h4>${chainBiz.map(fBiz).join("")}</div>
     <div class="f-col"><h4>Enablers</h4>${enablerBiz.map(fBiz).join("")}<a class="f-more" href="businesses.html">All eight businesses ${svgI(NI.arrow, 2)}</a></div>
     <div class="f-col f-contact"><h4>Get in touch</h4>
