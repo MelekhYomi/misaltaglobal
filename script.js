@@ -274,7 +274,6 @@ const PANELS = {
       <a class="mp-link" href="about.html#journey"><span class="mp-ic">${svgI(NI.journey)}</span><span><b>Our journey</b><small>From professional services to a group</small></span></a>
       <a class="mp-link" href="trust.html"><span class="mp-ic">${svgI(NI.shield)}</span><span><b>Trust &amp; compliance</b><small>Licences, certifications and standards</small></span></a>
       <a class="mp-link" href="faq.html"><span class="mp-ic">${svgI(NI.about)}</span><span><b>FAQ</b><small>Quick answers to common questions</small></span></a>
-      <a class="mp-link" href="contact.html"><span class="mp-ic">${svgI(NI.mail)}</span><span><b>Contact</b><small>Reach the right team directly</small></span></a>
     </div>
     ${latest ? `<a class="mp-feature mp-news" href="blog/${latest.slug}.html"><img src="${latest.cover}" alt="" loading="lazy"><span class="mp-ftext"><small>${latest.tag} · ${latest.date}</small><b>${latest.title}</b><em>Read the story ${svgI(NI.arrow)}</em></span></a>` : ""}` },
   businesses: { label: "Our Business", pages: ["businesses.html", ...BUSINESSES.map(b => b.page), "what_to_expect.html", "training.html"], html: `
