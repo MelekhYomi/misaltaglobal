@@ -129,6 +129,8 @@ Downloaded 28 Oct 2026 from each organisation's official website, trimmed and re
 | nhia.webp | https://www.nhia.gov.ng/wp-content/uploads/2025/04/NHIA-1-1.png |
 | scuml.webp | https://scuml.efcc.gov.ng/wp-content/uploads/2025/08/dtiu-copy.png |
 | smedan.webp | https://smedan.gov.ng/wp-content/uploads/2024/03/Group-1.png |
+| nepc.webp | https://nepc.gov.ng/cms/wp-content/uploads/2018/06/logo-NEPC-left-res2-1.png |
+| nim.webp | https://nim.ng/wp-content/uploads/2023/11/NIM-LOGO-4-300x300.png |
 | cfi.svg | https://cdn.corporatefinanceinstitute.com/wp-content/themes/cfi/dist/images/logotm-cfi.svg |
 
-No official logo found online for Taraba State IRS or IMC Nigeria; they show as text seals. ISO and Halal show as text seals (ISO does not allow its logo to be used by certified organisations).
+No official logo found online for Taraba State IRS, IMC Nigeria or Taraba Shapers Association; they show as text seals. ISO and Halal show as text seals (ISO does not allow its logo to be used by certified organisations).

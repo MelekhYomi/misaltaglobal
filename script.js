@@ -12,7 +12,7 @@ const CONFIG = {
     media: "media@misaltaglobal.com"
   },
   phone: "+234 815 722 6791",
-  whatsapp: "2340000000000",            // international format, no + or spaces
+  whatsapp: "2348157226791",            // international format, no + or spaces
   address: "Address to be confirmed",
   social: {
     LinkedIn: "https://www.linkedin.com/company/misalta-global-ltd/",
@@ -856,11 +856,16 @@ const CREDENTIALS = [
     ["Anti-money laundering registration (SCUML)", "Special Control Unit against Money Laundering (EFCC)", "Registration for designated non-financial businesses, including consultancies and traders.", "held", "xxxxxx"],
     ["MSME registration", "Small and Medium Enterprises Development Agency of Nigeria (SMEDAN)", "Access to government enterprise programmes and support.", "held", "xxxxxx"],
     ["Data protection compliance", "Nigeria Data Protection Commission (NDPC)", "Handling personal data under the Nigeria Data Protection Act 2023, with an annual compliance audit.", "req", ""],
-    ["ISO 9001 quality management", "Accredited certification body", "One quality system across the group's businesses.", "target", ""]
+    ["ISO 9001 quality management", "Accredited certification body", "One quality system across the group's businesses.", "held", "xxxxxx"],
+    ["ISO 14001 environmental management", "Accredited certification body", "Managing our environmental impact on farms, sites and plants.", "held", "xxxxxx"],
+    ["Corporate membership", "Nigerian Institute of Management (Chartered) (NIM)", "Membership of Nigeria's chartered body for management practice and standards.", "held", "xxxxxx"],
+    ["Partner organisation", "Taraba Shapers Association", "Working with Taraba's community of young leaders and change-makers.", "held", "xxxxxx"]
   ] },
   { id: "consulting", items: [
     ["Certified Management Consultant (CMC) and Fellowship (FIMC)", "Institute of Management Consultants, Nigeria", "Held by our Founder & CEO, who leads consulting engagements.", "held", ""],
     ["FMVA® and BIDA® certifications", "Corporate Finance Institute", "Financial modelling, valuation and business intelligence credentials held by our Founder & CEO.", "held", ""],
+    ["ISO 21001 management system for training providers", "Accredited certification body", "International standard for organisations that deliver training and education.", "held", "xxxxxx"],
+    ["Corporate membership", "Institute of Management Consultants (IMC), Nigeria", "Misalta as a corporate member of Nigeria's professional body for management consultants.", "held", "xxxxxx"],
     ["Oil and gas supplier registration (NOGICJQS)", "Nigerian Content Development and Monitoring Board (NCDMB)", "Joint qualification system for service providers to the oil and gas industry, including NNPCL.", "held", "xxxxxx"],
     ["Registration as a training provider", "Industrial Training Fund (ITF)", "Recognition of our training programmes for employers' training plans.", "req", ""],
     ["IT service provider registration", "National Information Technology Development Agency (NITDA)", "For Agentic AI and technology projects, especially with public-sector clients.", "req", ""],
@@ -877,7 +882,7 @@ const CREDENTIALS = [
     ["Product registration and facility inspection", "National Agency for Food and Drug Administration and Control (NAFDAC)", "Every packaged food product registered and the plant inspected before sale.", "req", ""],
     ["Factory registration", "Federal Ministry of Labour and Employment", "Registration of the factory premises under the Factories Act, with safety inspections.", "req", ""],
     ["Environmental permit", "Federal Ministry of Environment and Taraba State environmental regulator", "Impact assessment and approval for the processing site, its water and waste.", "req", ""],
-    ["Exporter registration", "Nigerian Export Promotion Council (NEPC)", "Registration needed to export processed products and access export incentives.", "req", ""],
+    ["Exporter registration", "Nigerian Export Promotion Council (NEPC)", "Registration needed to export processed products and access export incentives.", "held", "xxxxxx"],
     ["Phytosanitary and export inspection certificates", "Nigeria Agricultural Quarantine Service (NAQS) and Federal Produce Inspection Service", "Inspection and grading so each export shipment clears at destination.", "req", ""],
     ["Food safety management (HACCP, ISO 22000 or FSSC 22000)", "Accredited certification body", "International food safety standard expected by large buyers.", "target", ""],
     ["Halal certification", "Recognised halal certification body", "Opens markets in Northern Nigeria, the Middle East and North Africa.", "progress", ""]
@@ -978,6 +983,9 @@ const CRED_BADGES = [ // [logo in images/logos (or "" for a text seal), seal tex
   ["itf.webp", "ITF", "Training contribution", "Industrial Training Fund"], ["bpp.webp", "BPP", "Federal contractor (IRR)", "Bureau of Public Procurement"],
   ["ncdmb.webp", "NCDMB", "NOGICJQS registered", "Nigerian Content Board"], ["nhia.webp", "NHIA", "Staff health insurance", "Health Insurance Authority"],
   ["scuml.webp", "SCUML", "AML registered", "SCUML · EFCC"], ["smedan.webp", "SMEDAN", "MSME registered", "SMEDAN"],
+  ["nepc.webp", "NEPC", "Registered exporter", "Nigerian Export Promotion Council"], ["nim.webp", "NIM", "Corporate member", "Nigerian Institute of Management"],
+  ["", "ISO", "ISO 9001 quality", "Certified"], ["", "ISO", "ISO 14001 environment", "Certified"], ["", "ISO", "ISO 21001 training", "Certified"],
+  ["", "IMC", "Corporate member", "Institute of Management Consultants"], ["", "TSA", "Taraba Shapers Association", "Partner"],
   ["", "TSIRS", "PAYE tax clearance", "Taraba State IRS"], ["", "CMC", "Certified Management Consultant", "IMC Nigeria"],
   ["cfi.svg", "CFI", "FMVA® · BIDA®", "Corporate Finance Institute"],
   ["", "HALAL", "Halal certification", "In progress"], ["", "ISO", "ISO 27001 security", "In progress"]
