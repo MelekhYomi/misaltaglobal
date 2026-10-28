@@ -218,12 +218,6 @@ const NI = {
   drone: '<circle cx="5" cy="5" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M7 7l3 3M17 7l-3 3M7 17l3-3M17 17l-3-3"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/>',
   license: '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h5"/><circle cx="15" cy="16" r="2"/>', sprout: '<path d="M12 21v-9"/><path d="M12 12C12 7 8 4 3 4c0 5 4 8 9 8z"/><path d="M12 14c0-4 3-7 9-7 0 4-3 7-9 7z"/>'
 };
-const SERVICES = [["grad", "Training Academy", "33 courses in tech, data, AI and business", "", "training.html"], ["megaphone", "Digital Marketing", "Social media, content and campaigns", "New"],
-  ["shield", "Data Protection", "NDPA compliance, audits and training", "New"], ["building", "Asset & Facility Management", "Safe, efficient buildings and assets"], ["cart", "Procurement Support", "Reliable suppliers, on time and on budget"],
-  ["invest", "Financial Advisory", "Planning, budgeting and decisions"], ["rig", "Oil & Gas Services", "Training, supply and facility services"],
-  ["license", "Oil & Gas Licensing Support", "NUPRC, NMDPRA and NCDMB permits", "New"], ["drone", "Drone Services", "Surveillance, mapping and agro drones", "New"],
-  ["bot", "Agentic AI", "Automation for repetitive work", "New"],
-  ["sprout", "Agro Services", "Farm planning and value-chain guidance"]];
 const onPage = list => list.includes(page);
 const bizItem = b => `<a class="mp-biz" href="${bizUrl(b)}"${b.domain ? ' target="_blank" rel="noopener"' : ""}><img src="${photoUrl(b.img, "sm")}" alt="" loading="lazy" width="56" height="56"><span><small>${b.group === "chain" ? "Stage " + b.stage : "Enabler · " + b.stage}</small><b>${b.name.replace(" Ltd.", "")}</b></span><i class="chip ${b.status}">${STATUS[b.status]}</i></a>`;
 const chainBiz = BUSINESSES.filter(b => b.group === "chain"), enablerBiz = BUSINESSES.filter(b => b.group === "enabler");
@@ -240,15 +234,10 @@ const PANELS = {
       <a class="mp-link" href="contact.html"><span class="mp-ic">${svgI(NI.mail)}</span><span><b>Contact</b><small>Reach the right team directly</small></span></a>
     </div>
     ${latest ? `<a class="mp-feature mp-news" href="news.html#${latest.slug}"><img src="${latest.cover}" alt="" loading="lazy"><span class="mp-ftext"><small>${latest.tag} · ${latest.date}</small><b>${latest.title}</b><em>Read the story ${svgI(NI.arrow)}</em></span></a>` : ""}` },
-  consulting: { label: "Consulting", pages: ["consulting.html", "training.html"], html: `
-    <div class="mp-col mp-col-wide"><span class="mp-label">Misalta Consulting · Operating today</span>
-      <div class="mp-services">${SERVICES.map(([ic, t, d, tag, href]) => `<a class="mp-link" href="${href || "consulting.html#offer"}"><span class="mp-ic">${svgI(NI[ic])}</span><span><b>${t}${tag ? ` <i class="chip soon">${tag}</i>` : ""}</b><small>${d}</small></span></a>`).join("")}</div>
-      <a class="mp-all" href="consulting.html">All consulting services ${svgI(NI.arrow)}</a>
-    </div>
-    <div class="mp-feature" style="--fbg:url('${photoUrl("hero_training_session.jpg", "md")}')"><span class="mp-ftext"><small>Trusted by NNPCL and NCDC</small><b>Book a service with our in-house team</b><span class="mp-acts"><a class="btn btn-gold btn-sm" href="#" data-open="services">Book a service</a></span></span></div>` },
-  businesses: { label: "Our Business", pages: ["businesses.html", ...BUSINESSES.map(b => b.page), "what_to_expect.html"].filter(p => p !== "consulting.html"), html: `
+  businesses: { label: "Our Business", pages: ["businesses.html", ...BUSINESSES.map(b => b.page), "what_to_expect.html", "training.html"], html: `
     <div class="mp-col"><span class="mp-label">The value chain</span>${chainBiz.map(bizItem).join("")}</div>
     <div class="mp-col"><span class="mp-label">Enablers</span>${enablerBiz.map(bizItem).join("")}
+      <a class="mp-all" href="training.html">Training Academy: 33 courses ${svgI(NI.arrow)}</a>
       <a class="mp-all" href="businesses.html">See all eight businesses ${svgI(NI.arrow)}</a></div>
     <div class="mp-feature" style="--fbg:url('${photoUrl("photo_taraba_tea.jpg", "md")}')"><span class="mp-ftext"><small>One group · Eight businesses</small><b>Find the business that fits what you need</b><span class="mp-acts"><a class="btn btn-gold btn-sm" href="get-started.html">Get started</a><a class="btn btn-ghost btn-sm" href="investment.html">Invest</a></span></span></div>` }
 };
@@ -262,7 +251,7 @@ document.body.insertAdjacentHTML("afterbegin", `
 <header class="nav" id="hdr">${topbar}<div class="container nav-in">
   <a class="logo" href="index.html" aria-label="Misalta Global Concepts Ltd., home">${mark}</a>
   <nav class="mnav" id="mnav" aria-label="Main"><ul class="mnav-list">
-    ${navLink("index.html", "Home")}${navTrigger("company")}${navTrigger("consulting")}${navTrigger("businesses")}${navLink("investment.html", "Invest &amp; Partner")}
+    ${navLink("index.html", "Home")}${navTrigger("company")}${navTrigger("businesses")}${navLink("investment.html", "Invest &amp; Partner")}
   </ul></nav>
   <div class="nav-actions">
     <a class="nav-contact${page === "contact.html" ? " is-current" : ""}" href="contact.html">Contact</a>
@@ -279,8 +268,7 @@ document.body.insertAdjacentHTML("afterbegin", `
   <div class="dr-scroll">
     <a class="dr-link${page === "index.html" ? " is-current" : ""}" href="index.html">Home</a>
     ${acc("company", PANELS.company.html.split('<a class="mp-feature')[0].replace('mp-col mp-col-wide', 'mp-col'))}
-    ${acc("consulting", `<div class="mp-col">${SERVICES.map(([ic, t, d, tag, href]) => `<a class="mp-link" href="${href || "consulting.html#offer"}"><span class="mp-ic">${svgI(NI[ic])}</span><span><b>${t}${tag ? ` <i class="chip soon">${tag}</i>` : ""}</b><small>${d}</small></span></a>`).join("")}<a class="btn btn-green btn-sm dr-btn" href="#" data-open="services">Book a service</a></div>`)}
-    ${acc("businesses", `<div class="mp-col"><span class="mp-label">The value chain</span>${chainBiz.map(bizItem).join("")}<span class="mp-label">Enablers</span>${enablerBiz.map(bizItem).join("")}<a class="mp-all" href="businesses.html">See all eight businesses ${svgI(NI.arrow)}</a></div>`)}
+    ${acc("businesses", `<div class="mp-col"><span class="mp-label">The value chain</span>${chainBiz.map(bizItem).join("")}<span class="mp-label">Enablers</span>${enablerBiz.map(bizItem).join("")}<a class="mp-all" href="training.html">Training Academy: 33 courses ${svgI(NI.arrow)}</a><a class="mp-all" href="businesses.html">See all eight businesses ${svgI(NI.arrow)}</a></div>`)}
     <a class="dr-link${page === "investment.html" ? " is-current" : ""}" href="investment.html">Invest &amp; Partner</a>
     <a class="dr-link${page === "contact.html" ? " is-current" : ""}" href="contact.html">Contact</a>
   </div>
